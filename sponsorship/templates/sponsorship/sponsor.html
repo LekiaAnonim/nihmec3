@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% block content %}
+<body>
+    <main class="about sponsorship-opp-container">
+        <h1>Sponsorship opportunities <span>- NiHMEC 3</span></h1>
+        {% with packages=page.sponsorship_package.all %}
+        {% if packages %}        
+        <div class="sponsorship-container about-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="sponsorship-feature">Features</th>
+                        {% for package in packages %}
+                        <th class="sponsorship-package">{{package.sponsorship_type}} <br><span>₦ {{package.price}}</span></th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for package_feature in package_features %}
+                    <tr class="sponsorship-table-body-row">
+                        <td class="sponsorship-feature-row-head">{{package_feature}}</td>
+
+                        {% for package in packages %}
+                        {% if package_feature in package.features.all %}
+                        <td class="sponsorship-feature-data"><i class='bx bx-check'></i></td>
+                        {% else %}
+                        <td class="sponsorship-feature-data"><i class='bx bx-x'></i></td>
+                        {% endif %}
+                        {% endfor %}
+                        
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        {% for package in page.get_children %}
+                        {% with package=package.specific %}
+                            <td class="sponsorship-select"><a href="{% pageurl package %}">Select</a></td>
+                        {% endwith %}
+                        {% endfor %}
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        {% endif %}
+        {% endwith %}
+    </main>
+</body>
+{% endblock %}

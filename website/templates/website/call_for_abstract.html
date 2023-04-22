@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% block content %}
+<body>
+    <main class="about call-for-abstract-container">
+        <h1>{{page.title}}</h1>
+        <div class="about-container">
+            {{page.body|richtext}}
+
+            <div class="abstract-form">
+                <h2>Submit your Abstract using the form below.</h2>
+                <form action="{% pageurl page %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-card registration-form-1">
+                        <div class="form-field">
+                            {{form.paper_title.label_tag}}
+                            {{form.paper_title.help_text}}
+                            <h6 class="text-danger">{{ form.paper_title.errors }}</h6>
+                            {{form.paper_title}}
+                        </div>
+                        <div class="form-field">
+                            {{form.name_of_authors.label_tag}}
+                            {{form.name_of_authors.help_text}}
+                            <h6 class="text-danger">{{ form.name_of_authors.errors }}</h6>
+                            {{form.name_of_authors}}
+                        </div>
+                        <div class="form-field">
+                            {{form.body.label_tag}}
+                            <h6 class="text-danger">{{ form.body.errors }}</h6>
+                           {{form.body}}
+                        </div>
+                        <div class="form-card-wordwrap">
+                            <div class="form-field">
+                                {{form.email_address.label_tag}}
+                                <h6 class="text-danger">{{ form.email_address.errors }}</h6>
+                                {{form.email_address}}
+                            </div>
+                            <div class="form-field">
+                                {{form.phone.label_tag}}
+                                <h6 class="text-danger">{{ form.phone.errors }}</h6>
+                                {{form.phone}}
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            {{form.address.label_tag}}
+                            {{form.address.help_text}}
+                            <h6 class="text-danger">{{ form.address.errors }}</h6>
+                            {{form.address}}
+                        </div>
+                        <div class="form-card-wordwrap">
+                            <div class="form-field">
+                                {{form.country.label_tag}}
+                                <h6 class="text-danger">{{ form.country.errors }}</h6>
+                                {{form.country}}
+                            </div>
+                            <div class="form-field">
+                                {{form.companyorganization.label_tag}}
+                                <h6 class="text-danger">{{ form.companyorganization.errors }}</h6>
+                                {{form.companyorganization}}
+                            </div>
+                        </div>
+                    </div>
+                    <input class="submit-btn" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+        
+        
+    </main>
+</body>
+{% endblock %}

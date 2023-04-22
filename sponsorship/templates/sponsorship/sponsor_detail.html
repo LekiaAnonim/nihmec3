@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% block content %}
+<body>
+    <main class="about sponsorship-opp-container">
+        <h1>{{page.title}}</h1>
+        <span>{{page.sponsor_form_page.intro|richtext}}</span>
+        <div class="register-container">
+            <div class="contact-to-register">
+                <h3>You can also contact us to register</h3>
+                <a href="mailto:s.kanshio@fleissen.com">s.kanshio@fleissen.com</a>
+                <a href="tel:+2349098614828">+2349098614828</a>
+            </div>
+            <div class="about-container">
+                <form action="{% pageurl page %}" method="post">
+                    {% csrf_token %}
+                    <h2>Sponsorship Interest Form:</h2>
+                    <div class="form-card registration-form-1">
+                        <div class="form-card-wordwrap">
+                            <div class="form-field">
+                                {{form.company.label_tag}}
+                                <h6 class="text-danger">{{ form.company.errors }}</h6>
+                                {{form.company}}
+                            </div>
+                            <div class="form-field">
+                                {{form.first_name.label_tag}}
+                                <h6 class="text-danger">{{ form.first_name.errors }}</h6>
+                                {{form.first_name}}
+                            </div>
+                        </div>
+                        <div class="form-card-wordwrap">
+                            <div class="form-field">
+                                {{form.surname.label_tag}}
+                                <h6 class="text-danger">{{ form.surname.errors }}</h6>
+                                {{form.surname}}
+                            </div>
+                            <div class="form-field">
+                                {{form.position.label_tag}}
+                                <h6 class="text-danger">{{ form.position.errors }}</h6>
+                                {{form.position}}
+                            </div>
+                        </div>
+                        <div class="form-card-wordwrap">
+                            <div class="form-field">
+                                {{form.email_address.label_tag}}
+                                <h6 class="text-danger">{{ form.email_address.errors }}</h6>
+                                {{form.email_address}}
+                            </div>
+                            <div class="form-field">
+                                {{form.phone.label_tag}}
+                                <h6 class="text-danger">{{ form.phone.errors }}</h6>
+                                {{form.phone}}
+                            </div>
+                        </div>
+                        <div class="form-card-wordwrap">
+                            <div class="form-field">
+                                {{form.address.label_tag}}
+                                <h6 class="text-danger">{{ form.address.errors }}</h6>
+                                {{form.address}}
+                            </div>
+                            <div class="form-field">
+                                {{form.country.label_tag}}
+                                <h6 class="text-danger">{{ form.country.errors }}</h6>
+                                {{form.country}}
+                            </div>
+                        </div>
+                        <input class="submit-btn" type="submit" value="Submit">
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+{% endblock %}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% block content %}
+<body>
+    <main class="about">
+        <h1>{{page.title}}</h1>
+        <p>{{page.intro|richtext}}</p>
+        <div class="register-container">
+            <div class="contact-to-register">
+                <h3>You can also contact us to register</h3>
+                <a href="mailto:s.kanshio@fleissen.com">s.kanshio@fleissen.com</a>
+                <a href="tel:+2349098614828">+2349098614828</a>
+            </div>
+            <div class="about-container">
+                <form action="{% pageurl page %}" method="post">
+                    {% csrf_token %}
+                    <h2>Personal info:</h2>
+                    <div class="form-card registration-form-1">
+                        <div class="form-field">
+                            {{form.first_name.label_tag}}
+                            <h6 class="text-danger">{{ form.first_name.errors }}</h6>
+                            {{form.first_name}}
+                        </div>
+                        <div class="form-field">
+                            {{form.surname.label_tag}}
+                            <h6 class="text-danger">{{ form.surname.errors }}</h6>
+                            {{form.surname}}
+                        </div>
+                        <div class="form-field">
+                            {{form.sex.label_tag}}
+                            <h6 class="text-danger">{{ form.sex.errors }}</h6>
+                           {{form.sex}}
+                        </div>
+                        <div class="form-field">
+                            {{form.email_address.label_tag}}
+                            <h6 class="text-danger">{{ form.email_address.errors }}</h6>
+                            {{form.email_address}}
+                        </div>
+                        <div class="form-field">
+                            {{form.phone.label_tag}}
+                            <h6 class="text-danger">{{ form.phone.errors }}</h6>
+                            {{form.phone}}
+                        </div>
+                        <div class="form-field">
+                            {{form.company.label_tag}}
+                            <h6 class="text-danger">{{ form.company.errors }}</h6>
+                            {{form.company}}
+                        </div>
+                        <div class="form-field">
+                            {{form.position.label_tag}}
+                            <h6 class="text-danger">{{ form.position.errors }}</h6>
+                            {{form.position}}
+                        </div>
+                        <div class="form-field">
+                            {{form.state.label_tag}}
+                            <h6 class="text-danger">{{ form.state.errors }}</h6>
+                            {{form.state}}
+                        </div>
+                        <div class="form-field">
+                            {{form.city.label_tag}}
+                            <h6 class="text-danger">{{ form.city.errors }}</h6>
+                            {{form.city}}
+                        </div>
+                        <div class="form-field">
+                            {{form.country.label_tag}}
+                            <h6 class="text-danger">{{ form.country.errors }}</h6>
+                            {{form.country}}
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="form-card">
+                        <h2>Register for:</h2>
+                        <div class="form-field">
+                            
+                            {{form.workshop}}
+                            
+
+                        </div>
+                    </div>
+                    <div class="form-card">
+                        <div class="form-field">
+                            {{form.number_of_registrants.label_tag}}
+                            <h6 class="text-danger">{{ form.number_of_registrants.errors }}</h6>
+                            {{form.number_of_registrants}}
+                        </div>
+
+                        <div class="payment-cost-container">
+                            <label for="id_workshop_cost"></label>
+                            {{form.workshop_cost}}
+
+                            <label for="id_conference_cost"></label>
+                            {{form.conference_cost}}
+
+                            <label for="id_conference_and_workshop_cost"></label>
+                            {{form.conference_and_workshop_cost}}
+                            <input class="pay-btn" type="submit" value="Pay">
+                            
+                            <div class="output-cost"></div>
+                        </div>
+
+                        <script>
+                            let num_of_registrants = document.getElementById('{{ form.number_of_registrants.id_for_label }}').value;
+                            let workshopCost = document.getElementById('id_workshop_cost').value;
+                            let conferenceCost= document.getElementById('id_conference_cost').value;
+                            let WorkConfCost = document.getElementById('id_conference_and_workshop_cost').value;
+                            
+                            let registration_form = document.querySelector('form');
+                            let registrationPackage = document.querySelectorAll("input[type='radio']");
+                            document.querySelector("input[name='number_of_registrants']").setAttribute('class', 'qty');
+                            document.querySelector("input[name='workshop_cost']").setAttribute('class', 'id_workshop_0 payment-cost');
+                            document.querySelector("input[name='conference_cost']").setAttribute('class', 'id_workshop_1 payment-cost');
+                            document.querySelector("input[name='conference_and_workshop_cost']").setAttribute('class', 'id_workshop_2 payment-cost');
+                            
+                            document.querySelector("input[name='workshop_cost']").readonly = true;
+                            document.querySelector("input[name='conference_cost']").readonly = true;
+                            document.querySelector("input[name='conference_and_workshop_cost']").readonly = true;
+                            registrationPackage.forEach(package => {
+                                // package.setAttribute('name', 'registration_type');
+                                package.setAttribute('class', 'registration-package');
+                                package.addEventListener('click', ()=>{
+                                    let paymentCost = document.querySelectorAll('.payment-cost');
+                                    paymentCost.forEach(cost => {
+                                        if (package.id == cost.classList[0]) {
+                                            console.log(cost.value);
+                                            cost.classList.remove('display-cost');
+                                            function calcCost() {
+                                                cost_ = document.querySelector(`.${package.id}`);
+                                                if (cost_ == cost) {
+                                                    console.log(cost_);
+                                                    let num_of_registrants = document.getElementById('{{ form.number_of_registrants.id_for_label }}').value;
+                                                    let total = num_of_registrants*cost_.value;
+                                                    document.querySelector('.output-cost').innerText = total;
+                                                }  
+                                            };
+                                            
+                                            $(function()
+                                                {
+                                                    $(".qty").on("change keyup", calcCost);
+                                                    $(".registration-package").on("change keyup", calcCost);
+                                            });
+                                            
+                                        }else{
+                                        cost.classList.add('display-cost');
+                                        
+                                    }
+                               });
+                                })
+                            });
+                            
+                        </script>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        
+    </main>
+</body>
+{% endblock %}
