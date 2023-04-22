@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import dj_database_url
+import boto3
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
@@ -33,7 +34,7 @@ INSTALLED_APPS = [
     "sponsorship",
     "exhibition",
     "gallery",
-    "storages",
+    
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "storages",
     'django_extensions',
 ]
 
@@ -94,16 +96,16 @@ WSGI_APPLICATION = "nihmec.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-#     }
-# }
-
 DATABASES = {
-    "default": dj_database_url.config(default='postgresql://postgres:93WzL1fYDGrZRoVQwiTN@containers-us-west-118.railway.app:7259/railway', conn_max_age=1800),
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+    }
 }
+
+# DATABASES = {
+#     "default": dj_database_url.config(default='postgresql://postgres:93WzL1fYDGrZRoVQwiTN@containers-us-west-118.railway.app:7259/railway', conn_max_age=1800),
+# }
 
 
 AWS_STORAGE_BUCKET_NAME = 'nihmecbucket'
@@ -112,8 +114,18 @@ AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_FILE_OVERWRITE = False
 
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+AWS_LOCATION = 'static'
+
+
+
 MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'nihmec.storage_backends.MediaStorage'
 
 CSRF_TRUSTED_ORIGINS = [
     'https://nihmec-production.up.railway.app']
