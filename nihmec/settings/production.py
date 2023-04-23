@@ -6,8 +6,8 @@ import dj_database_url
 env = environ.Env()
 environ.Env.read_env()
 
-ALLOWED_HOSTS = ["'nihmec-production.up.railway.app'"]
-DEBUG = True
+ALLOWED_HOSTS = ["nihmec-production.up.railway.app"]
+DEBUG = False
 
 try:
     from .local import *
