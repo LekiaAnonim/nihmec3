@@ -722,12 +722,12 @@ margin: 0;
 .sponsorship-container{
   background-color: #fff;
   min-width: 700px;
-  display: block;
-  overflow-x: auto;
 }
 .sponsorship-container table{
   table-layout: fixed;
   border-spacing: 30px 0;
+  display: block;
+  overflow-x: scroll;
 }
 /* .sponsorship-container table tbody{
   display: table;
