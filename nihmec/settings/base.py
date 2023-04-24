@@ -136,7 +136,7 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'nihmec.storage_backends.MediaStorage'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://nihmec-production.up.railway.app']
+    'https://nihmec-production.up.railway.app', 'https://nihmec.com']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'http')
 CSRF_USE_SESSIONS = False
 CSRF_COOKIE_SECURE = True

@@ -6,7 +6,7 @@ import dj_database_url
 env = environ.Env()
 environ.Env.read_env()
 
-ALLOWED_HOSTS = ["nihmec-production.up.railway.app"]
+ALLOWED_HOSTS = ["nihmec-production.up.railway.app", "nihmec.com"]
 DEBUG = False
 
 try:
