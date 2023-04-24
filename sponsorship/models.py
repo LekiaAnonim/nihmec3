@@ -81,7 +81,7 @@ class SponsorFormPage(AbstractEmailForm):
 
     @cached_property
     def home_page(self):
-        return self.get_parent().specific
+        return self.get_parent().specific.get_parent().specific
 
     def get_context(self, request, *args, **kwargs):
         context = super(SponsorFormPage, self).get_context(request, *args, **kwargs)
