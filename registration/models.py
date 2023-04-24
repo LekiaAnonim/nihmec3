@@ -10,51 +10,40 @@ from wagtail.contrib.forms.panels import FormSubmissionsPanel
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 # Create your models here.
 
-@register_snippet
-class RegistrationPackage(models.Model):
-    option = models.CharField(max_length=200, help_text="e.g. Conference only", null=True)
-    price = models.DecimalField(decimal_places=2, null=True, max_digits=100)
-    panels = [
-        FieldPanel('option'),
-        FieldPanel('price'),
-    ]
-    def __str__(self):
-        return self.option
+# @register_snippet
+# class Registration(models.Model):
+#     registration_package = models.ForeignKey(RegistrationPackage, on_delete=models.SET_NULL, related_name='registration_package', null=True)
+#     first_name = models.CharField(max_length = 500, null=True, blank=True)
+#     surname = models.CharField(max_length=500, null=True, blank=True)
+#     SEX_CHOICES =( 
+#         ('Male', 'Male'),
+#         ('Female', 'Female'),
+#     )
+#     sex = models.CharField(max_length=20, null=True, choices=SEX_CHOICES)
+#     company = models.CharField(max_length=500, null=True)
+#     position = models.CharField(max_length=500, null=True, blank=True)
+#     email = models.EmailField(null=True)
+#     phone = models.CharField(max_length=20)
+#     city = models.CharField(max_length=500, null=True, blank=True)
+#     state = models.CharField(max_length=500, null=True)
+#     country = models.CharField(max_length=500, null=True, blank=True)
 
-@register_snippet
-class Registration(models.Model):
-    registration_package = models.ForeignKey(RegistrationPackage, on_delete=models.SET_NULL, related_name='registration_package', null=True)
-    first_name = models.CharField(max_length = 500, null=True, blank=True)
-    surname = models.CharField(max_length=500, null=True, blank=True)
-    SEX_CHOICES =( 
-        ('Male', 'Male'),
-        ('Female', 'Female'),
-    )
-    sex = models.CharField(max_length=20, null=True, choices=SEX_CHOICES)
-    company = models.CharField(max_length=500, null=True)
-    position = models.CharField(max_length=500, null=True, blank=True)
-    email = models.EmailField(null=True)
-    phone = models.CharField(max_length=20)
-    city = models.CharField(max_length=500, null=True, blank=True)
-    state = models.CharField(max_length=500, null=True)
-    country = models.CharField(max_length=500, null=True, blank=True)
+#     number_of_registrants = models.IntegerField(null=True, blank=True, default=1)
 
-    number_of_registrants = models.IntegerField(null=True, blank=True, default=1)
-
-    panels = [
-        FieldPanel('registration_package'),
-        FieldPanel('first_name'),
-        FieldPanel('surname'),
-        FieldPanel('sex'),
-        FieldPanel('company'),
-        FieldPanel('position'),
-        FieldPanel('email'),
-        FieldPanel('phone'),
-        FieldPanel('city'),
-        FieldPanel('state'),
-        FieldPanel('country'),
-        FieldPanel('number_of_registrants'),
-    ]
+#     panels = [
+#         FieldPanel('registration_package'),
+#         FieldPanel('first_name'),
+#         FieldPanel('surname'),
+#         FieldPanel('sex'),
+#         FieldPanel('company'),
+#         FieldPanel('position'),
+#         FieldPanel('email'),
+#         FieldPanel('phone'),
+#         FieldPanel('city'),
+#         FieldPanel('state'),
+#         FieldPanel('country'),
+#         FieldPanel('number_of_registrants'),
+#     ]
 
 class RegistrationPage(Page):
     template = 'registration/registration.html'

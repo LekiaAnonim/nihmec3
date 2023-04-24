@@ -4,6 +4,10 @@
     box-sizing: border-box;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+.about p {
+  line-height: 28px;   /* within paragraph */
+  margin-bottom: 20px; /* between paragraphs */
+}
 body{
     width: 100%;
     padding: 0;
@@ -218,7 +222,7 @@ li{
     transition: all 0.5s;
 }
 .translate-left-right{
-    transform: translateX(-240px);
+    transform: translateX(-260px);
 }
 .ham-side-main-menu{
     display: flex;
@@ -329,7 +333,7 @@ li{
 /* STYLING OUR SPONSORS */
 
 .meet-our-sponsors{
-    margin-top: 90px;
+    margin-top: 40px;
 }
 .meet-sponsors-header{
     margin-left: 10px;
@@ -452,9 +456,11 @@ li{
     border-radius: 25px;
   }
   .carousel-card{
-    width: 280px;
+    min-width: 280px;
     padding: 20px;
-    margin: 0 10px;
+    height: fit-content;
+
+    margin: 10px 10px;
     border: 2px solid white;
     border-radius: 25px;
     background-color: #282828;
@@ -462,7 +468,7 @@ li{
   }
   .carousel-card img{
     max-width: 100%;
-    max-height: 100%;
+    max-height: 70%;
   }
   .slick-slide img {
     width: 100%;
@@ -566,15 +572,15 @@ margin: 0;
   border-radius: 1.3rem;
   border: 1px solid rgba(255, 255, 255, 0.37);
   width: 33.33% !important;
-  min-width: 300px;
-  max-width: 400px;
+  min-width: 280px;
+  max-width: 420px;
   margin: 10px;
   transition: all 0.3s;
   transform: scale(1);
   z-index: 1;
 }
 .speaker-card:hover{
-  transform: scale(1.2);
+  transform: scale(1.07);
   z-index: 3;
 }
 .speaker-about{
@@ -597,7 +603,7 @@ margin: 0;
   flex-direction: column;
   min-height: 100vh;
   height: fit-content;
-  padding-top: 50px;
+  padding-top: 20px;
   padding-bottom: 50px;
   padding-left: 20px;
   padding-right: 20px;
@@ -651,6 +657,8 @@ margin: 0;
   display: flex;
   align-items: center;
   justify-content: left;
+  flex-wrap: wrap;
+  max-width: 100%;
 }
 .form-card{
   margin-bottom: 20px;
@@ -681,14 +689,15 @@ margin: 0;
 .contact-to-register{
   float:left;
   max-width: 300px;
-  padding: 10px;
-  background: var(--blue-ocean-light);
-  height: fit-content;
-  margin-right: 20px;
-  border-radius: 5px;
+  background: #f2f5f7;
+  border: 1px solid rgba(0,0,0,.058823529411764705);
+  box-shadow: 0 1px 1px rgba(0,0,0,.03);
+  border-radius: 6px;
+  padding: 16px;
+  margin: 30px 20px;
 }
 .contact-to-register *{
-  color: #fff;
+  color: #121313;
 }
 
 
@@ -810,10 +819,10 @@ textarea {
   flex-wrap: wrap;
 }
 .previous-attendees-card{
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  margin: 20px;
+  margin: 20px 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -843,6 +852,10 @@ textarea {
     display: flex;
     align-items: center;
     background: linear-gradient(90deg, #2F58CD 0%, rgba(84,180,53,1) 100%);
+    position: sticky;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 .footer-container h2{
     font-size: 18px;
@@ -855,6 +868,9 @@ textarea {
 .quick-links{
     width: 200px;
     margin: 15px;
+}
+.quick-links li *{
+  text-transform: capitalize;
 }
 .social-media{
     display: flex;
@@ -891,7 +907,12 @@ textarea {
     .nav-menu{
         display: none;
     }
-    
+    .contact-to-register{
+      float:none;
+    }
+    .register-container{
+      flex-wrap: wrap;
+    }
 }
 
 @media (max-width: 530px) {
