@@ -641,16 +641,26 @@ margin: 0;
   max-width: 902px;
   /* float: right; */
 }
-.registration-form-1 label{
+.about-container label{
   font-weight: 600;
 }
 .registration-form-1 input{
   width: 100%;
-  border: solid thin #f0efe7;
+  border: solid thin #e2e0cc;
   height: 35px;
   border-radius: 5px;
   padding: 5px;
+  margin-top: 10px;
 }
+.no-registrant-total-cost-container input{
+  width: fit-content;
+  border: solid thin #e2e0cc;
+  height: fit-content;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-left: 5px;
+}
+
 .about-container input:focus{
   outline: thin solid var(--blue-ocean);
   border: none;
