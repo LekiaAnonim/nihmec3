@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     "sponsorship",
     "exhibition",
     "gallery",
-    "paystack",
     
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
@@ -130,6 +129,7 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 
 PAYSTACK_SECRET_KEY = os.getenv('PAYSTACK_SECRET_KEY')
+PAYSTACK_PUBLIC_KEY = ""
 
 MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
 
