@@ -126,7 +126,7 @@ class RegistrationFormPage(AbstractEmailForm):
         response = client.initialize(test_amount,
                                     test_email)
         # authorization_code = response['data']['authorization']['authorization_code']
-        # print(response)
+        print(response)
         client.authorize() # Will open a browser window for client to enter card details
         client.verify() # Verify client credentials
         # print(verify)
