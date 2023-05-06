@@ -15,7 +15,7 @@ from django.conf import settings
 import random
 import string
 import os
-from .paystack  import  Paystack
+# from .paystack  import  Paystack
 
 from registration.resource import TransactionResource
 import environ
@@ -107,7 +107,7 @@ class RegistrationFormPage(AbstractEmailForm):
         [random.choice(
             string.ascii_letters + string.digits) for n in range(16)])
         # secret_key = os.getenv('PAYSTACK_SECRET_KEY')
-        secret_key = 'sk_live_41506a1dec474fb59359be2f05dc354d0c64d429'
+        secret_key = settings.PAYSTACK_SECRET_KEY
 
         # paystack = Paystack()
         rand = ''.join(
