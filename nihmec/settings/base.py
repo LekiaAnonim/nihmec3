@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "sponsorship",
     "exhibition",
     "gallery",
+    "paystack",
     
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
