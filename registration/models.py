@@ -102,7 +102,7 @@ class RegistrationFormPage(AbstractEmailForm):
         return self.form_fields.all()
 
     def process_form_submission(self, form):
-        print(form.cleaned_data)
+        # print(form.cleaned_data)
         rand = ''.join(
         [random.choice(
             string.ascii_letters + string.digits) for n in range(16)])
@@ -126,7 +126,7 @@ class RegistrationFormPage(AbstractEmailForm):
         response = client.initialize(test_amount,
                                     test_email)
         # authorization_code = response['data']['authorization']['authorization_code']
-        print(response)
+        # print(response)
         client.authorize() # Will open a browser window for client to enter card details
         client.verify() # Verify client credentials
         # print(verify)
@@ -135,9 +135,6 @@ class RegistrationFormPage(AbstractEmailForm):
             form_data=form.cleaned_data,
             page=self
         )
-
-    def amount_value(self, form):
-        return int(form.cleaned_data['total_cost']*100)
 
     # def verify_payment(self, form):
     #     paystack = Paystack()
