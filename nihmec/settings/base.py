@@ -128,7 +128,7 @@ AWS_S3_OBJECT_PARAMETERS = {
     "ACL": "public-read"
 }
 
-
+PAYSTACK_SECRET_KEY = os.getenv('PAYSTACK_SECRET_KEY')
 
 MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
 

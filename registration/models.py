@@ -10,8 +10,8 @@ from wagtail.contrib.forms.panels import FormSubmissionsPanel
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render
-from paystack.resource import TransactionResource
-
+from paystack.paystack.resource import TransactionResource
+from django.conf import settings
 import random
 import string
 import os
@@ -104,20 +104,24 @@ class RegistrationFormPage(AbstractEmailForm):
         rand = ''.join(
         [random.choice(
             string.ascii_letters + string.digits) for n in range(16)])
-        secret_key = os.getenv('PAYSTACK_SECRET_KEY')
-        
+        # secret_key = os.getenv('PAYSTACK_SECRET_KEY')
+        secret_key = 'settings.PAYSTACK_SECRET_KEY'
         random_ref = rand
         test_email = form.cleaned_data['email_address']
-        test_amount = str(form.cleaned_data['total_cost'])
+        test_amount = str(form.cleaned_data['total_cost']*100)
         plan = 'Basic'
+        
         client = TransactionResource(secret_key, random_ref)
+        
+
         response = client.initialize(test_amount,
                                     test_email)
-        print(response)
-        client.authorize() # Will open a browser window for client to enter card details
-        verify = client.verify() # Verify client credentials
-        print(verify)
-        print(client.charge()) # Charge an already exsiting client
+        # authorization_code = response['data']['authorization']['authorization_code']
+        # print(response)
+        # client.authorize() # Will open a browser window for client to enter card details
+        # client.verify() # Verify client credentials
+        # print(verify)
+        client.charge() # Charge an already exsiting client
         return self.get_submission_class().objects.create(
             form_data=form.cleaned_data,
             page=self
