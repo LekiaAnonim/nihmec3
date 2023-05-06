@@ -73,7 +73,7 @@
                 <div class="nav-menu">
                     <ul class="nav-menu-list-container">
                         {% for item in menu.menu_items.all %}
-                        <li><a href="{{item.link}}" title="{{item.title}}" {% if item.open_in_new_tab %} target="_blank" {% endif %} class="menu normal-menu"><p>{{item.title}}</p></a></li>
+                        <a href="{{item.link}}" title="{{item.title}}" {% if item.open_in_new_tab %} target="_blank" {% endif %} class="menu normal-menu"><li><p>{{item.title}}</p></li></a>
                         {% endfor %}
                         <div class="drop-down menu">
                             <li class="dropdown-main-menu" title="Program">
@@ -248,7 +248,7 @@
                         <!-- <li><a href="#" title="Call for Abstract" class="menu normal-menu"><p>Call for Abstract</p></a></li> -->
                         <div class="drop-down menu">
                             <li class="dropdown-main-menu" title="NiHMEC Papers">
-                                <p>NiHMEC Papers</p>
+                                <p>NiHMEC Reports</p>
                                 <?xml version="1.0" encoding="UTF-8"?>
                                 <svg width="700pt" height="700pt" version="1.1" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <defs>
