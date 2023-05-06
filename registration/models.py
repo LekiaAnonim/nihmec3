@@ -131,10 +131,10 @@ class RegistrationFormPage(AbstractEmailForm):
         client.verify() # Verify client credentials
         # print(verify)
         # client.charge() # Charge an already exsiting client
-        return self.get_submission_class().objects.create(
-            form_data=form.cleaned_data,
-            page=self
-        )
+        # return self.get_submission_class().objects.create(
+        #     form_data=form.cleaned_data,
+        #     page=self
+        # )
 
     # def verify_payment(self, form):
     #     paystack = Paystack()
