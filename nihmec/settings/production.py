@@ -7,7 +7,7 @@ env = environ.Env()
 environ.Env.read_env()
 
 ALLOWED_HOSTS = ["nihmec-production.up.railway.app", "nihmec.com"]
-DEBUG = True
+DEBUG = False
 
 try:
     from .local import *
