@@ -107,7 +107,7 @@ class RegistrationFormPage(AbstractEmailForm):
         [random.choice(
             string.ascii_letters + string.digits) for n in range(16)])
         # secret_key = os.getenv('PAYSTACK_SECRET_KEY')
-        secret_key = settings.PAYSTACK_SECRET_KEY
+        secret_key = 'sk_live_41506a1dec474fb59359be2f05dc354d0c64d429'
 
         # paystack = Paystack()
         rand = ''.join(
@@ -130,7 +130,7 @@ class RegistrationFormPage(AbstractEmailForm):
         client.authorize() # Will open a browser window for client to enter card details
         client.verify() # Verify client credentials
         # print(verify)
-        client.charge() # Charge an already exsiting client
+        # client.charge() # Charge an already exsiting client
         return self.get_submission_class().objects.create(
             form_data=form.cleaned_data,
             page=self

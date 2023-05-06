@@ -54,7 +54,7 @@ class BaseAPIResource(object):  # pragma no cover
         resource_path (TYPE): Description
     """
 
-    def __init__(self, api_secret=None, resource_path=None, verify_ssl=False):
+    def __init__(self, api_secret=None, resource_path=None, verify_ssl=True):
         """
         Summary.
 
