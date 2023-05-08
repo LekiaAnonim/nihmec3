@@ -39,7 +39,7 @@ from registration.client import RequestsClient
 from registration import error
 from registration import util
 from registration import version
-
+from django.shortcuts import redirect
 
 class BaseAPIResource(object):  # pragma no cover
     """
@@ -449,7 +449,8 @@ class TransactionResource(BaseAPIResource):
             .authorization_url)(auth_url)
 
         try:
-            webbrowser.open_new_tab(authorization_url)
+            # webbrowser.open_new_tab(authorization_url)
+            return authorization_url
         except webbrowser.Error as e:
             raise e
 

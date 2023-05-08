@@ -10,6 +10,7 @@ from wagtail.contrib.forms.panels import FormSubmissionsPanel
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render
+from wagtail.contrib.routable_page.models import RoutablePageMixin, path
 # from paystack.resource import TransactionResource
 from django.conf import settings
 import random
@@ -101,55 +102,66 @@ class RegistrationFormPage(AbstractEmailForm):
         
         return self.form_fields.all()
 
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+
+        return context
+
     def process_form_submission(self, form):
-        # print(form.cleaned_data)
-        rand = ''.join(
-        [random.choice(
-            string.ascii_letters + string.digits) for n in range(16)])
-        # secret_key = os.getenv('PAYSTACK_SECRET_KEY')
-        secret_key = settings.PAYSTACK_SECRET_KEY
-
-        # paystack = Paystack()
-        rand = ''.join(
-        [random.choice(
-            string.ascii_letters + string.digits) for n in range(16)])
-        random_ref = rand
-        # status, result = paystack.verify_payment(random_ref, int(form.cleaned_data['total_cost']*100))
-        random_ref = rand
-        test_email = form.cleaned_data['email_address']
-        test_amount = str(form.cleaned_data['total_cost']*100)
-        plan = 'Basic'
-        
-        client = TransactionResource(secret_key, random_ref)
         
 
-        response = client.initialize(test_amount,
-                                    test_email)
-        # authorization_code = response['data']['authorization']['authorization_code']
-        # print(response)
-        client.authorize() # Will open a browser window for client to enter card details
-        print(client.authorize())
-        client.verify() # Verify client credentials
-        # print(verify)
-        # client.charge() # Charge an already exsiting client
         return self.get_submission_class().objects.create(
             form_data=form.cleaned_data,
             page=self
         )
 
-    # def verify_payment(self, form):
-    #     paystack = Paystack()
-    #     rand = ''.join(
-    #     [random.choice(
-    #         string.ascii_letters + string.digits) for n in range(16)])
-    #     random_ref = rand
-    #     status, result = paystack.verify_payment(random_ref, int(form.cleaned_data['total_cost']*100))
-    #     if status:
-    #         if result['amount'] / 100 == int(form.cleaned_data['total_cost']*100):
-    #             self.verified = True
-    #         self.save()
-    #     if self.verified:
-    #         return True
-    #     return False
+    def serve(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            form = self.get_form(request.POST, page=self)
 
-    
+            if form.is_valid():
+                self.process_form_submission(form)
+                
+                # Update the original landing page context with other data
+                context = self.get_context(request)
+                rand = ''.join(
+                [random.choice(
+                    string.ascii_letters + string.digits) for n in range(16)])
+                # secret_key = os.getenv('PAYSTACK_SECRET_KEY')
+                secret_key = 'sk_live_41506a1dec474fb59359be2f05dc354d0c64d429'
+                random_ref = rand
+                test_email = form.cleaned_data['email_address']
+                test_amount = str(form.cleaned_data['total_cost']*100)
+                plan = 'Basic'
+                client = TransactionResource(secret_key, random_ref)
+                response = client.initialize(test_amount,
+                                            test_email)
+                client.authorize() # Will open a browser window for client to enter card details
+                # print(client.authorize())
+                client.verify() # Verify client credentials
+                # client.charge() # Charge an already exsiting client
+                
+                landing_page_context = self.get_context(request, *args, **kwargs)
+                auth_url = client.authorize()
+                print(auth_url)
+                landing_page_context['auth_url'] = client.authorize()
+                landing_page_context['first_name'] = form.cleaned_data['first_name']
+                landing_page_context['surname'] = form.cleaned_data['surname']
+                landing_page_context['total_cost'] = form.cleaned_data['total_cost']
+                landing_page_context['email_address'] = form.cleaned_data['email_address']
+                landing_page_context["home_page"] = self.home_page
+                return render(
+                    request,
+                    self.get_landing_page_template(request),
+                    landing_page_context
+                )
+        else:
+            form = self.get_form(page=self)
+
+        context = self.get_context(request)
+        context['form'] = form
+        return render(
+            request,
+            self.get_template(request),
+            context
+        )
