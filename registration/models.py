@@ -130,7 +130,7 @@ class RegistrationFormPage(AbstractEmailForm):
                 [random.choice(
                     string.ascii_letters + string.digits) for n in range(16)])
                 # secret_key = os.getenv('PAYSTACK_SECRET_KEY')
-                secret_key = 'sk_live_41506a1dec474fb59359be2f05dc354d0c64d429'
+                secret_key = settings['PAYSTACK_SECRET_KEY']
                 random_ref = rand
                 test_email = form.cleaned_data['email_address']
                 test_amount = str(form.cleaned_data['total_cost']*100)
