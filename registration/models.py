@@ -16,7 +16,9 @@ from django.conf import settings
 import random
 import string
 import os
-# from .paystack  import  Paystack
+
+from datetime import date
+from wagtail.admin.mail import send_mail
 
 from registration.resource import TransactionResource
 import environ
@@ -149,6 +151,8 @@ class RegistrationFormPage(AbstractEmailForm):
                 landing_page_context['surname'] = form.cleaned_data['surname']
                 landing_page_context['total_cost'] = form.cleaned_data['total_cost']
                 landing_page_context['email_address'] = form.cleaned_data['email_address']
+                landing_page_context['workshop'] = form.cleaned_data['workshop']
+                landing_page_context['number_of_registrants'] = form.cleaned_data['number_of_registrants']
                 landing_page_context["home_page"] = self.home_page
                 return render(
                     request,
@@ -160,8 +164,21 @@ class RegistrationFormPage(AbstractEmailForm):
 
         context = self.get_context(request)
         context['form'] = form
+        context["home_page"] = self.home_page
         return render(
             request,
             self.get_template(request),
             context
         )
+
+    def send_mail(self, form):
+        # `self` is the FormPage, `form` is the form's POST data on submit
+
+        # Email addresses are parsed from the FormPage's addresses field
+        addresses = [x.strip() for x in self.to_address.split(',')]
+
+        # Subject can be adjusted (adding submitted date), be sure to include the form's defined subject field
+        submitted_date_str = date.today().strftime('%x')
+        subject = f"{self.subject} - {submitted_date_str}"
+
+        send_mail(subject, self.render_email(form), [addresses, form.cleaned_data['email_address']], self.from_address,)

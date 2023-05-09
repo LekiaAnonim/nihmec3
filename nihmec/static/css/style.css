@@ -275,6 +275,9 @@ li{
     margin-top: 80px;
 }
 
+.download-report-form-container{
+  display: none;
+}
 
 /* STYLING CONFERENCE SHORT INTRO */
 .conference-short-introduction{

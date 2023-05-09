@@ -5,6 +5,7 @@
 {% get_menu "main" as menu %}
 {% get_menu "sponsorshipexhibition" as sponsorexhibit %}
 {% get_menu "gallery" as gallery %}
+{% get_menu "report" as reports %}
 <html lang="en">
 <head>
 
@@ -326,8 +327,9 @@
 
                             </li>
                             <div class="drop-down-menu">
-                                <li><a href="#">2022</a></li>
-                                <li><a href="#">2021</a></li>
+                                {% for item in reports.menu_items.all %}
+                                <li><a href="{{item.link}}" title="{{item.title}}" {% if item.open_in_new_tab %} target="_blank" {% endif %} class="menu normal-menu"><p>{{item.title}}</p></a></li>
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="drop-down menu">

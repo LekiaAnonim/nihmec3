@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+
+{% load wagtailcore_tags %}
+{% load static %}
+{% load wagtailimages_tags %}
+{% block content %}
+<body>
+    <main class="about">
+        <style>
+            .conference-report-summary img {
+                float: right;
+                margin: 15px;
+            }
+        
+            .conference-report-summary p {
+                text-align: left;
+            }
+        </style>
+        <h1>{{page.title}}</h1>
+        <div class="about-container">
+            <span><h2>{{page.report_title|title}}</h2></span> <br>
+            <div class="conference-report-summary">
+                {% image page.report_cover_image fill-300x400 %}
+                {{page.report_summary|richtext}}
+            </div>
+            <br>
+            <div class="download-report">
+                <button class="pay-btn" onclick="displayDownloadForm()">Download report</button>
+            </div>
+            <br>
+            <div class="abstract-form download-report-form-container">
+                <span>Fill the form below to get the NiHMEC report in your inbox.</span>
+                <form action="{% pageurl page %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-card registration-form-1">
+                        <div class="form-card-wordwrap">
+                            <div class="form-field">
+                                {{form.full_name.label_tag}}
+                                <h6 class="text-danger">{{ form.full_name.errors }}</h6>
+                                {{form.full_name}}
+                            </div>
+                            <div class="form-field">
+                                {{form.email_address.label_tag}}
+                                <h6 class="text-danger">{{ form.email_address.errors }}</h6>
+                                {{form.email_address}}
+                            </div>
+                        </div>
+                        <div class="form-card-wordwrap">
+                            <div class="form-field">
+                                {{form.country.label_tag}}
+                                <h6 class="text-danger">{{ form.country.errors }}</h6>
+                                {{form.country}}
+                            </div>
+                            <div class="form-field">
+                                {{form.companyorganization.label_tag}}
+                                <h6 class="text-danger">{{ form.companyorganization.errors }}</h6>
+                                {{form.companyorganization}}
+                            </div>
+                        </div>
+                    </div>
+                    <input class="pay-btn" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </main>
+    <script>
+        downloadFormCont = document.querySelector('.abstract-form');
+        downloadButton = document.querySelector('.download-report .pay-btn');
+
+        function displayDownloadForm() {
+            downloadFormCont.classList.remove('download-report-form-container');
+        }
+    </script>
+</body>
+{% endblock %}
