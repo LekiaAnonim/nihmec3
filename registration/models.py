@@ -18,7 +18,9 @@ import string
 import os
 
 from datetime import date
+# from django.core.mail import send_mail
 from wagtail.admin.mail import send_mail
+
 
 from registration.resource import TransactionResource
 import environ
@@ -123,6 +125,16 @@ class RegistrationFormPage(AbstractEmailForm):
 
             if form.is_valid():
                 self.process_form_submission(form)
+
+
+                addresses = [x.strip() for x in self.to_address.split(',')]
+                
+
+                # Subject can be adjusted (adding submitted date), be sure to include the form's defined subject field
+                submitted_date_str = date.today().strftime('%x')
+                subject = f"{self.subject} - {submitted_date_str}"
+
+                send_mail(subject, self.render_email(form), [addresses, form.cleaned_data['email_address']], self.from_address, fail_silently=False)
                 
                 # Update the original landing page context with other data
                 context = self.get_context(request)
@@ -130,7 +142,7 @@ class RegistrationFormPage(AbstractEmailForm):
                 [random.choice(
                     string.ascii_letters + string.digits) for n in range(16)])
                 # secret_key = os.getenv('PAYSTACK_SECRET_KEY')
-                secret_key = settings.PAYSTACK_SECRET_KEY
+                secret_key = 'sk_live_41506a1dec474fb59359be2f05dc354d0c64d429'
                 random_ref = rand
                 test_email = form.cleaned_data['email_address']
                 test_amount = str(form.cleaned_data['total_cost']*100)
@@ -145,7 +157,7 @@ class RegistrationFormPage(AbstractEmailForm):
                 
                 landing_page_context = self.get_context(request, *args, **kwargs)
                 auth_url = client.authorize()
-                print(auth_url)
+                
                 landing_page_context['auth_url'] = client.authorize()
                 landing_page_context['first_name'] = form.cleaned_data['first_name']
                 landing_page_context['surname'] = form.cleaned_data['surname']
@@ -154,6 +166,7 @@ class RegistrationFormPage(AbstractEmailForm):
                 landing_page_context['workshop'] = form.cleaned_data['workshop']
                 landing_page_context['number_of_registrants'] = form.cleaned_data['number_of_registrants']
                 landing_page_context["home_page"] = self.home_page
+
                 return render(
                     request,
                     self.get_landing_page_template(request),
@@ -176,9 +189,11 @@ class RegistrationFormPage(AbstractEmailForm):
 
         # Email addresses are parsed from the FormPage's addresses field
         addresses = [x.strip() for x in self.to_address.split(',')]
+        print(addresses)
+        print(form.cleaned_data['email_address'])
 
         # Subject can be adjusted (adding submitted date), be sure to include the form's defined subject field
         submitted_date_str = date.today().strftime('%x')
         subject = f"{self.subject} - {submitted_date_str}"
 
-        send_mail(subject, self.render_email(form), [addresses, form.cleaned_data['email_address']], self.from_address,)
+        send_mail(subject, self.render_email(form), [addresses, form.cleaned_data['email_address']], self.from_address, fail_silently=False)
