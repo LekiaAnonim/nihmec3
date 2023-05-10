@@ -18,8 +18,11 @@ import string
 import os
 
 from datetime import date
-# from django.core.mail import send_mail
-from wagtail.admin.mail import send_mail
+from django.core.mail import send_mail
+# from django.core.mail import EmailMessage
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+# from wagtail.admin.mail import send_mail
 
 
 from registration.resource import TransactionResource
@@ -134,10 +137,17 @@ class RegistrationFormPage(AbstractEmailForm):
                 submitted_date_str = date.today().strftime('%x')
                 subject = f"{self.subject} - {submitted_date_str}"
 
-                send_mail(subject, self.render_email(form), [addresses, form.cleaned_data['email_address']], self.from_address, fail_silently=False)
                 
                 # Update the original landing page context with other data
                 context = self.get_context(request)
+
+                text_content  = '\n' + '\n' + 'Hi,' + '\t' + str(form.cleaned_data['first_name']) + '\n' + '\n' +'\n'
+                html_content = render_to_string('registration/email_header.html', context, request=request)+text_content+render_to_string('registration/registration_email_template.html', context, request=request)
+
+                msg = EmailMultiAlternatives(subject, text_content, self.from_address, [address for address in addresses]+[form.cleaned_data['email_address']])
+                # msg.content_subtype = "html"  # Main content is now text/html
+                msg.attach_alternative(html_content, "text/html")
+                msg.send()
                 rand = ''.join(
                 [random.choice(
                     string.ascii_letters + string.digits) for n in range(16)])
@@ -184,16 +194,16 @@ class RegistrationFormPage(AbstractEmailForm):
             context
         )
 
-    def send_mail(self, form):
-        # `self` is the FormPage, `form` is the form's POST data on submit
+    # def send_mail(self, form):
+    #     # `self` is the FormPage, `form` is the form's POST data on submit
 
-        # Email addresses are parsed from the FormPage's addresses field
-        addresses = [x.strip() for x in self.to_address.split(',')]
-        print(addresses)
-        print(form.cleaned_data['email_address'])
+    #     # Email addresses are parsed from the FormPage's addresses field
+    #     addresses = [x.strip() for x in self.to_address.split(',')]
+    #     print(addresses)
+    #     print(form.cleaned_data['email_address'])
 
-        # Subject can be adjusted (adding submitted date), be sure to include the form's defined subject field
-        submitted_date_str = date.today().strftime('%x')
-        subject = f"{self.subject} - {submitted_date_str}"
+    #     # Subject can be adjusted (adding submitted date), be sure to include the form's defined subject field
+    #     submitted_date_str = date.today().strftime('%x')
+    #     subject = f"{self.subject} - {submitted_date_str}"
 
-        send_mail(subject, self.render_email(form), [addresses, form.cleaned_data['email_address']], self.from_address, fail_silently=False)
+    #     send_mail(subject, self.render_email(form), [addresses, form.cleaned_data['email_address']], self.from_address, fail_silently=False)

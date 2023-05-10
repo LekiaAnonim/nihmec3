@@ -113,9 +113,9 @@ WSGI_APPLICATION = "nihmec.wsgi.application"
 EMAIL_HOST = 'smtp.elasticemail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 2525
-EMAIL_HOST_USER = os.getenv('DEFAULT_FROM_EMAIL')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
+EMAIL_HOST_USER = 'p.lekia@fleissen.com'
+EMAIL_HOST_PASSWORD = 'D857E7756D74DCDBB61346559F38DA47FAFF'
+DEFAULT_FROM_EMAIL = 'p.lekia@fleissen.com'
 
 DATABASES = {
     "default": dj_database_url.config(default='postgresql://postgres:93WzL1fYDGrZRoVQwiTN@containers-us-west-118.railway.app:7259/railway', conn_max_age=1800),
