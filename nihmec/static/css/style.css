@@ -119,7 +119,7 @@ li{
     display: inline-block;
 }
 .drop-down-menu{
-    background-color: var(--blue-ocean);
+    background-color: rgba(148,233,156,1);
     padding: 10px;
     display: none;
     position: absolute;
@@ -631,7 +631,7 @@ margin: 0;
 }
 .register-container{
   display: flex;
-  align-items: first baseline;
+  /* align-items: first baseline; */
   width: 100%;
 }
 .about-container{
@@ -639,12 +639,25 @@ margin: 0;
   background-color: #fcfcfa;
   border: solid 1px #e2e0d8;
   padding: 22px;
-  margin-top: 50px;
+  margin-top: 10px;
   margin-bottom: 50px;
   width: 100%;
   min-width: 300px;
   max-width: 902px;
   /* float: right; */
+}
+.exhibition-boot-plan{
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  width: 100%;
+  min-width: 300px;
+  max-width: 402px;
+}
+.exhibition-boot-plan img{
+  max-width: 100%;
+  max-height: 100%;
 }
 .about-container label{
   font-weight: 600;
@@ -722,6 +735,7 @@ margin: 0;
   border-radius: 6px;
   padding: 16px;
   margin: 30px 20px;
+  height: fit-content;
 }
 .contact-to-register *{
   color: #121313;
