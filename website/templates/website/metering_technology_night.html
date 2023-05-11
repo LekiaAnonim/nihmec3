@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% block content %}
+<body>
+    <main class="about">
+        <h1>{{page.title}}</h1>
+        <div class="about-container">
+            {{page.body|richtext}}
+        </div>
+    </main>
+</body>
+{% endblock %}

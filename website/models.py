@@ -41,6 +41,81 @@ class AboutPage(Page):
         verbose_name = 'About Page'
         verbose_name_plural = 'About Page'
 
+class TechnicalProgramPage(Page):
+    template = 'website/technical_progran.html'
+    max_count = 1
+    body = RichTextField()
+
+    content_panels = Page.content_panels + [
+        FieldPanel('body'),
+    ]
+
+
+    @cached_property
+    def home_page(self):
+        return self.get_parent().specific
+
+    def get_context(self, request, *args, **kwargs):
+        context = super(TechnicalProgramPage, self).get_context(request, *args, **kwargs)
+        context["home_page"] = self.home_page
+        return context
+    
+    class Meta:
+        verbose_name = 'Technical Program Page'
+        verbose_name_plural = 'Technical Program Page'
+
+class MeteringTechnologyNightPage(Page):
+    template = 'website/metering_technology_night.html'
+    max_count = 1
+    body = RichTextField()
+
+    content_panels = Page.content_panels + [
+        FieldPanel('body'),
+    ]
+
+
+    @cached_property
+    def home_page(self):
+        return self.get_parent().specific
+
+    def get_context(self, request, *args, **kwargs):
+        context = super(MeteringTechnologyNightPage, self).get_context(request, *args, **kwargs)
+        context["home_page"] = self.home_page
+        return context
+    
+    class Meta:
+        verbose_name = 'Metering Technology Night Page'
+        verbose_name_plural = 'Metering Technology Night Page'
+
+class PreConference(Page):
+    template = 'website/pre_conference.html'
+    max_count = 1
+    training_overview = RichTextField()
+    objective = RichTextField()
+    outcomes = RichTextField()
+    content = RichTextField()
+
+    content_panels = Page.content_panels + [
+        FieldPanel('training_overview'),
+        FieldPanel('objective'),
+        FieldPanel('outcomes'),
+        FieldPanel('content'),
+    ]
+
+
+    @cached_property
+    def home_page(self):
+        return self.get_parent().specific
+
+    def get_context(self, request, *args, **kwargs):
+        context = super(PreConference, self).get_context(request, *args, **kwargs)
+        context["home_page"] = self.home_page
+        return context
+    
+    class Meta:
+        verbose_name = 'Pre-Conference Page'
+        verbose_name_plural = 'Pre-Conference Page'
+
 class FormField(AbstractFormField):
     page = ParentalKey('CallForAbstractPage', on_delete=models.CASCADE, related_name='form_fields')
 class CallForAbstractPage(AbstractEmailForm):
@@ -117,10 +192,32 @@ class CallForAbstractPage(AbstractEmailForm):
         )
 
 
+class SpeakerPage(Page):
+    template = 'website/speaker.html'
+    # max_count = 1
+    speaker_category = models.CharField(max_length=500, null=True)
 
+    content_panels = Page.content_panels + [
+        FieldPanel('speaker_category'),
+    ]
+
+
+    @cached_property
+    def home_page(self):
+        return self.get_parent().specific
+
+    def get_context(self, request, *args, **kwargs):
+        context = super(SpeakerPage, self).get_context(request, *args, **kwargs)
+        context["home_page"] = self.home_page
+        return context
+    
+    class Meta:
+        verbose_name = 'Speaker Page'
+        verbose_name_plural = 'Speaker Pages'
 
 @register_snippet
 class Speakers(models.Model):
+    speaker_category = ParentalKey('SpeakerPage', on_delete=models.SET_NULL, related_name='speaker_type', null=True)
     first_name = models.CharField(max_length = 500, null=True, blank=True)
     surname = models.CharField(max_length=500, null=True, blank=True)
     company = models.CharField(max_length=500, null=True)
@@ -131,6 +228,7 @@ class Speakers(models.Model):
     )
 
     panels = [
+        FieldPanel('speaker_category'),
         FieldPanel('first_name'),
         FieldPanel('surname'),
         FieldPanel('company'),
