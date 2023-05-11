@@ -42,7 +42,7 @@ class AboutPage(Page):
         verbose_name_plural = 'About Page'
 
 class TechnicalProgramPage(Page):
-    template = 'website/technical_progran.html'
+    template = 'website/technical_program.html'
     max_count = 1
     body = RichTextField()
 

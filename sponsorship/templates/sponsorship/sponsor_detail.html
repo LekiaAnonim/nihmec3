@@ -20,22 +20,24 @@
                     <h2>Sponsorship Interest Form:</h2>
                     <div class="form-card registration-form-1">
                         <div class="form-card-wordwrap">
-                            <div class="form-field">
-                                {{form.company.label_tag}}
-                                <h6 class="text-danger">{{ form.company.errors }}</h6>
-                                {{form.company}}
-                            </div>
+                            
                             <div class="form-field">
                                 {{form.first_name.label_tag}}
                                 <h6 class="text-danger">{{ form.first_name.errors }}</h6>
                                 {{form.first_name}}
                             </div>
-                        </div>
-                        <div class="form-card-wordwrap">
                             <div class="form-field">
                                 {{form.surname.label_tag}}
                                 <h6 class="text-danger">{{ form.surname.errors }}</h6>
                                 {{form.surname}}
+                            </div>
+                        </div>
+                        <div class="form-card-wordwrap">
+                            
+                            <div class="form-field">
+                                {{form.company.label_tag}}
+                                <h6 class="text-danger">{{ form.company.errors }}</h6>
+                                {{form.company}}
                             </div>
                             <div class="form-field">
                                 {{form.position.label_tag}}
@@ -56,11 +58,6 @@
                             </div>
                         </div>
                         <div class="form-card-wordwrap">
-                            <div class="form-field">
-                                {{form.address.label_tag}}
-                                <h6 class="text-danger">{{ form.address.errors }}</h6>
-                                {{form.address}}
-                            </div>
                             <div class="form-field">
                                 {{form.country.label_tag}}
                                 <h6 class="text-danger">{{ form.country.errors }}</h6>
