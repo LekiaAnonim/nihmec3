@@ -237,6 +237,9 @@ class Speakers(models.Model):
         FieldPanel('photo'),
     ]
 
+    def __str__(self):
+        return self.first_name
+
     class Meta:
         verbose_name = 'Speaker'
         verbose_name_plural = 'Speakers'
@@ -256,6 +259,8 @@ class Attendees(models.Model):
         FieldPanel('company_url'),
     ]
 
+    def __str__(self):
+        return self.company_name
     class Meta:
         verbose_name = 'Attendees'
         verbose_name_plural = 'Attendees'
@@ -279,6 +284,9 @@ class TechnicalAdvisoryCommittee(models.Model):
         FieldPanel('position_in_conference'),
         FieldPanel('photo'),
     ]
+
+    def __str__(self):
+        return self.first_name
 
     class Meta:
         verbose_name = 'Tecnical Advisory Committee'

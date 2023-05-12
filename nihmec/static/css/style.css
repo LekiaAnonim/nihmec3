@@ -29,8 +29,11 @@ html{
     --green: rgb(0,208,130);
     --blue-ocean-light: #d0d2d6;
 }
+.sticky{
+  position: sticky;
+}
 .navigation-bar-container{
-  background: rgb(1, 30, 31);
+  background: #10492e;
 
   /* background: radial-gradient(circle, rgba(174,189,238,1) 0%, rgba(148,233,156,1) 100%); */
   padding: 10px 10px 0 10px;
@@ -40,7 +43,7 @@ html{
 }
 .navigation-menu *{
   /* color: rgb(255, 255, 255); */
-  color: rgb(31, 37, 33);
+  color: #10492e;
 }
 .logo{
   display: flex;
@@ -200,7 +203,7 @@ li{
     width: fit-content;
     /* background: rgb(174,189,238);
     background: radial-gradient(circle, rgba(174,189,238,1) 0%, rgba(148,233,156,1) 100%); */
-    background-color: rgb(31, 37, 33);
+    background-color: #10492e;
     position: absolute;
     left: 0;
     padding: 10px;
@@ -1050,7 +1053,7 @@ textarea {
 .preconference-sub-card{
   width: 50%;
   /* border: thin #bdbdbd dashed; */
-  min-height: 50vw;
+  height: fit-content;
   min-width: 300px;
   padding: 10px;
   margin-bottom: 20px;
