@@ -75,6 +75,9 @@ html{
     letter-spacing: 18px;
     font-size: 30px;
 }
+.date-venue *{
+  text-transform: capitalize;
+}
 .nav-head-container{
     display: flex;
     justify-content: left;
