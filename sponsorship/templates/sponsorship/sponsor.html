@@ -16,7 +16,7 @@
                     <tr>
                         <th class="sponsorship-feature">Features</th>
                         {% for package in packages %}
-                        <th class="sponsorship-package">{{package.sponsorship_type}} <br><span>₦ {{package.price}}</span></th>
+                        <th class="sponsorship-package">{{package.sponsorship_type}} <br><span>₦ {{package.price|floatformat:"2g"}}</span></th>
                         {% endfor %}
                     </tr>
                 </thead>
