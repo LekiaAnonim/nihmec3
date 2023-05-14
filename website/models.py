@@ -9,7 +9,7 @@ from modelcluster.models import ClusterableModel
 from django.utils.functional import cached_property
 from wagtail.contrib.forms.panels import FormSubmissionsPanel
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
-from wagtail.admin.panels import FieldPanel, InlinePanel, FieldRowPanel, MultiFieldPanel
+from wagtail.admin.panels import FieldPanel, InlinePanel, FieldRowPanel, MultiFieldPanel, PageChooserPanel
 
 from datetime import date
 from django.core.mail import send_mail
@@ -291,3 +291,45 @@ class TechnicalAdvisoryCommittee(models.Model):
     class Meta:
         verbose_name = 'Tecnical Advisory Committee'
         verbose_name_plural = 'Tecnical Advisory Committees'
+
+from wagtail.contrib.settings.models import BaseSetting, register_setting
+
+@register_setting
+class SocialMediaSettings(BaseSetting):
+    facebook = models.URLField(
+        help_text='Your Facebook page URL', null=True, blank=True)
+    instagram = models.CharField(
+        max_length=255, help_text='Your Instagram account URL', null=True, blank=True)
+    youtube = models.URLField(
+        help_text='Your YouTube channel or user account URL', null=True, blank=True)
+    twitter = models.URLField(
+        help_text='Your Twitter account URL', null=True, blank=True)
+
+    linkedin = models.URLField(help_text='Your LinkedIn account URL', null=True, blank=True)
+    website = models.URLField(help_text='Your Website URL', null=True, blank=True)
+    email = models.EmailField(help_text='Your Email address', null=True, blank=True)
+    phone = models.CharField(max_length=255, null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'social media accounts'
+
+@register_setting
+class ImportantPages(BaseSetting):
+    # Fetch these pages when looking up ImportantPages for or a site
+    select_related = ["register_page", "exhibit_page", "sponsor_page", "submit_abstract_page"]
+
+    register_page = models.ForeignKey(
+        'wagtailcore.Page', null=True, on_delete=models.SET_NULL, related_name='+')
+    exhibit_page = models.ForeignKey(
+        'wagtailcore.Page', null=True, on_delete=models.SET_NULL, related_name='+')
+    sponsor_page = models.ForeignKey(
+        'wagtailcore.Page', null=True, on_delete=models.SET_NULL, related_name='+')
+    submit_abstract_page = models.ForeignKey(
+        'wagtailcore.Page', null=True, on_delete=models.SET_NULL, related_name='+')
+
+    panels = [
+        PageChooserPanel('register_page'),
+        PageChooserPanel('exhibit_page'),
+        PageChooserPanel('sponsor_page'),
+        PageChooserPanel('submit_abstract_page'),
+    ]

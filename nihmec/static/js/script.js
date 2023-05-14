@@ -13,13 +13,19 @@ let navbar = document.querySelector('.navigation-menu');
 
 let sticky = navbarhead.offsetTop;
 
-function fixNavOnScroll(){
-    if(window.pageXOffset >= sticky){
-        navbar.classList.add("sticky");
-    }else{
-        navbar.classList.remove("sticky");
-    }
-    console.log('working!!')
-}
+// function fixNavOnScroll(){
+//     if(window.pageXOffset >= sticky){
+//         navbar.classList.add("sticky");
+//         navbarhead.style.display = 'none';
+//     }else{
+//         navbar.classList.remove("sticky");
+//     }
+// }
 
-document.addEventListener('scroll', fixNavOnScroll, false);
+// document.addEventListener('scroll', fixNavOnScroll, false);
+
+let imp_page = document.querySelector('.imp-page');
+
+function displayImpPages() {
+    imp_page.classList.toggle('display-none');
+}
