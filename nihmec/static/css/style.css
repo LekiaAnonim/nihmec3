@@ -92,6 +92,10 @@ html{
     width: fit-content;
     height: fit-content;
     margin-left: 20px;
+    
+}
+.conference-full-name-venue-date p{
+  text-align: center;
 }
 a{
     text-decoration: none;
