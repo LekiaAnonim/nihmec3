@@ -286,10 +286,10 @@ class TechnicalAdvisoryCommittee(models.Model):
         verbose_name = 'Tecnical Advisory Committee'
         verbose_name_plural = 'Tecnical Advisory Committees'
 
-from wagtail.contrib.settings.models import BaseSetting, register_setting
+from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 
 @register_setting
-class SocialMediaSettings(BaseSetting):
+class SocialMediaSettings(BaseSiteSetting):
     facebook = models.URLField(
         help_text='Your Facebook page URL', null=True, blank=True)
     instagram = models.CharField(
@@ -308,7 +308,7 @@ class SocialMediaSettings(BaseSetting):
         verbose_name = 'social media accounts'
 
 @register_setting
-class ImportantPages(BaseSetting):
+class ImportantPages(BaseSiteSetting):
     # Fetch these pages when looking up ImportantPages for or a site
     select_related = ["register_page", "exhibit_page", "sponsor_page", "submit_abstract_page"]
 

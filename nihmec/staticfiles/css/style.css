@@ -30,7 +30,8 @@ html{
     --blue-ocean-light: #d0d2d6;
 }
 .sticky{
-  position: sticky;
+  position: fixed;
+  top: 0;
 }
 .navigation-bar-container{
   background: #10492e;
@@ -96,8 +97,11 @@ a{
     text-decoration: none;
     width: fit-content;
 }
-li{
+header li{
     list-style: none;
+}
+footer li{
+  list-style: none;
 }
 .full-meaning-nihmec *{
     text-transform: uppercase;
@@ -291,7 +295,7 @@ li{
     background-clip: text;
     -webkit-background-clip: text; 
     /* -webkit-text-fill-color: transparent;  */
-    background-image: url('/static/images/NiHMEC\ 2022-0859.jpg');
+    background-image: url('/static/images/NiHMEC 2022-0859.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -315,6 +319,7 @@ li{
 .content{
   max-width: 1200px;
   margin: auto;
+  margin-top: 40px;
 }
 
 /* STYLING CONFERENCE SHORT INTRO */
@@ -943,6 +948,12 @@ textarea {
       flex-wrap: wrap;
     }
 
+    .form-field{
+      
+      width: 100%;
+      margin-right: auto;
+    }
+
 }
 .meet-our-speakers{
     margin-top: 50px;
@@ -1048,6 +1059,15 @@ textarea {
         
         width: 100%;
     }
+    .preconference-card{
+      flex-direction: column;
+    }
+    .preconference-card:nth-child(even){
+      flex-direction: column;
+    }
+    .preconference-sub-card{
+      width: 100%;
+    }
 }
 
 /* STYLING PRE-CONFERENCE PAGE */
@@ -1071,7 +1091,7 @@ textarea {
   /* border: thin #bdbdbd dashed; */
   height: fit-content;
   min-width: 300px;
-  padding: 10px;
+  padding: 20px;
   margin-bottom: 20px;
 }
 .preconference-card h2{
@@ -1084,4 +1104,64 @@ textarea {
 .preconference-sub-card img{
   width: 100%;
   height: 100%;
+}
+
+
+/* STYLING IMPORTANT PAGES SIDE BUTTON */
+
+.imp-page-cir{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  padding: 5px;
+  background-color: var(--green);
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.imp-page-cir img{
+  max-width: 100%;
+  max-height: 100%;
+}
+.imp-page-cir:hover{
+  background-color: #94b3f3;
+}
+.imp-page-cir:active{
+  background-color: #94b3f3;
+}
+.imp-page{
+  width: fit-content;
+  height: fit-content;
+  /* padding: 10px; */
+  background-color: none;
+  margin-bottom: 5px;
+  /* display: none; */
+}
+.imp-page a{
+  padding: 4px;
+  width: fit-content;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #2F58CD;
+  margin-bottom: 5px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.imp-page a:hover{
+  background-color: var(--green);
+  color: #fff;
+}
+
+.imp-page li{
+  margin-bottom: 10px;
+}
+.important-pages{
+  width: fit-content;
+  height: fit-content;
+  padding: 5px;
+  position: fixed;
+  bottom: 250px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

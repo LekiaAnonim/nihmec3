@@ -5,6 +5,25 @@
 {% load wagtailimages_tags %}
 
 {% block banner %}
+<style>
+    .nihmec-front-cover{
+    background-clip: text;
+    -webkit-background-clip: text; 
+    /* -webkit-text-fill-color: transparent;  */
+    background-image: url('/static/images/NiHMEC 2022-0859.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-size: 23vw;
+    font-weight: 900;
+    line-height: 0.8;
+    color: transparent;
+    height: fit-content;
+    text-align: center;
+    /* color: #10492e; */
+}
+</style>
+
 <div class="content-container">
     <p class="nihmec-theme">{{self.theme}}</p>
     <p class="nihmec-front-cover">{{self.short_name|wordwrap:7}}</p>
