@@ -37,10 +37,11 @@ class SponsorshipPackage(ClusterableModel):
 
 class SponsorshipPage(Page):
     template = 'sponsorship/sponsor.html'
+    intro = RichTextField(blank=True)
     sponsorship_package = ParentalManyToManyField(SponsorshipPackage, blank=True)
 
     content_panels = Page.content_panels + [
-        
+        FieldPanel('intro'),
         FieldPanel('sponsorship_package'),
         
     ]

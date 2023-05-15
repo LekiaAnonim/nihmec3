@@ -90,16 +90,10 @@ class MeteringTechnologyNightPage(Page):
 class PreConference(Page):
     template = 'website/pre_conference.html'
     max_count = 1
-    training_overview = RichTextField()
-    objective = RichTextField()
-    outcomes = RichTextField()
-    content = RichTextField()
+    body = RichTextField()
 
     content_panels = Page.content_panels + [
-        FieldPanel('training_overview'),
-        FieldPanel('objective'),
-        FieldPanel('outcomes'),
-        FieldPanel('content'),
+        FieldPanel('body'),
     ]
 
 
