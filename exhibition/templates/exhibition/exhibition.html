@@ -16,15 +16,17 @@
                 <a href="tel:+2349098614828">+2349098614828</a>
             </div>
             <div class="exhibition-container">
-                {{page.intro|richtext}}
+                
                 <span>A simplified schematic of the conference and exhibition arrangement</span>
                 <div class="exhibition-boot-plan">
                     <img src="{% static 'images/NiMEC 3 Drawing Sch-Layout2 (1)_page-0002.jpg' %}" alt="">
                 </div>
                 <div class="about-container">
+                    {{page.intro|richtext}}
                     <form action="{% pageurl page %}" method="post">
                         {% csrf_token %}
-                        <h2>Exhibition Interest Form:</h2>
+                        <h2>Exhibition Interest Form:</h2> <br>
+
                         <div class="form-card registration-form-1">
                             <div class="form-card-wordwrap">
                                 
