@@ -9,10 +9,11 @@
 <body>
     <main class="about sponsorship-opp-container">
         <h1>Sponsorship opportunities <span>- NiHMEC 3</span></h1>
-        {{page.intro|richtext}}
+        
         {% with packages=page.sponsorship_package.all %}
         {% if packages %}        
         <div class="sponsorship-container about-container">
+            {{page.intro|richtext}}<br>
             <table>
                 <thead>
                     <tr>
