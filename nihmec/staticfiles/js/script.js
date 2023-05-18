@@ -29,3 +29,9 @@ let imp_page = document.querySelector('.imp-page');
 function displayImpPages() {
     imp_page.classList.toggle('display-none');
 }
+
+let Img = document.querySelectorAll('img');
+
+Img.forEach(img => {
+    img.setAttribute("loading", "lazy");
+});
