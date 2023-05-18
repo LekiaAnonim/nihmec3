@@ -4,29 +4,165 @@
 {% load static %}
 {% load wagtailimages_tags %}
 
+
 {% block banner %}
 <style>
     .nihmec-front-cover{
-    background-clip: text;
-    -webkit-background-clip: text; 
-    /* -webkit-text-fill-color: transparent;  */
-    background-image: url('/static/images/NiHMEC 2022-0859.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    font-size: 23vw;
-    font-weight: 900;
-    line-height: 0.8;
-    color: transparent;
-    height: fit-content;
-    text-align: center;
-    /* color: #10492e; */
-}
+        background-clip: text;
+        -webkit-background-clip: text; 
+        /* -webkit-text-fill-color: transparent;  */
+        background-image: url('/static/images/NiHMEC 2022-0859.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        font-size: 23vw;
+        font-weight: 900;
+        line-height: 0.8;
+        color: transparent;
+        height: fit-content;
+        text-align: center;
+        /* color: #10492e; */
+    }
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      max-height: 100%;
+      /* object-fit: cover;
+      background-size: cover; */
+    }
+    .swiper-content{
+        position: absolute;
+        margin: auto;
+        top: 10%;
+        left: 2%;
+        right: 2%;
+        color: #fff;
+        max-width: 500px;
+        min-width: 300px;
+        font-weight: 600;
+        background-color: rgba(36, 7, 75, 0.712);
+        padding: 20px;
+    }
+    .swiper-button-next{
+        background-color: #fff;
+    }
+    .swiper-button-prev{
+        background-color: #fff;
+        padding: 10px;
+    }
+    .box-anchor{
+        width: 30px;
+        height: 30px;
+        background-color: #ffffff3d;
+        position: absolute;
+    }
+    .box-anchor1{
+        top: 0;
+        left: 0;
+    }
+    .box-anchor2{
+        top: 0;
+        right: 0;
+    }
+    .box-anchor3{
+        bottom: 0;
+        left: 0;
+    }
+    .box-anchor4{
+        bottom: 0;
+        right: 0;
+    }
 </style>
 
 <div class="content-container">
-    <p class="nihmec-theme">{{self.theme}}</p>
-    <p class="nihmec-front-cover">{{self.short_name|wordwrap:7}}</p>
+    <!-- <p class="nihmec-theme">{{self.theme}}</p> -->
+    <!-- Swiper -->
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="/static/images/NiHMEC 2022-0313.jpg" alt="NiHMEC 2022-0859">
+        <div class="swiper-content">
+            <div class="box-anchor1 box-anchor"></div>
+            <div class="box-anchor2 box-anchor"></div>
+            <div class="box-anchor3 box-anchor"></div>
+            <div class="box-anchor4 box-anchor"></div>
+            Collaboration with stakeholders remains a priority for improving hydrocarbon measurement and accounting practices. The prioritization of collaboration with stakeholders plays a crucial role in advancing hydrocarbon measurement and accounting practices. Fostering open communication and partnerships, stakeholders can collectively address challenges, share best practices, and work towards common goals, ultimately enhancing the reliability and integrity of hydrocarbon measurement and accounting in the industry.
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="/static/images/NiHMEC 2022-0087.jpg" alt="" />
+        <div class="swiper-content">
+            <div class="box-anchor1 box-anchor"></div>
+            <div class="box-anchor2 box-anchor"></div>
+            <div class="box-anchor3 box-anchor"></div>
+            <div class="box-anchor4 box-anchor"></div>
+            NiHMEC has gained the attention and interest of all the stakeholders in Nigeria’s petroleum industry and globally. At NiHMEC 2022, stakeholders in the oil and gas industry expressed their continuous support for NiHMEC and reiterated that the interest in the conference must be sustained. The discussions at NiHMEC 2022 largely emphasized the need to enshrine proper hydrocarbon measurement and accounting processes to minimize value erosion in the industry.
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="/static/images/NiHMEC 2022-0119.jpg" alt="" />
+        <div class="swiper-content">
+            <div class="box-anchor1 box-anchor"></div>
+            <div class="box-anchor2 box-anchor"></div>
+            <div class="box-anchor3 box-anchor"></div>
+            <div class="box-anchor4 box-anchor"></div>
+            The NiHMEC 2022 event was deemed timely and commendable, as it addressed the challenges posed by crude oil theft losses and aimed to change Nigeria's negative revenue narrative. While there is the need to emphasize the importance of accurate measurements and fiscalization to avoid negative impacts on revenue, crude oil theft and pipeline vandalism have introduced complex complications to hydrocarbon accounting in Nigeria, prompting the need for change in this area.
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="/static/images/NiHMEC 2022-0605.jpg" alt="" />
+        <div class="swiper-content">
+            <div class="box-anchor1 box-anchor"></div>
+            <div class="box-anchor2 box-anchor"></div>
+            <div class="box-anchor3 box-anchor"></div>
+            <div class="box-anchor4 box-anchor"></div>
+            Training and capacity development for metering professionals should be taken seriously because any investment in capacity development will immediately benefit the operator's bottom line.
+        </div>
+      </div>
+      
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+        delay: 10000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  </script>
+  
 </div>
 {% endblock %}
 {% block content %}

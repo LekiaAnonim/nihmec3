@@ -155,7 +155,7 @@ footer li{
     display: none;
     position: absolute;
     margin-top: 10px;
-    z-index: 1;
+    z-index: 1000000;
     border: none;
     width: fit-content;
 }
@@ -275,16 +275,19 @@ footer li{
     fill: #fff;
 }
 .content-container{
-    background: url('https://images.unsplash.com/photo-1572480923208-ec3d21d1205d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80');
+    /* background: url('https://images.unsplash.com/photo-1572480923208-ec3d21d1205d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80'); */
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 60px 10px 80px 10px;
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(16,73,46,1) 100%);
+    /* padding: 60px 10px 80px 10px; */
+    width: 100%;
     max-height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 1px;
+    margin-top: 0px;
 }
 .nihmec-theme{
   padding: 10px;
