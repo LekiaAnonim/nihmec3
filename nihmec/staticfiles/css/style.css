@@ -155,7 +155,7 @@ footer li{
     display: none;
     position: absolute;
     margin-top: 10px;
-    z-index: 1000000;
+    z-index: 100000;
     border: none;
     width: fit-content;
 }
@@ -215,12 +215,13 @@ footer li{
     width: fit-content;
     /* background: rgb(174,189,238);
     background: radial-gradient(circle, rgba(174,189,238,1) 0%, rgba(148,233,156,1) 100%); */
-    background-color: #10492e;
+    background-color: #022c80;
     position: absolute;
     left: 0;
     padding: 10px;
     transition: all 0.2s;
     transform: translateX(0);
+    z-index: 100000;
 }
 .ham-side-nav-bar *{
   color: #fff;
@@ -1041,6 +1042,9 @@ textarea {
     .register-container{
       flex-wrap: wrap;
     }
+    .swiper-content{
+      font-size: 10px;
+    }
 }
 
 @media (max-width: 530px) {
@@ -1056,6 +1060,9 @@ textarea {
     }
     .footer-container{
       flex-wrap: wrap;
+  }
+  .swiper-content{
+    font-size: 8px;
   }
 }
 @media (max-width: 660px) {
@@ -1075,6 +1082,24 @@ textarea {
     .preconference-sub-card{
       width: 100%;
     }
+    .swiper-content{
+      font-size: 9px;
+    }
+}
+
+.swiper-content{
+  position: absolute;
+  /* margin: auto; */
+  top: 1%;
+  left: 5px;
+  color: #fff;
+  max-width: 700px;
+  width: fit-content;
+  min-width: 300px;
+  font-weight: 600;
+  background-color: rgba(36, 7, 75, 0.712);
+  padding: 20px;
+  font-size: auto;
 }
 
 /* STYLING PRE-CONFERENCE PAGE */
@@ -1171,4 +1196,5 @@ textarea {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  z-index: 100000;
 }
