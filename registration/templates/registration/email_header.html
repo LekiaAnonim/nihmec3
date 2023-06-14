@@ -3,7 +3,8 @@
 {% extends 'base.html' %}
 {% load wagtailcore_tags %}
 {% load static %}
-
+{% block google_tag %}   
+{% endblock %}
 {% block nav_header %}
 <div class="nav-head-container" style="background: radial-gradient(circle, rgba(174,189,238,1) 0%, rgba(148,233,156,1) 100%);
 padding: 10px 10px 5px 10px;">
@@ -22,5 +23,9 @@ padding: 10px 10px 5px 10px;">
     </div>
 </div>
 {% endblock %}
+{% block banner %}
+{% endblock %}
 {% block footer %}
+{% endblock %}
+{% block importantpages %}
 {% endblock %}
