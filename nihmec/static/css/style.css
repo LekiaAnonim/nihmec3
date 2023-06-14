@@ -1198,3 +1198,13 @@ textarea {
   flex-direction: column;
   z-index: 100000;
 }
+
+/* STYLING FOR NAIRA AND DOLLAR PAYMENT ON REGISTRATION PAGE */
+.dollar-pay{
+  padding: 10px;
+  margin: 8px;
+  background-color: var(--green);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 10px;
+}

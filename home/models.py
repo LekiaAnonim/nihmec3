@@ -26,6 +26,7 @@ class HomePage(Page):
     short_description = RichTextField(blank = True, null=True)
     contact_email = models.EmailField(null=True)
     contact_phone_number = models.CharField(max_length=20, null=True)
+    dollar_payment_link = models.URLField(null=True, blank=True)
     # feature_conference_on_site = models.BooleanField(default=True)
 
     banner_image = models.ForeignKey("wagtailimages.Image", null=True, blank=True, on_delete=models.SET_NULL, related_name="+")
@@ -45,6 +46,7 @@ class HomePage(Page):
         FieldPanel('short_description'),
         FieldPanel('contact_email'),
         FieldPanel('contact_phone_number'),
+        FieldPanel('dollar_payment_link'),
         FieldPanel("banner_image"),
         PageChooserPanel("register_cta"),
         PageChooserPanel("about_cta"),

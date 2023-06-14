@@ -13,16 +13,6 @@ let navbar = document.querySelector('.navigation-menu');
 
 let sticky = navbarhead.offsetTop;
 
-// function fixNavOnScroll(){
-//     if(window.pageXOffset >= sticky){
-//         navbar.classList.add("sticky");
-//         navbarhead.style.display = 'none';
-//     }else{
-//         navbar.classList.remove("sticky");
-//     }
-// }
-
-// document.addEventListener('scroll', fixNavOnScroll, false);
 
 let imp_page = document.querySelector('.imp-page');
 
@@ -35,3 +25,21 @@ let Img = document.querySelectorAll('img');
 Img.forEach(img => {
     img.setAttribute("loading", "lazy");
 });
+
+// Payment option selection
+let paymentOption = document.querySelectorAll("input[name='currency']");
+let nairaPayment = document.querySelector(".naira-payment");
+let dollarPayment = document.querySelector(".dollar-payment");
+function togglePaymentOption(ele) {
+    if (ele.id == 'id_currency_0'){
+        nairaPayment.classList.remove('display-none');
+        dollarPayment.classList.add('display-none');
+    }else{
+        nairaPayment.classList.add('display-none');
+        dollarPayment.classList.remove('display-none');
+    }
+}
+
+paymentOption.forEach((ele)=>{
+    ele.setAttribute('onclick', 'togglePaymentOption(this)');
+})

@@ -20,191 +20,179 @@
             <div class="about-container">
                 <form action="{% pageurl page %}" method="post" id="reg-form">
                     {% csrf_token %}
-                    <h2>Personal info:</h2>
-                    <div class="form-card registration-form-1">
-                        <div class="form-card-wordwrap">
-                            <div class="form-field">
-                                {{form.first_name.label_tag}}
-                                <h6 class="text-danger">{{ form.first_name.errors }}</h6>
-                                {{form.first_name}}
-                            </div>
-                            <div class="form-field">
-                                {{form.surname.label_tag}}
-                                <h6 class="text-danger">{{ form.surname.errors }}</h6>
-                                {{form.surname}}
-                            </div>
-                        </div>
-                        <div class="form-card-wordwrap">
-                            <div class="form-field">
-                                {{form.email_address.label_tag}}
-                                <h6 class="text-danger">{{ form.email_address.errors }}</h6>
-                                {{form.email_address}}
-                            </div>
-                            <div class="form-field">
-                                {{form.phone.label_tag}}
-                                <h6 class="text-danger">{{ form.phone.errors }}</h6>
-                                {{form.phone}}
-                            </div>
-                        </div>
-                        <div class="form-card-wordwrap">
-                            
-                            <div class="form-field">
-                                {{form.company.label_tag}}
-                                <h6 class="text-danger">{{ form.company.errors }}</h6>
-                                {{form.company}}
-                            </div>
-                            <div class="form-field">
-                                {{form.position.label_tag}}
-                                <h6 class="text-danger">{{ form.position.errors }}</h6>
-                                {{form.position}}
-                            </div>
-                        </div>
-                        <div class="form-card-wordwrap">
-                            <div class="form-field">
-                                {{form.country.label_tag}}
-                                <h6 class="text-danger">{{ form.country.errors }}</h6>
-                                {{form.country}}
-                            </div>
-                        </div>
-                        
-                        <br>
-                    </div>
+                    <!-- <h2>Make Payment</h2> -->
                     <div class="form-card">
-                        <h2>Register for:</h2>
+                        <h3>Select your currency type:</h3>
                         <div class="form-field">
-                            {{form.workshop}}
+                            {{form.currency}}
                         </div>
                     </div>
-                    <div class="form-card no-registrant-total-cost-container">
-                        <div class="form-field">
-                            {{form.number_of_registrants.label_tag}}
-                            <h6 class="text-danger">{{ form.number_of_registrants.errors }}</h6>
-                            {{form.number_of_registrants}}
-                        </div>
-
-                        <div class="payment-cost-container">
-                            <div class="payment-cost-card"></div>
-                            <input class="pay-btn" type="submit" value="Pay">
+                    <div class="dollar-payment display-none">
+                        <a class="dollar-pay" href="{{home_page.dollar_payment_link}}" target="_blank">Continue Registration</a>
+                        <span>( Payment in USD)</span>
+                    </div>
+                    <div class="naira-payment display-none">
+                        <h2>Personal info:</h2>
+                        <div class="form-card registration-form-1">
+                            <div class="form-card-wordwrap">
+                                <div class="form-field">
+                                    {{form.first_name.label_tag}}
+                                    <h6 class="text-danger">{{ form.first_name.errors }}</h6>
+                                    {{form.first_name}}
+                                </div>
+                                <div class="form-field">
+                                    {{form.surname.label_tag}}
+                                    <h6 class="text-danger">{{ form.surname.errors }}</h6>
+                                    {{form.surname}}
+                                </div>
+                            </div>
+                            <div class="form-card-wordwrap">
+                                <div class="form-field">
+                                    {{form.email_address.label_tag}}
+                                    <h6 class="text-danger">{{ form.email_address.errors }}</h6>
+                                    {{form.email_address}}
+                                </div>
+                                <div class="form-field">
+                                    {{form.phone.label_tag}}
+                                    <h6 class="text-danger">{{ form.phone.errors }}</h6>
+                                    {{form.phone}}
+                                </div>
+                            </div>
+                            <div class="form-card-wordwrap">
+                                
+                                <div class="form-field">
+                                    {{form.company.label_tag}}
+                                    <h6 class="text-danger">{{ form.company.errors }}</h6>
+                                    {{form.company}}
+                                </div>
+                                <div class="form-field">
+                                    {{form.position.label_tag}}
+                                    <h6 class="text-danger">{{ form.position.errors }}</h6>
+                                    {{form.position}}
+                                </div>
+                            </div>
+                            <div class="form-card-wordwrap">
+                                <div class="form-field">
+                                    {{form.country.label_tag}}
+                                    <h6 class="text-danger">{{ form.country.errors }}</h6>
+                                    {{form.country}}
+                                </div>
+                            </div>
                             
-                            <div class="output-cost">
-                                {{form.total_cost}}
+                            <br>
+                        </div>
+                        <div class="form-card">
+                            <h3>Register for:</h3>
+                            <div class="form-field">
+                                {{form.workshop}}
                             </div>
                         </div>
-
-                        <script>
-                            let num_of_registrants = document.getElementById('{{ form.number_of_registrants.id_for_label }}').value;
-                            
-                            let totalCost = document.querySelector('.output-cost input');
-                            totalCost.readonly = true;
-                            let registration_form = document.querySelector('form');
-                            let paymentCostContainer = document.querySelector('.payment-cost-card')
-                            let registrationPackage = document.querySelectorAll("input[type='radio']");
-                            document.querySelector("input[name='number_of_registrants']").setAttribute('class', 'qty');
-                            
-                            registrationPackage.forEach(package => {
-                                // package.setAttribute('name', 'registration_type');
-                                package.setAttribute('class', 'registration-package');
-                                package.setAttribute('onclick', 'displayAmount(this)');
-                                package.addEventListener('click', ()=>{
-                                    
-                                    
-                                    let paymentCost = document.querySelectorAll('.payment-cost');
-                                    paymentCost.forEach(cost => {
-                                        if (package.id == cost.classList[0]) {
-                                            cost.classList.remove('display-cost');
-                                            function calcCost() {
-                                                
-                                                cost_ = document.querySelector(`.${package.id}`);
-
-                                                if (cost_ == cost) {
-                                                    let num_of_registrants = document.getElementById('{{ form.number_of_registrants.id_for_label }}').value;
-                                                    let total = num_of_registrants*cost_.value;
-                                                    document.querySelector('#id_total_cost').value = total;
-                                                }  
-                                            };
-                                            
-                                            $(function()
-                                                {
-                                                    $(".qty").on("change keyup", calcCost);
-                                                    $(".registration-package").on("change keyup", calcCost);
-                                            });
-                                            
-                                        }else{
-                                        cost.classList.add('display-cost');
+                        <div class="form-card no-registrant-total-cost-container">
+                            <div class="form-field">
+                                {{form.number_of_registrants.label_tag}}
+                                <h6 class="text-danger">{{ form.number_of_registrants.errors }}</h6>
+                                {{form.number_of_registrants}}
+                            </div>
+    
+                            <div class="payment-cost-container">
+                                <div class="payment-cost-card"></div>
+                                <input class="pay-btn" type="submit" value="Pay">
+                                
+                                <div class="output-cost" style="margin-left: 8px;">
+                                    <span>NGN</span>{{form.total_cost}}
+                                </div>
+                            </div>
+    
+                            <script>
+                                let num_of_registrants = document.getElementById('{{ form.number_of_registrants.id_for_label }}').value;
+                                
+                                let totalCost = document.querySelector('.output-cost input');
+                                totalCost.readonly = true;
+                                let registration_form = document.querySelector('form');
+                                let paymentCostContainer = document.querySelector('.payment-cost-card')
+                                let registrationPackage = document.querySelectorAll(".naira-payment input[type='radio']");
+                                document.querySelector("input[name='number_of_registrants']").setAttribute('class', 'qty');
+                                
+                                registrationPackage.forEach(package => {
+                                    // package.setAttribute('name', 'registration_type');
+                                    package.setAttribute('class', 'registration-package');
+                                    package.setAttribute('onclick', 'displayAmount(this)');
+                                    package.addEventListener('click', ()=>{
                                         
+                                        
+                                        let paymentCost = document.querySelectorAll('.payment-cost');
+                                        paymentCost.forEach(cost => {
+                                            if (package.id == cost.classList[0]) {
+                                                cost.classList.remove('display-cost');
+                                                function calcCost() {
+                                                    
+                                                    cost_ = document.querySelector(`.${package.id}`);
+    
+                                                    if (cost_ == cost) {
+                                                        let num_of_registrants = document.getElementById('{{ form.number_of_registrants.id_for_label }}').value;
+                                                        let total = num_of_registrants*cost_.value;
+                                                        document.querySelector('#id_total_cost').value = total;
+                                                    }  
+                                                };
+                                                
+                                                $(function()
+                                                    {
+                                                        $(".qty").on("change keyup", calcCost);
+                                                        $(".registration-package").on("change keyup", calcCost);
+                                                });
+                                                
+                                            }else{
+                                            cost.classList.add('display-cost');
+                                            
+                                        }
+                                   });
+                                    })
+                                });
+    
+                                function displayAmount(par) {
+                                    // if (par.id == 'id_workshop_0') {
+                                    //     paymentCostContainer.innerHTML = `
+                                    //     <label for="id_workshop_cost"></label>
+                                    //     {{form.workshop_cost}}`;
+                                    //     let workshop_cost_field = document.querySelector("input[name='workshop_cost']");
+                                    //     workshop_cost_field.setAttribute('class', 'id_workshop_0 payment-cost');
+                                    //     workshop_cost_field.readonly = true;
+                                    //     workshop_cost_field.type = "number";
+                                    // }
+                                    if (par.id == 'id_workshop_0') {
+                                        paymentCostContainer.innerHTML = `
+                                        <label for="id_conference_cost"></label>
+                                        {{form.conference_cost}}`;
+                                        let conference_cost_field = document.querySelector("input[name='conference_cost']");
+                                        conference_cost_field.setAttribute('class', 'id_workshop_0 payment-cost');
+                                        conference_cost_field.readonly = true;
+                                        conference_cost_field.type = "number";
                                     }
-                               });
-                                })
-                            });
-
-                            function displayAmount(par) {
-                                if (par.id == 'id_workshop_0') {
-                                    paymentCostContainer.innerHTML = `
-                                    <label for="id_workshop_cost"></label>
-                                    {{form.workshop_cost}}`;
-                                    let workshop_cost_field = document.querySelector("input[name='workshop_cost']");
-                                    workshop_cost_field.setAttribute('class', 'id_workshop_0 payment-cost');
-                                    workshop_cost_field.readonly = true;
-                                    workshop_cost_field.type = "number";
+                                    else if (par.id == 'id_workshop_1') {
+                                        paymentCostContainer.innerHTML = `
+                                        <label for="id_conference_and_workshop_cost"></label>
+                                        {{form.conference_and_workshop_cost}}`;
+                                        let conference_and_workshop_cost_field =document.querySelector("input[name='conference_and_workshop_cost']");
+                                        conference_and_workshop_cost_field.setAttribute('class', 'id_workshop_1 payment-cost');
+                                        conference_and_workshop_cost_field.readonly = true;
+                                        conference_and_workshop_cost_field.type = "number";
+                                    }
+                                    else {
+                                        paymentCostContainer.innerHTML = `
+                                        <label for="id_virtual_cost"></label>
+                                        {{form.virtual_cost}}`;
+                                        let virtual_cost_field =document.querySelector("input[name='virtual_cost']");
+                                        virtual_cost_field.setAttribute('class', 'id_workshop_2 payment-cost');
+                                        virtual_cost_field.readonly = true;
+                                        virtual_cost_field.type = "number";
+                                    };
                                 }
-                                else if (par.id == 'id_workshop_1') {
-                                    paymentCostContainer.innerHTML = `
-                                    <label for="id_conference_cost"></label>
-                                    {{form.conference_cost}}`;
-                                    let conference_cost_field = document.querySelector("input[name='conference_cost']");
-                                    conference_cost_field.setAttribute('class', 'id_workshop_1 payment-cost');
-                                    conference_cost_field.readonly = true;
-                                    conference_cost_field.type = "number";
-                                }
-                                else if (par.id == 'id_workshop_2') {
-                                    paymentCostContainer.innerHTML = `
-                                    <label for="id_conference_and_workshop_cost"></label>
-                                    {{form.conference_and_workshop_cost}}`;
-                                    let conference_and_workshop_cost_field =document.querySelector("input[name='conference_and_workshop_cost']");
-                                    conference_and_workshop_cost_field.setAttribute('class', 'id_workshop_2 payment-cost');
-                                    conference_and_workshop_cost_field.readonly = true;
-                                    conference_and_workshop_cost_field.type = "number";
-                                }
-                                else {
-                                    paymentCostContainer.innerHTML = `
-                                    <label for="id_virtual_cost"></label>
-                                    {{form.virtual_cost}}`;
-                                    let virtual_cost_field =document.querySelector("input[name='virtual_cost']");
-                                    virtual_cost_field.setAttribute('class', 'id_workshop_3 payment-cost');
-                                    virtual_cost_field.readonly = true;
-                                    virtual_cost_field.type = "number";
-                                };
-                            }
-
-                            // $(document).ready(function() {
-                            //     $('#reg-form').on('submit', function(e) {
-                            //         e.preventDefault();
-
-                            //         var csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
-
-                            //         // $.ajax({
-                            //         //     url: '/my-url/',
-                            //         //     method: 'POST',
-                            //         //     data: {
-                            //         //         'field1': $('#field1').val(),
-                            //         //         'field2': $('#field2').val(),
-                            //         //         'field3': $('#field3').val(),
-                            //         //         'csrfmiddlewaretoken': csrf_token
-                            //         //     },
-                            //         //     success: function(response) {
-                            //         //         // handle the success response
-                            //         //     },
-                            //         //     error: function(jqXHR, textStatus, errorThrown) {
-                            //         //         // handle the error response
-                            //         //     }
-                            //         // });
-                            //     });
-                            // });
-
-                            
-                        </script>
-
+                                
+                            </script>
+    
+                        </div>
                     </div>
+                    
                 </form>
             </div>
         </div>
