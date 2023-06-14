@@ -70,8 +70,6 @@ class RegistrationPage(Page):
     template = 'registration/registration.html'
 
 
-
-
 class FormField(AbstractFormField):
     page = ParentalKey('RegistrationFormPage', on_delete=models.CASCADE, related_name='form_fields')
 
@@ -128,15 +126,11 @@ class RegistrationFormPage(AbstractEmailForm):
 
             if form.is_valid():
                 self.process_form_submission(form)
-
-
                 addresses = [x.strip() for x in self.to_address.split(',')]
-                
 
                 # Subject can be adjusted (adding submitted date), be sure to include the form's defined subject field
                 submitted_date_str = date.today().strftime('%x')
                 subject = f"{self.subject} - {submitted_date_str}"
-
                 
                 # Update the original landing page context with other data
                 context = self.get_context(request)
@@ -160,13 +154,14 @@ class RegistrationFormPage(AbstractEmailForm):
                 client = TransactionResource(secret_key, random_ref)
                 response = client.initialize(test_amount,
                                             test_email)
+
                 client.authorize() # Will open a browser window for client to enter card details
                 # print(client.authorize())
                 client.verify() # Verify client credentials
                 # client.charge() # Charge an already exsiting client
-                
+                print(form.cleaned_data['currency'])
                 landing_page_context = self.get_context(request, *args, **kwargs)
-                auth_url = client.authorize()
+                # auth_url = client.authorize()
                 
                 landing_page_context['auth_url'] = client.authorize()
                 landing_page_context['first_name'] = form.cleaned_data['first_name']
@@ -174,6 +169,7 @@ class RegistrationFormPage(AbstractEmailForm):
                 landing_page_context['total_cost'] = form.cleaned_data['total_cost']
                 landing_page_context['email_address'] = form.cleaned_data['email_address']
                 landing_page_context['workshop'] = form.cleaned_data['workshop']
+                landing_page_context['currency'] = form.cleaned_data['currency']
                 landing_page_context['number_of_registrants'] = form.cleaned_data['number_of_registrants']
                 landing_page_context["home_page"] = self.home_page
 
@@ -193,17 +189,3 @@ class RegistrationFormPage(AbstractEmailForm):
             self.get_template(request),
             context
         )
-
-    # def send_mail(self, form):
-    #     # `self` is the FormPage, `form` is the form's POST data on submit
-
-    #     # Email addresses are parsed from the FormPage's addresses field
-    #     addresses = [x.strip() for x in self.to_address.split(',')]
-    #     print(addresses)
-    #     print(form.cleaned_data['email_address'])
-
-    #     # Subject can be adjusted (adding submitted date), be sure to include the form's defined subject field
-    #     submitted_date_str = date.today().strftime('%x')
-    #     subject = f"{self.subject} - {submitted_date_str}"
-
-    #     send_mail(subject, self.render_email(form), [addresses, form.cleaned_data['email_address']], self.from_address, fail_silently=False)

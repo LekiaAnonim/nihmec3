@@ -18,10 +18,19 @@
                 <li><span>Email Address: </span>{{email_address}}</li>
                 <li><span>Registering for: </span>{{workshop}}</li>
                 <li><span>Number of Registrants: </span>{{number_of_registrants}}</li>
+                {% if currency == 'Naira(NGN)' %}
                 <li><span>Amount: </span>₦ {{total_cost}}.00</li>
+                {% else %}
+                <li></li>
+                {% endif %}
+                
             </ul>
             <br>
+            {% if currency == 'Naira(NGN)' %}
             <a class="pay-btn" href="{{ auth_url }}" target="_blank">Make Payment</a>
+            {% else %}
+            <a class="dollar-pay" href="{{home_page.dollar_payment_link}}" target="_blank">Continue on EventBrite</a>
+            {% endif %}
         </div> <br>
         <p><a href="{{ page.get_parent.url }}"><i class='bx bx-arrow-back'></i> Return Home</a></p>
     </main>

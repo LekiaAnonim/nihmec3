@@ -34,9 +34,11 @@ function togglePaymentOption(ele) {
     if (ele.id == 'id_currency_0'){
         nairaPayment.classList.remove('display-none');
         dollarPayment.classList.add('display-none');
+        console.log(ele.id);
     }else{
         nairaPayment.classList.add('display-none');
         dollarPayment.classList.remove('display-none');
+        console.log(ele.id);
     }
 }
 

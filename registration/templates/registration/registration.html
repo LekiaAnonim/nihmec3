@@ -20,7 +20,57 @@
             <div class="about-container">
                 <form action="{% pageurl page %}" method="post" id="reg-form">
                     {% csrf_token %}
-                    <!-- <h2>Make Payment</h2> -->
+                    <h2>Personal info:</h2>
+                    <div class="form-card registration-form-1">
+                        <div class="form-card-wordwrap">
+                            <div class="form-field">
+                                {{form.first_name.label_tag}}
+                                <h6 class="text-danger">{{ form.first_name.errors }}</h6>
+                                {{form.first_name}}
+                            </div>
+                            <div class="form-field">
+                                {{form.surname.label_tag}}
+                                <h6 class="text-danger">{{ form.surname.errors }}</h6>
+                                {{form.surname}}
+                            </div>
+                        </div>
+                        <div class="form-card-wordwrap">
+                            <div class="form-field">
+                                {{form.email_address.label_tag}}
+                                <h6 class="text-danger">{{ form.email_address.errors }}</h6>
+                                {{form.email_address}}
+                            </div>
+                            <div class="form-field">
+                                {{form.phone.label_tag}}
+                                <h6 class="text-danger">{{ form.phone.errors }}</h6>
+                                {{form.phone}}
+                            </div>
+                        </div>
+                        <div class="form-card-wordwrap">
+                            
+                            <div class="form-field">
+                                {{form.company.label_tag}}
+                                <h6 class="text-danger">{{ form.company.errors }}</h6>
+                                {{form.company}}
+                            </div>
+                            <div class="form-field">
+                                {{form.position.label_tag}}
+                                <h6 class="text-danger">{{ form.position.errors }}</h6>
+                                {{form.position}}
+                            </div>
+                        </div>
+                        <div class="form-card-wordwrap">
+                            <div class="form-field">
+                                {{form.country.label_tag}}
+                                <h6 class="text-danger">{{ form.country.errors }}</h6>
+                                {{form.country}}
+                            </div>
+                        </div>
+                        
+                        <br>
+                    </div>
+                    
+                    <h2>Make Payment</h2>
                     <div class="form-card">
                         <h3>Select your currency type:</h3>
                         <div class="form-field">
@@ -28,66 +78,26 @@
                         </div>
                     </div>
                     <div class="dollar-payment display-none">
-                        <a class="dollar-pay" href="{{home_page.dollar_payment_link}}" target="_blank">Continue Registration</a>
-                        <span>( Payment in USD)</span>
-                    </div>
-                    <div class="naira-payment display-none">
-                        <h2>Personal info:</h2>
-                        <div class="form-card registration-form-1">
-                            <div class="form-card-wordwrap">
-                                <div class="form-field">
-                                    {{form.first_name.label_tag}}
-                                    <h6 class="text-danger">{{ form.first_name.errors }}</h6>
-                                    {{form.first_name}}
-                                </div>
-                                <div class="form-field">
-                                    {{form.surname.label_tag}}
-                                    <h6 class="text-danger">{{ form.surname.errors }}</h6>
-                                    {{form.surname}}
-                                </div>
-                            </div>
-                            <div class="form-card-wordwrap">
-                                <div class="form-field">
-                                    {{form.email_address.label_tag}}
-                                    <h6 class="text-danger">{{ form.email_address.errors }}</h6>
-                                    {{form.email_address}}
-                                </div>
-                                <div class="form-field">
-                                    {{form.phone.label_tag}}
-                                    <h6 class="text-danger">{{ form.phone.errors }}</h6>
-                                    {{form.phone}}
-                                </div>
-                            </div>
-                            <div class="form-card-wordwrap">
-                                
-                                <div class="form-field">
-                                    {{form.company.label_tag}}
-                                    <h6 class="text-danger">{{ form.company.errors }}</h6>
-                                    {{form.company}}
-                                </div>
-                                <div class="form-field">
-                                    {{form.position.label_tag}}
-                                    <h6 class="text-danger">{{ form.position.errors }}</h6>
-                                    {{form.position}}
-                                </div>
-                            </div>
-                            <div class="form-card-wordwrap">
-                                <div class="form-field">
-                                    {{form.country.label_tag}}
-                                    <h6 class="text-danger">{{ form.country.errors }}</h6>
-                                    {{form.country}}
-                                </div>
-                            </div>
-                            
-                            <br>
-                        </div>
                         <div class="form-card">
                             <h3>Register for:</h3>
                             <div class="form-field">
                                 {{form.workshop}}
                             </div>
                         </div>
+                        <input class="pay-btn" type="submit" value="Pay">
+                        <span>( Payment in USD)</span>
+                    </div>
+                    <div class="naira-payment display-none">
+                        
                         <div class="form-card no-registrant-total-cost-container">
+
+                            <div class="form-card">
+                                <h3>Register for:</h3>
+                                <div class="form-field">
+                                    {{form.workshop}}
+                                </div>
+                            </div>
+                            
                             <div class="form-field">
                                 {{form.number_of_registrants.label_tag}}
                                 <h6 class="text-danger">{{ form.number_of_registrants.errors }}</h6>
@@ -150,15 +160,7 @@
                                 });
     
                                 function displayAmount(par) {
-                                    // if (par.id == 'id_workshop_0') {
-                                    //     paymentCostContainer.innerHTML = `
-                                    //     <label for="id_workshop_cost"></label>
-                                    //     {{form.workshop_cost}}`;
-                                    //     let workshop_cost_field = document.querySelector("input[name='workshop_cost']");
-                                    //     workshop_cost_field.setAttribute('class', 'id_workshop_0 payment-cost');
-                                    //     workshop_cost_field.readonly = true;
-                                    //     workshop_cost_field.type = "number";
-                                    // }
+                                    
                                     if (par.id == 'id_workshop_0') {
                                         paymentCostContainer.innerHTML = `
                                         <label for="id_conference_cost"></label>
