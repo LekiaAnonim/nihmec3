@@ -148,18 +148,19 @@ class RegistrationFormPage(AbstractEmailForm):
                 # secret_key = os.getenv('PAYSTACK_SECRET_KEY')
                 secret_key = 'sk_live_41506a1dec474fb59359be2f05dc354d0c64d429'
                 random_ref = rand
-                test_email = form.cleaned_data['email_address']
-                test_amount = str(form.cleaned_data['total_cost']*100)
-                plan = 'Basic'
-                client = TransactionResource(secret_key, random_ref)
-                response = client.initialize(test_amount,
-                                            test_email)
+                currency = form.cleaned_data['currency']
+                if currency == 'Naira(NGN)':
+                    test_email = form.cleaned_data['email_address']
+                    test_amount = str(form.cleaned_data['total_cost']*100)
+                    plan = 'Basic'
+                    client = TransactionResource(secret_key, random_ref)
+                    response = client.initialize(test_amount,
+                                                test_email)
 
-                client.authorize() # Will open a browser window for client to enter card details
-                # print(client.authorize())
-                client.verify() # Verify client credentials
-                # client.charge() # Charge an already exsiting client
-                print(form.cleaned_data['currency'])
+                    client.authorize() # Will open a browser window for client to enter card details
+                    # print(client.authorize())
+                    client.verify() # Verify client credentials
+                    # client.charge() # Charge an already exsiting client
                 landing_page_context = self.get_context(request, *args, **kwargs)
                 # auth_url = client.authorize()
                 
