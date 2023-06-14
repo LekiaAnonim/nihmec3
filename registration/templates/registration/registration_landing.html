@@ -17,10 +17,12 @@
                 <li><span>Full Name: </span>{{first_name}} {{surname}}</li>
                 <li><span>Email Address: </span>{{email_address}}</li>
                 <li><span>Registering for: </span>{{workshop}}</li>
-                <li><span>Number of Registrants: </span>{{number_of_registrants}}</li>
+                
                 {% if currency == 'Naira(NGN)' %}
+                <li><span>Number of Registrants: </span>{{number_of_registrants}}</li>
                 <li><span>Amount: </span>₦ {{total_cost}}.00</li>
                 {% else %}
+                <p></p>
                 <p></p>
                 {% endif %}
                 
