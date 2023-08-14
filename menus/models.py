@@ -7,7 +7,7 @@ from wagtail.admin.panels import FieldPanel, InlinePanel, PageChooserPanel, Mult
 from wagtail.models import Orderable
 from wagtail.snippets.models import register_snippet
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
-from wagtailcloudinary.fields import CloudinaryField, CloudinaryWidget
+
 
 class MenuItem(Orderable):
     link_text = models.CharField(blank=True, null=True, max_length=100)
