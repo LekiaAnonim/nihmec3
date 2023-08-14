@@ -15,6 +15,9 @@ import environ
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 # import boto3
 env = environ.Env(
     DEBUB=(bool, False)
@@ -68,8 +71,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "storages",
     'django_extensions',
-    'cloudinary',
-    'wagtailcloudinary',
 ]
 
 MIDDLEWARE = [

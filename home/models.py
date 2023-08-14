@@ -9,7 +9,7 @@ from wagtail.snippets.models import register_snippet
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from django.utils.functional import cached_property
 from website.models import Speakers, TechnicalAdvisoryCommittee, Attendees
-from wagtailcloudinary.fields import CloudinaryField, CloudinaryWidget
+from cloudinary.models import CloudinaryField
 
 
 class HomePage(Page):
@@ -30,7 +30,7 @@ class HomePage(Page):
     dollar_payment_link = models.URLField(null=True, blank=True)
     # feature_conference_on_site = models.BooleanField(default=True)
 
-    banner_image = CloudinaryField(null=True)
+    banner_image = CloudinaryField('image', null=True)
     register_cta = models.ForeignKey("wagtailcore.Page", null=True, blank=True, on_delete=models.SET_NULL, related_name="+")
     about_cta = models.ForeignKey("wagtailcore.Page", null=True, blank=True, on_delete=models.SET_NULL, related_name="+")
     sponsor_cta = models.ForeignKey("wagtailcore.Page", null=True, blank=True, on_delete=models.SET_NULL, related_name="+")
@@ -47,7 +47,7 @@ class HomePage(Page):
         FieldPanel('contact_email'),
         FieldPanel('contact_phone_number'),
         FieldPanel('dollar_payment_link'),
-        FieldPanel("banner_image", widget=CloudinaryWidget),
+        FieldPanel("banner_image"),
         PageChooserPanel("register_cta"),
         PageChooserPanel("about_cta"),
         PageChooserPanel("sponsor_cta"),

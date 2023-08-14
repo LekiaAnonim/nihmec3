@@ -605,11 +605,12 @@ footer li {
     animation: scroll 40s linear infinite;
     display: flex;
     width: calc(250px * 14);
+    align-items: center;
 }
 
 .slider .slide {
-    height: 150px;
-    width: 220px;
+    height: 100px;
+    width: 150px;
 }
 
 .slider .slide img {

@@ -10,7 +10,8 @@ from django.utils.functional import cached_property
 from wagtail.contrib.forms.panels import FormSubmissionsPanel
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from wagtail.admin.panels import FieldPanel, InlinePanel, FieldRowPanel, MultiFieldPanel, PageChooserPanel
-from wagtailcloudinary.fields import CloudinaryField, CloudinaryWidget
+# from wagtailcloudinary.fields import CloudinaryField, CloudinaryWidget
+from cloudinary.models import CloudinaryField
 from datetime import date
 from django.core.mail import send_mail
 # from django.core.mail import EmailMessage
@@ -217,7 +218,7 @@ class Speakers(models.Model):
     company = models.CharField(max_length=500, null=True)
     position = models.CharField(max_length=500, null=True, blank=True)
     short_introduction = RichTextField(blank=True)
-    photo = CloudinaryField(null=True)
+    photo = CloudinaryField('image', null=True)
 
     panels = [
         FieldPanel('speaker_category'),
@@ -226,7 +227,7 @@ class Speakers(models.Model):
         FieldPanel('company'),
         FieldPanel('position'),
         FieldPanel('short_introduction'),
-        FieldPanel('photo', widget=CloudinaryWidget),
+        FieldPanel('photo'),
     ]
 
     def __str__(self):
@@ -240,12 +241,12 @@ class Speakers(models.Model):
 @register_snippet
 class Attendees(models.Model):
     company_name = models.CharField(max_length = 500, null=True, blank=True)
-    company_logo = CloudinaryField(null=True)
+    company_logo = CloudinaryField('image', null=True)
     company_url = models.URLField(max_length=500, null=True)
 
     panels = [
         FieldPanel('company_name'),
-        FieldPanel('company_logo', widget=CloudinaryWidget),
+        FieldPanel('company_logo'),
         FieldPanel('company_url'),
     ]
 
@@ -262,7 +263,7 @@ class TechnicalAdvisoryCommittee(models.Model):
     company = models.CharField(max_length=500, null=True)
     position_in_company = models.CharField(max_length=500, null=True, blank=True)
     position_in_conference = models.CharField(max_length=500, null=True, blank=True)
-    photo = CloudinaryField(null=True)
+    photo = CloudinaryField('image', null=True)
 
     panels = [
         FieldPanel('first_name'),
@@ -270,7 +271,7 @@ class TechnicalAdvisoryCommittee(models.Model):
         FieldPanel('company'),
         FieldPanel('position_in_company'),
         FieldPanel('position_in_conference'),
-        FieldPanel('photo', widget=CloudinaryWidget),
+        FieldPanel('photo'),
     ]
 
     def __str__(self):

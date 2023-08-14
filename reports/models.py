@@ -7,7 +7,7 @@ from django.utils.functional import cached_property
 from wagtail.fields import RichTextField
 from wagtail.contrib.forms.panels import FormSubmissionsPanel
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
-from wagtailcloudinary.fields import CloudinaryField, CloudinaryWidget
+from cloudinary.models import CloudinaryField
 # Create your models here.
 
 from datetime import date
@@ -28,7 +28,7 @@ class DownloadReportForm(AbstractEmailForm):
     report_title = models.CharField(max_length=500, blank=True, null=True)
     report_summary = RichTextField(blank = True, null=True)
     report_download_link = models.URLField(blank=True, null=True)
-    report_cover_image = CloudinaryField(null=True)
+    report_cover_image = CloudinaryField('image', null=True)
     thank_you_text = RichTextField(blank=True)
     content_panels = AbstractEmailForm.content_panels + [
         FormSubmissionsPanel(),
@@ -36,7 +36,7 @@ class DownloadReportForm(AbstractEmailForm):
         FieldPanel('report_title'),
         FieldPanel('report_summary'),
         FieldPanel('report_download_link'),
-        FieldPanel("report_cover_image", widget=CloudinaryWidget),
+        FieldPanel("report_cover_image"),
 
         InlinePanel('form_fields', label="Form fields"),
         FieldPanel('thank_you_text'),
