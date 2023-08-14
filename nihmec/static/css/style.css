@@ -252,7 +252,7 @@ footer li {
     width: fit-content;
     /* background: rgb(174,189,238);
     background: radial-gradient(circle, rgba(174,189,238,1) 0%, rgba(148,233,156,1) 100%); */
-    background-color: #022c80;
+    background-color: #10492e;
     position: absolute;
     left: 0;
     padding: 10px;
@@ -330,8 +330,8 @@ footer li {
     /* background: url('https://images.unsplash.com/photo-1572480923208-ec3d21d1205d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80'); */
     background-size: cover;
     background-repeat: no-repeat;
-    background: rgb(255, 255, 255);
-    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(16, 73, 46, 1) 100%);
+    background: rgb(0, 0, 0);
+    background: #000;
     /* padding: 60px 10px 80px 10px; */
     width: 100%;
     max-height: 90vh;
@@ -573,12 +573,11 @@ footer li {
 .slider {
     background: white;
     box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
-    height: 100px;
+    height: 150px;
     margin: auto;
     overflow: hidden;
     position: relative;
     width: 100%;
-    padding: 20px;
 }
 
 .slider::before,
@@ -607,6 +606,8 @@ footer li {
     display: flex;
     width: calc(250px * 14);
     align-items: center;
+    height: fit-content;
+    padding: 20px;
 }
 
 .slider .slide {
