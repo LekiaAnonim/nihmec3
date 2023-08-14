@@ -1,10 +1,4 @@
-
-{% extends 'base.html' %}
-{% load wagtailcore_tags %}
-{% load static %}
-{% load wagtailimages_tags %}
-
-{% block content %}
+ {% extends 'base.html' %} {% load wagtailcore_tags %} {% load static %} {% load wagtailimages_tags %} {% block content %}
 
 <main>
     <h1>{{page.title}}</h1>
@@ -92,32 +86,32 @@
               
              </g>
             </svg>
-            
+
 
         </div>
-        
+
         <div class="speaker-wrapper" id="speaker-wrapper">
-            {% for speaker in speakers %}
-            {% if speaker.speaker_category.speaker_category == page.speaker_category %}
+            {% for speaker in speakers %} {% if speaker.speaker_category.speaker_category == page.speaker_category %}
             <div class="speaker-card">
                 <div class="speaker-image-name-container">
                     <div class="speaker-image">
-                        {% image speaker.photo max-300x300 %}
+                        <img src="{{speaker.photo.url}}" alt="">
                     </div>
                     <div class="speaker-name-title">
-                        <div class="author-name"> <p class="person-name">{{speaker.first_name}} {{speaker.surname}}</p></div>
-                        <div class="author-status"> <p class="person-title">{{speaker.position}} @ {{speaker.company}} </p></div>
+                        <div class="author-name">
+                            <p class="person-name">{{speaker.first_name}} {{speaker.surname}}</p>
+                        </div>
+                        <div class="author-status">
+                            <p class="person-title">{{speaker.position}} @ {{speaker.company}} </p>
+                        </div>
                     </div>
                 </div>
                 <div class="speaker-about">
                     <p>{{speaker.short_introduction|richtext}}</p>
                 </div>
             </div>
-            {% endif %}
-            {% endfor %}
+            {% endif %} {% endfor %}
         </div>
     </div>
 </main>
 {% endblock %}
-
-

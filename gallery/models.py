@@ -4,6 +4,7 @@ from modelcluster.fields import ParentalKey
 from wagtail.models import Page, Orderable
 from wagtail.admin.panels import FieldPanel, InlinePanel
 from django.utils.functional import cached_property
+from wagtailcloudinary.fields import CloudinaryField, CloudinaryWidget
 # Create your models here.
 
 class GalleryYearPage(Page):
@@ -26,12 +27,10 @@ class GalleryYearPage(Page):
 
 class ConferenceGalleryImage(Orderable):
     page = ParentalKey(GalleryYearPage, on_delete=models.CASCADE, related_name='gallery_images')
-    image = models.ForeignKey(
-        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
-    )
+    image = CloudinaryField(null=True)
     caption = models.CharField(blank=True, max_length=250)
 
     panels = [
-        FieldPanel('image'),
+        FieldPanel('image', widget=CloudinaryWidget),
         FieldPanel('caption'),
     ]

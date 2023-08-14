@@ -11,6 +11,7 @@ from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render
 from wagtail.contrib.routable_page.models import RoutablePageMixin, path
+from wagtailcloudinary.fields import CloudinaryField, CloudinaryWidget
 # from paystack.resource import TransactionResource
 from django.conf import settings
 import random

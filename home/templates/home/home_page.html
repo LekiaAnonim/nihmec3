@@ -1,15 +1,8 @@
-
-{% extends 'base.html' %}
-{% load wagtailcore_tags %}
-{% load static %}
-{% load wagtailimages_tags %}
-
-
-{% block banner %}
+ {% extends 'base.html' %} {% load wagtailcore_tags %} {% load static %} {% load wagtailimages_tags %} {% block banner %}
 <style>
-    .nihmec-front-cover{
+    .nihmec-front-cover {
         background-clip: text;
-        -webkit-background-clip: text; 
+        -webkit-background-clip: text;
         /* -webkit-text-fill-color: transparent;  */
         background-image: url('/static/images/NiHMEC 2022-0859.jpg');
         background-repeat: no-repeat;
@@ -23,54 +16,61 @@
         text-align: center;
         /* color: #10492e; */
     }
+    
     .swiper {
-      width: 100%;
-      height: 100%;
+        width: 100%;
+        height: 100%;
     }
-
+    
     .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-
+    
     .swiper-slide img {
-      display: block;
-      width: 100%;
-      max-height: 100%;
-      /* object-fit: cover;
+        display: block;
+        width: 100%;
+        max-height: 100%;
+        /* object-fit: cover;
       background-size: cover; */
     }
     
-    .swiper-button-next{
+    .swiper-button-next {
         background-color: #fff;
     }
-    .swiper-button-prev{
+    
+    .swiper-button-prev {
         background-color: #fff;
         padding: 10px;
     }
-    .box-anchor{
+    
+    .box-anchor {
         width: 30px;
         height: 30px;
         background-color: #ffffff3d;
         position: absolute;
     }
-    .box-anchor1{
+    
+    .box-anchor1 {
         top: 0;
         left: 0;
     }
-    .box-anchor2{
+    
+    .box-anchor2 {
         top: 0;
         right: 0;
     }
-    .box-anchor3{
+    
+    .box-anchor3 {
         bottom: 0;
         left: 0;
     }
-    .box-anchor4{
+    
+    .box-anchor4 {
         bottom: 0;
         right: 0;
     }
@@ -79,81 +79,84 @@
 <div class="content-container">
     <!-- <p class="nihmec-theme">{{self.theme}}</p> -->
     <!-- Swiper -->
-  <div class="swiper mySwiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <img src="{% static 'images/NiHMEC 2022-0313.jpg' %}" alt="NiHMEC 2022-0859">
-        <div class="swiper-content">
-            <div class="box-anchor1 box-anchor"></div>
-            <div class="box-anchor2 box-anchor"></div>
-            <div class="box-anchor3 box-anchor"></div>
-            <div class="box-anchor4 box-anchor"></div>
-            Collaboration with stakeholders remains a priority for improving hydrocarbon measurement and accounting practices. The prioritization of collaboration with stakeholders plays a crucial role in advancing hydrocarbon measurement and accounting practices. Fostering open communication and partnerships, stakeholders can collectively address challenges, share best practices, and work towards common goals, ultimately enhancing the reliability and integrity of hydrocarbon measurement and accounting in the industry.
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="{% static 'images/NiHMEC 2022-0313.jpg' %}" alt="NiHMEC 2022-0859">
+                <div class="swiper-content">
+                    <div class="box-anchor1 box-anchor"></div>
+                    <div class="box-anchor2 box-anchor"></div>
+                    <div class="box-anchor3 box-anchor"></div>
+                    <div class="box-anchor4 box-anchor"></div>
+                    Collaboration with stakeholders remains a priority for improving hydrocarbon measurement and accounting practices. The prioritization of collaboration with stakeholders plays a crucial role in advancing hydrocarbon measurement and accounting practices.
+                    Fostering open communication and partnerships, stakeholders can collectively address challenges, share best practices, and work towards common goals, ultimately enhancing the reliability and integrity of hydrocarbon measurement and
+                    accounting in the industry.
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="{% static 'images/NiHMEC 2022-0087.jpg' %}" alt="" />
+                <div class="swiper-content">
+                    <div class="box-anchor1 box-anchor"></div>
+                    <div class="box-anchor2 box-anchor"></div>
+                    <div class="box-anchor3 box-anchor"></div>
+                    <div class="box-anchor4 box-anchor"></div>
+                    NiHMEC has gained the attention and interest of all the stakeholders in Nigeria’s petroleum industry and globally. At NiHMEC 2022, stakeholders in the oil and gas industry expressed their continuous support for NiHMEC and reiterated that the interest
+                    in the conference must be sustained. The discussions at NiHMEC 2022 largely emphasized the need to enshrine proper hydrocarbon measurement and accounting processes to minimize value erosion in the industry.
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="{% static 'images/NiHMEC 2022-0119.jpg' %}" alt="" />
+                <div class="swiper-content">
+                    <div class="box-anchor1 box-anchor"></div>
+                    <div class="box-anchor2 box-anchor"></div>
+                    <div class="box-anchor3 box-anchor"></div>
+                    <div class="box-anchor4 box-anchor"></div>
+                    The NiHMEC 2022 event was deemed timely and commendable, as it addressed the challenges posed by crude oil theft losses and aimed to change Nigeria's negative revenue narrative. While there is the need to emphasize the importance of accurate measurements
+                    and fiscalization to avoid negative impacts on revenue, crude oil theft and pipeline vandalism have introduced complex complications to hydrocarbon accounting in Nigeria, prompting the need for change in this area.
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="{% static 'images/NiHMEC 2022-0605.jpg' %}" alt="" />
+                <div class="swiper-content">
+                    <div class="box-anchor1 box-anchor"></div>
+                    <div class="box-anchor2 box-anchor"></div>
+                    <div class="box-anchor3 box-anchor"></div>
+                    <div class="box-anchor4 box-anchor"></div>
+                    Training and capacity development for metering professionals should be taken seriously because any investment in capacity development will immediately benefit the operator's bottom line.
+                </div>
+            </div>
+
         </div>
-      </div>
-      <div class="swiper-slide">
-        <img src="{% static 'images/NiHMEC 2022-0087.jpg' %}" alt="" />
-        <div class="swiper-content">
-            <div class="box-anchor1 box-anchor"></div>
-            <div class="box-anchor2 box-anchor"></div>
-            <div class="box-anchor3 box-anchor"></div>
-            <div class="box-anchor4 box-anchor"></div>
-            NiHMEC has gained the attention and interest of all the stakeholders in Nigeria’s petroleum industry and globally. At NiHMEC 2022, stakeholders in the oil and gas industry expressed their continuous support for NiHMEC and reiterated that the interest in the conference must be sustained. The discussions at NiHMEC 2022 largely emphasized the need to enshrine proper hydrocarbon measurement and accounting processes to minimize value erosion in the industry.
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <img src="{% static 'images/NiHMEC 2022-0119.jpg' %}" alt="" />
-        <div class="swiper-content">
-            <div class="box-anchor1 box-anchor"></div>
-            <div class="box-anchor2 box-anchor"></div>
-            <div class="box-anchor3 box-anchor"></div>
-            <div class="box-anchor4 box-anchor"></div>
-            The NiHMEC 2022 event was deemed timely and commendable, as it addressed the challenges posed by crude oil theft losses and aimed to change Nigeria's negative revenue narrative. While there is the need to emphasize the importance of accurate measurements and fiscalization to avoid negative impacts on revenue, crude oil theft and pipeline vandalism have introduced complex complications to hydrocarbon accounting in Nigeria, prompting the need for change in this area.
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <img src="{% static 'images/NiHMEC 2022-0605.jpg' %}" alt="" />
-        <div class="swiper-content">
-            <div class="box-anchor1 box-anchor"></div>
-            <div class="box-anchor2 box-anchor"></div>
-            <div class="box-anchor3 box-anchor"></div>
-            <div class="box-anchor4 box-anchor"></div>
-            Training and capacity development for metering professionals should be taken seriously because any investment in capacity development will immediately benefit the operator's bottom line.
-        </div>
-      </div>
-      
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
     </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-pagination"></div>
-  </div>
 
-  <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-  <!-- Initialize Swiper -->
-  <script>
-    var swiper = new Swiper(".mySwiper", {
-      spaceBetween: 30,
-      centeredSlides: true,
-      autoplay: {
-        delay: 10000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
-  </script>
-  
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 10000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+
 </div>
-{% endblock %}
-{% block content %}
+{% endblock %} {% block content %}
 <main>
     <div class="content">
         <div class="conference-short-introduction main-container">
@@ -181,7 +184,7 @@
                     </svg>
                     <h2>{{self.conference_name}}</h2>
                 </div>
-                
+
                 <p>
                     {{self.short_description|richtext}}
                 </p>
@@ -272,7 +275,7 @@
                 </svg>
 
             </div>
-            
+
             <div class="slider">
                 <div class="slide-track">
                     <div class="slide">
@@ -282,7 +285,7 @@
                         <img src="{% static 'images/download.jpg' %}" alt="" />
                     </div>
                     <div class="slide">
-                        <img src="{% static 'images/Gill-Automation-nigeria-logo.png' %}" alt="" />
+                        <img src="{% static 'images/firstep_lg-e1619971986344.png' %}" alt="" />
                     </div>
                     <div class="slide">
                         <img src="{% static 'images/NCDMB-LOGO.jpg' %}" alt="" />
@@ -300,7 +303,7 @@
                         <img src="{% static 'images/download.jpg' %}" alt="" />
                     </div>
                     <div class="slide">
-                        <img src="{% static 'images/Gill-Automation-nigeria-logo.png' %}" alt="" />
+                        <img src="{% static 'images/firstep_lg-e1619971986344.png' %}" alt="" />
                     </div>
                     <div class="slide">
                         <img src="{% static 'images/NCDMB-LOGO.jpg' %}" alt="" />
@@ -318,37 +321,41 @@
             <div class="highlight">
                 <img src="{% static 'images/NiHMEC 2022-0515.jpg' %}" alt="">
                 <div class="highlight-cta">
-                <p>Network with 488 participants from 31 countries.</p>
+                    <p>Network with 488 participants from 31 countries.</p>
                 </div>
                 <div class="hightlight-full-text">
-                    <p>NiHMEC 2021 was well attended by 488 participants from 31 countries and Nigeria. The participants' feedback indicated a unanimous clamour for NiHMEC to be an annual event where stakeholders in Nigeria and from around the world would discuss developments in oil and gas measurement and production accounting.</p>
+                    <p>NiHMEC 2021 was well attended by 488 participants from 31 countries and Nigeria. The participants' feedback indicated a unanimous clamour for NiHMEC to be an annual event where stakeholders in Nigeria and from around the world would
+                        discuss developments in oil and gas measurement and production accounting.</p>
                 </div>
             </div>
             <div class="highlight">
                 <img src="/static/images/NiHMEC 2022-0579.jpg" alt="">
                 <div class="highlight-cta">
-                <p>Join shape the future of oil and gas measurement practices in Nigeria.</p>
+                    <p>Join shape the future of oil and gas measurement practices in Nigeria.</p>
                 </div>
                 <div class="hightlight-full-text">
-                    <p>The discussion at NiHMEC 2022 would shape the future of oil and gas measurement practices in Nigeria regarding petroleum resource management and net-zero carbon emission. With the global drive towards attaining net-zero carbon emissions by 2050, sharing experiences would be critical to navigating the flow measurement challenge in oil and gas field operations.</p>
+                    <p>The discussion at NiHMEC 2022 would shape the future of oil and gas measurement practices in Nigeria regarding petroleum resource management and net-zero carbon emission. With the global drive towards attaining net-zero carbon emissions
+                        by 2050, sharing experiences would be critical to navigating the flow measurement challenge in oil and gas field operations.</p>
                 </div>
             </div>
             <div class="highlight">
                 <img src="/static/images/NIHMEC567.jpeg" alt="">
                 <div class="highlight-cta">
-                <p>Take a bird-eye view of emmission mitigation.</p>
+                    <p>Take a bird-eye view of emmission mitigation.</p>
                 </div>
                 <div class="hightlight-full-text">
-                    <p>The petroleum industry is critical to Nigeria's economic development; the continuous production of the resources is inevitable. However, the production must be done sustainably, as emissions must be mitigated. Effective emission mitigation can only be achieved by ensuring accurate flow measurement along the value chain.</p>
+                    <p>The petroleum industry is critical to Nigeria's economic development; the continuous production of the resources is inevitable. However, the production must be done sustainably, as emissions must be mitigated. Effective emission mitigation
+                        can only be achieved by ensuring accurate flow measurement along the value chain.</p>
                 </div>
             </div>
             <div class="highlight">
                 <img src="/static/images/NiHMEC 2022-0838.jpg" alt="">
                 <div class="highlight-cta">
-                <p>Listen to Stakeholders discuss measurement challenges.</p>
+                    <p>Listen to Stakeholders discuss measurement challenges.</p>
                 </div>
                 <div class="hightlight-full-text">
-                    <p>At NiHMEC 2022, stakeholders shall gather to discuss the measurement challenges ahead and what must be done to meet the requirement for accurate hydrocarbon measurement and production accounting. The conference would welcome flow measurement discussions covering the upstream, midstream, and downstream sectors of the petroleum industry.</p>
+                    <p>At NiHMEC 2022, stakeholders shall gather to discuss the measurement challenges ahead and what must be done to meet the requirement for accurate hydrocarbon measurement and production accounting. The conference would welcome flow measurement
+                        discussions covering the upstream, midstream, and downstream sectors of the petroleum industry.</p>
                 </div>
             </div>
         </div>
@@ -384,15 +391,16 @@
             <div class="carousel">
                 {% for committee in committees %}
                 <div class="carousel-card">
-                    {% image committee.photo max-300x300 %}
-                <h4>{{committee.first_name}} {{committee.surname}} <span>({{committee.position_in_conference}})</span></h4>
-                <p>{{committee.position_in_company}}, {{committee.company}}</p>
+                    <img src="{{committee.photo.url}}" alt="">
+                    <h4>{{committee.first_name}} {{committee.surname}} <span>({{committee.position_in_conference}})</span></h4>
+                    <p>{{committee.position_in_company}}, {{committee.company}}</p>
                 </div>
                 {% endfor %}
-                
+
             </div>
         </div>
-        {% comment %} <div class="meet-our-speakers main-container">
+        {% comment %}
+        <div class="meet-our-speakers main-container">
             <div class="meet-sponsors-header">
                 <h2>MEET THE SPEEKERS </h2>
                 <?xml version="1.0" encoding="UTF-8"?>
@@ -476,20 +484,24 @@
                 
                 </g>
                 </svg>
-                
+
 
             </div>
-            
+
             <div class="speaker-wrapper" id="speaker-wrapper">
                 {% for speaker in speakers %}
                 <div class="speaker-card">
                     <div class="speaker-image-name-container">
                         <div class="speaker-image">
-                            {% image speaker.photo max-300x300 %}
+                            <img src="{{speaker.photo.url}}" alt="">
                         </div>
                         <div class="speaker-name-title">
-                            <div class="author-name"> <p class="person-name">{{speaker.first_name}} {{speaker.surname}}</p></div>
-                            <div class="author-status"> <p class="person-title">{{speaker.position}} @ {{speaker.company}} </p></div>
+                            <div class="author-name">
+                                <p class="person-name">{{speaker.first_name}} {{speaker.surname}}</p>
+                            </div>
+                            <div class="author-status">
+                                <p class="person-title">{{speaker.position}} @ {{speaker.company}} </p>
+                            </div>
                         </div>
                     </div>
                     <div class="speaker-about">
@@ -593,11 +605,11 @@
                 {% for attendee in attendees %}
                 <div class="previous-attendees-card">
                     <a href="{{attendee.company_url}}">
-                        {% image attendee.company_logo max-150x150 %}
+                        <img src="{{attendee.company_logo.url}}" alt="">
                     </a>
                 </div>
                 {% endfor %}
-                            
+
             </div>
         </div>
     </div>

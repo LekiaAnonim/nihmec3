@@ -1,0 +1,15 @@
+{% extends "wagtailadmin/widgets/chooser.html" %}
+{% load wagtailadmin_tags %}
+{% load wagtailimages_tags %}
+{% load wagtailcloudinary %}
+
+{% block unchosen_icon %}{% icon name="image" %}{% endblock unchosen_icon %}
+{% block chosen_icon %}{% endblock chosen_icon %}
+{% block chooser_class %}image-chooser cloudinary-chooser{% endblock %}
+{% block chooser_attributes %}data-chooser-url="{% url 'wagtailcloudinary:browse' %}" data-cloudinary-base-url="{% cloudinary_base_url %}"{% endblock %}
+
+{% block chosen_state_view %}
+    <div class="preview-image">
+        {% version preview.url preview.transforms simple=True width=preview.width height=preview.height %}
+    </div>
+{% endblock %}

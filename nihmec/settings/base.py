@@ -26,8 +26,8 @@ PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-DEBUG = env('DEBUG')
-# DEBUG = False
+
+DEBUG = True
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -67,6 +67,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "storages",
     'django_extensions',
+    'cloudinary',
+    'wagtailcloudinary',
 ]
 
 MIDDLEWARE = [
@@ -118,42 +120,47 @@ WSGI_APPLICATION = "nihmec.wsgi.application"
 EMAIL_HOST = 'smtp.elasticemail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 2525
-# EMAIL_HOST_USER = os.getenv('DEFAULT_FROM_EMAIL')
-# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-# DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
+EMAIL_HOST_USER = os.getenv('DEFAULT_FROM_EMAIL')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
 
-EMAIL_HOST_USER = env('DEFAULT_FROM_EMAIL')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
+PAYSTACK_SECRET_KEY = os.getenv('PAYSTACK_SECRET_KEY')
+
+import cloudinary
+          
+cloudinary.config( 
+  cloud_name = "dhiwhxfe6", 
+  api_key = "733973411382121", 
+  api_secret = "Wc1J6Rc2eOENtSEXJLWl_BrSwMw"
+)
+
+
+# DEBUG = env('DEBUG')
+
+# EMAIL_HOST_USER = env('DEFAULT_FROM_EMAIL')
+# EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+# DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 
 DATABASES = {
     "default": dj_database_url.config(default='postgresql://postgres:93WzL1fYDGrZRoVQwiTN@containers-us-west-118.railway.app:7259/railway', conn_max_age=1800),
 }
 
+# PAYSTACK_SECRET_KEY = env('PAYSTACK_SECRET_KEY')
+# PAYSTACK_PUBLIC_KEY = ""
 
-AWS_STORAGE_BUCKET_NAME = 'nihmecbucket'
-# AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-# AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = 'public-read'
+# import cloudinary
+          
+# cloudinary.config( 
+#   cloud_name = env("cloud_name"), 
+#   api_key = env("cloudinary_api_key"), 
+#   api_secret = env("cloudinary_api_secret") 
+# )
 
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
-AWS_S3_OBJECT_PARAMETERS = {
-    "ACL": "public-read"
-}
 
-# PAYSTACK_SECRET_KEY = os.getenv('PAYSTACK_SECRET_KEY')
-PAYSTACK_SECRET_KEY = env('PAYSTACK_SECRET_KEY')
-PAYSTACK_PUBLIC_KEY = ""
 
-MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+MEDIA_URL = "/media/"
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'nihmec.storage_backends.MediaStorage'
 
 CSRF_TRUSTED_ORIGINS = [

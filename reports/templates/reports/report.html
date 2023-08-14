@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-{% extends 'base.html' %}
-{% load wagtailcore_tags %}
-{% load static %}
-{% load wagtailimages_tags %}
-{% block content %}
+{% extends 'base.html' %} {% load wagtailcore_tags %} {% load static %} {% load wagtailimages_tags %} {% block content %}
+
 <body>
     <main class="about">
         <style>
@@ -12,7 +9,7 @@
                 float: right;
                 margin: 15px;
             }
-        
+            
             .conference-report-summary p {
                 text-align: left;
             }
@@ -21,8 +18,7 @@
         <div class="about-container">
             <span><h2>{{page.report_title|title}}</h2></span> <br>
             <div class="conference-report-summary">
-                {% image page.report_cover_image fill-300x400 %}
-                {{page.report_summary|richtext}}
+                <img src="{{page.report_cover_image.url}}" alt=""> {{page.report_summary|richtext}}
             </div>
             <br>
             <div class="download-report">
