@@ -578,6 +578,7 @@ footer li {
     overflow: hidden;
     position: relative;
     width: 100%;
+    padding: 10px;
 }
 
 .slider::before,
@@ -611,6 +612,7 @@ footer li {
 .slider .slide {
     height: 100px;
     width: 150px;
+    margin: 20px;
 }
 
 .slider .slide img {
