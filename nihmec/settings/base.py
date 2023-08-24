@@ -123,11 +123,11 @@ WSGI_APPLICATION = "nihmec.wsgi.application"
 EMAIL_HOST = 'smtp.elasticemail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 2525
-EMAIL_HOST_USER = os.getenv('DEFAULT_FROM_EMAIL')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
+# EMAIL_HOST_USER = os.getenv('DEFAULT_FROM_EMAIL')
+# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+# DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
 
-PAYSTACK_SECRET_KEY = os.getenv('PAYSTACK_SECRET_KEY')
+# PAYSTACK_SECRET_KEY = os.getenv('PAYSTACK_SECRET_KEY')
 
 import cloudinary
           
@@ -137,24 +137,24 @@ cloudinary.config(
   api_secret = "Wc1J6Rc2eOENtSEXJLWl_BrSwMw"
 )
 
-# EMAIL_HOST_USER = env('DEFAULT_FROM_EMAIL')
-# EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-# DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
+EMAIL_HOST_USER = env('DEFAULT_FROM_EMAIL')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 
 DATABASES = {
     "default": dj_database_url.config(default='postgresql://postgres:93WzL1fYDGrZRoVQwiTN@containers-us-west-118.railway.app:7259/railway', conn_max_age=1800),
 }
 
-# PAYSTACK_SECRET_KEY = env('PAYSTACK_SECRET_KEY')
-# PAYSTACK_PUBLIC_KEY = ""
+PAYSTACK_SECRET_KEY = env('PAYSTACK_SECRET_KEY')
+PAYSTACK_PUBLIC_KEY = ""
 
 # import cloudinary
           
-# cloudinary.config( 
-#   cloud_name = env("cloud_name"), 
-#   api_key = env("cloudinary_api_key"), 
-#   api_secret = env("cloudinary_api_secret") 
-# )
+cloudinary.config( 
+  cloud_name = env("cloud_name"), 
+  api_key = env("cloudinary_api_key"), 
+  api_secret = env("cloudinary_api_secret") 
+)
 
 
 
