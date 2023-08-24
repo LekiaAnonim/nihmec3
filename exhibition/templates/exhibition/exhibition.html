@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-{% extends 'base.html' %}
-{% load wagtailcore_tags %}
-{% load static %}
+<!DOCTYPE html> {% extends 'base.html' %} {% load wagtailcore_tags %} {% load static %} {% block content %}
 
-{% block content %}
 <body>
     <main class="about sponsorship-opp-container">
         <h1>{{page.title}}</h1>
-        
-       
+
+
         <div class="register-container">
             <div class="contact-to-register">
                 <h3>You can also contact us for exhibition plan</h3>
@@ -16,10 +12,10 @@
                 <a href="tel:+2349098614828">+2349098614828</a>
             </div>
             <div class="exhibition-container">
-                
+
                 <span>A simplified schematic of the conference and exhibition arrangement</span>
                 <div class="exhibition-boot-plan">
-                    <img src="{% static 'images/NiMEC 3 Drawing Sch-Layout2 (1)_page-0002.jpg' %}" alt="">
+                    <img src="{% static 'images/nihmec2023_floorplan.PNG' %}" alt="">
                 </div>
                 <div class="about-container">
                     {{page.intro|richtext}}
@@ -29,7 +25,7 @@
 
                         <div class="form-card registration-form-1">
                             <div class="form-card-wordwrap">
-                                
+
                                 <div class="form-field">
                                     {{form.first_name.label_tag}}
                                     <h6 class="text-danger">{{ form.first_name.errors }}</h6>
@@ -74,11 +70,11 @@
                             </div>
                             <input class="submit-btn" type="submit" value="Submit">
                         </div>
-                        
+
                     </form>
                 </div>
             </div>
-            
+
         </div>
     </main>
 </body>
