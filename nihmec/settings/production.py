@@ -7,7 +7,7 @@ env = environ.Env(
     DEBUB=(bool, False)
 )
 
-ALLOWED_HOSTS = ["nihmec-production.up.railway.app", "nihmec.com"]
+ALLOWED_HOSTS = ["nihmec3-production.up.railway.app", "nihmec.com"]
 DEBUG = env('DEBUG')
 
 EMAIL_HOST_USER = env('DEFAULT_FROM_EMAIL')
@@ -23,11 +23,11 @@ PAYSTACK_PUBLIC_KEY = ""
 
 import cloudinary
           
-cloudinary.config( 
-  cloud_name = env("cloud_name"), 
-  api_key = env("cloudinary_api_key"), 
-  api_secret = env("cloudinary_api_secret") 
-)
+# cloudinary.config( 
+#   cloud_name = env("cloud_name"), 
+#   api_key = env("cloudinary_api_key"), 
+#   api_secret = env("cloudinary_api_secret") 
+# )
 
 try:
     from .local import *
