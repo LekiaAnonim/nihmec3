@@ -30,6 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 # DEBUG = False
 # DEBUG = env('DEBUG')
 # Quick-start development settings - unsuitable for production
