@@ -203,7 +203,9 @@ class SpeakerPage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super(SpeakerPage, self).get_context(request, *args, **kwargs)
+        speakers = Speakers.objects.all()
         context["home_page"] = self.home_page
+        context["speakers"] = speakers
         return context
     
     class Meta:
