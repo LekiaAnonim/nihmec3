@@ -21,8 +21,18 @@
                             <p class="person-name">{{speaker.first_name}} {{speaker.surname}}</p>
                         </div>
                         <div class="author-status">
+                            {% if speaker.position %}
                             <p class="person-title">{{speaker.position}}, </p>
+                            {% else %}
+                            <p></p>
+                            {% endif %}
+
+                            {% if speaker.company %}
                             <p class="person-position">{{speaker.company}} </p>
+                            {% else %}
+                            <p></p>
+                            {% endif %}
+                            
                         </div>
                     </div>
                 </div>
