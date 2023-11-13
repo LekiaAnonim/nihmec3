@@ -30,7 +30,10 @@ class HomePage(Page):
     dollar_payment_link = models.URLField(null=True, blank=True)
     # feature_conference_on_site = models.BooleanField(default=True)
 
-    banner_image = CloudinaryField('image', null=True)
+    slider1 = CloudinaryField('image', null=True)
+    slider2 = CloudinaryField('image', null=True)
+    slider3 = CloudinaryField('image', null=True)
+    slider4 = CloudinaryField('image', null=True)
     register_cta = models.ForeignKey("wagtailcore.Page", null=True, blank=True, on_delete=models.SET_NULL, related_name="+")
     about_cta = models.ForeignKey("wagtailcore.Page", null=True, blank=True, on_delete=models.SET_NULL, related_name="+")
     sponsor_cta = models.ForeignKey("wagtailcore.Page", null=True, blank=True, on_delete=models.SET_NULL, related_name="+")
@@ -47,7 +50,10 @@ class HomePage(Page):
         FieldPanel('contact_email'),
         FieldPanel('contact_phone_number'),
         FieldPanel('dollar_payment_link'),
-        FieldPanel("banner_image"),
+        FieldPanel("slider1"),
+        FieldPanel("slider2"),
+        FieldPanel("slider3"),
+        FieldPanel("slider4"),
         PageChooserPanel("register_cta"),
         PageChooserPanel("about_cta"),
         PageChooserPanel("sponsor_cta"),

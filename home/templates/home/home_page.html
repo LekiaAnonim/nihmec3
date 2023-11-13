@@ -82,7 +82,7 @@
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <img src="{% static 'images/NiHMEC 2022-0313.jpg' %}" alt="NiHMEC 2022-0859">
+                <img src="{% if self.slider1 %}{{self.slider1.url}}{% else %}{% static 'images/NiHMEC 2022-0313.jpg' %}{% endif %}" alt="NiHMEC 2022-0859">
                 <div class="swiper-content">
                     <div class="box-anchor1 box-anchor"></div>
                     <div class="box-anchor2 box-anchor"></div>
@@ -94,7 +94,7 @@
                 </div>
             </div>
             <div class="swiper-slide">
-                <img src="{% static 'images/NiHMEC 2022-0087.jpg' %}" alt="" />
+                <img src="{% if self.slider2 %}{{self.slider2.url}}{% else %}{% static 'images/NiHMEC 2022-0087.jpg' %} {% endif %}" alt="" />
                 <div class="swiper-content">
                     <div class="box-anchor1 box-anchor"></div>
                     <div class="box-anchor2 box-anchor"></div>
@@ -105,7 +105,7 @@
                 </div>
             </div>
             <div class="swiper-slide">
-                <img src="{% static 'images/NiHMEC 2022-0119.jpg' %}" alt="" />
+                <img src="{% if self.slider3 %}{{self.slider3.url}}{% else %}{% static 'images/NiHMEC 2022-0119.jpg' %}{% endif %}" alt="" />
                 <div class="swiper-content">
                     <div class="box-anchor1 box-anchor"></div>
                     <div class="box-anchor2 box-anchor"></div>
@@ -116,7 +116,7 @@
                 </div>
             </div>
             <div class="swiper-slide">
-                <img src="{% static 'images/NiHMEC 2022-0605.jpg' %}" alt="" />
+                <img src="{% if self.slider4 %}{{self.slider4.url}}{% else %}{% static 'images/NiHMEC 2022-0605.jpg' %}{% endif %}" alt="" />
                 <div class="swiper-content">
                     <div class="box-anchor1 box-anchor"></div>
                     <div class="box-anchor2 box-anchor"></div>

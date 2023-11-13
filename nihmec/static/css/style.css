@@ -1385,3 +1385,10 @@ textarea {
     font-weight: 700;
     border-radius: 10px;
 }
+
+/* #lightgallery {} */
+
+#lightgallery img{
+    width: 300px;
+    height: 300px;
+}
