@@ -258,6 +258,25 @@ class Attendees(models.Model):
         verbose_name = 'Attendees'
         verbose_name_plural = 'Attendees'
 
+
+@register_snippet
+class Sponsors(models.Model):
+    company_name = models.CharField(max_length = 500, null=True, blank=True)
+    company_logo = CloudinaryField('image', null=True)
+    company_url = models.URLField(max_length=500, null=True)
+
+    panels = [
+        FieldPanel('company_name'),
+        FieldPanel('company_logo'),
+        FieldPanel('company_url'),
+    ]
+
+    def __str__(self):
+        return self.company_name
+    class Meta:
+        verbose_name = 'Sponsors'
+        verbose_name_plural = 'Sponsors'
+
 @register_snippet
 class TechnicalAdvisoryCommittee(models.Model):
     first_name = models.CharField(max_length = 500, null=True, blank=True)

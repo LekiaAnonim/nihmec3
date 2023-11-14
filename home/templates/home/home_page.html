@@ -274,6 +274,15 @@
 
             <div class="slider">
                 <div class="slide-track">
+                    {% if sponsors %}
+                    {% for sponsor in sponsors %}
+                    <div class="slide">
+                        <a href="{{sponsor.company_url}}">
+                            <img src="{{sponsor.company_logo.url}}" alt="">
+                        </a>
+                    </div>
+                    {% endfor %}
+                    {% else %}
                     <div class="slide">
                         <img src="{% static 'images/seplat.png' %}" alt="" />
                     </div>
@@ -316,6 +325,8 @@
                     <div class="slide">
                         <img src="{% static 'images/trexm.png' %}" alt="" />
                     </div>
+                    {% endif %}
+                    
                 </div>
             </div>
         </div>

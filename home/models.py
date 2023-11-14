@@ -84,11 +84,14 @@ class HomePage(Page):
         speakers = Speakers.objects.all()
         committees = TechnicalAdvisoryCommittee.objects.all()
         attendees = Attendees.objects.all()
+        sponsors = Sponsors.objects.all()
+
 
         context["home_page"] = self.home_page
         context["speakers"] = speakers
         context["committees"] = committees
         context["attendees"] = attendees
+        context["sponsors"] = sponsors
         return context
 
 
