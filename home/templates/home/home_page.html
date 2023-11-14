@@ -282,6 +282,13 @@
                         </a>
                     </div>
                     {% endfor %}
+                    {% for sponsor in sponsors %}
+                    <div class="slide">
+                        <a href="{{sponsor.company_url}}">
+                            <img src="{{sponsor.company_logo.url}}" alt="">
+                        </a>
+                    </div>
+                    {% endfor %}
                     {% else %}
                     <div class="slide">
                         <img src="{% static 'images/seplat.png' %}" alt="" />
