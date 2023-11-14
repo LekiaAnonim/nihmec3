@@ -31,9 +31,13 @@ class HomePage(Page):
     # feature_conference_on_site = models.BooleanField(default=True)
 
     slider1 = CloudinaryField('image', null=True)
+    slider1_text = RichTextField(blank = True, null=True)
     slider2 = CloudinaryField('image', null=True)
+    slider2_text = RichTextField(blank = True, null=True)
     slider3 = CloudinaryField('image', null=True)
+    slider3_text = RichTextField(blank = True, null=True)
     slider4 = CloudinaryField('image', null=True)
+    slider4_text = RichTextField(blank = True, null=True)
     register_cta = models.ForeignKey("wagtailcore.Page", null=True, blank=True, on_delete=models.SET_NULL, related_name="+")
     about_cta = models.ForeignKey("wagtailcore.Page", null=True, blank=True, on_delete=models.SET_NULL, related_name="+")
     sponsor_cta = models.ForeignKey("wagtailcore.Page", null=True, blank=True, on_delete=models.SET_NULL, related_name="+")
@@ -51,9 +55,13 @@ class HomePage(Page):
         FieldPanel('contact_phone_number'),
         FieldPanel('dollar_payment_link'),
         FieldPanel("slider1"),
+        FieldPanel("slider1_text"),
         FieldPanel("slider2"),
+        FieldPanel("slider2_text"),
         FieldPanel("slider3"),
+        FieldPanel("slider3_text"),
         FieldPanel("slider4"),
+        FieldPanel("slider4_text"),
         PageChooserPanel("register_cta"),
         PageChooserPanel("about_cta"),
         PageChooserPanel("sponsor_cta"),
