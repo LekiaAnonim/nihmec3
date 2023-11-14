@@ -8,7 +8,7 @@ from wagtail.admin.panels import FieldPanel, InlinePanel, PageChooserPanel
 from wagtail.snippets.models import register_snippet
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from django.utils.functional import cached_property
-from website.models import Speakers, TechnicalAdvisoryCommittee, Attendees
+from website.models import Speakers, TechnicalAdvisoryCommittee, Attendees, Sponsors
 from cloudinary.models import CloudinaryField
 
 
