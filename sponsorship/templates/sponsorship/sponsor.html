@@ -36,7 +36,6 @@
                         <td class="sponsorship-feature-data">NA</td>
                         {% endif %}
                         {% endfor %}
-                        
                     </tr>
                     {% endfor %}
                     
@@ -46,7 +45,7 @@
                         <td></td>
                         {% for package in page.get_children %}
                         {% with package=package.specific %}
-                            <td class="sponsorship-select"><a href="{% pageurl package %}">Select</a></td>
+                            <td class="sponsorship-select"><a href="{% pageurl package %}">{{package.package.sponsorship_type}}</a></td>
                         {% endwith %}
                         {% endfor %}
                     </tr>
