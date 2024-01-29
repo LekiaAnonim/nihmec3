@@ -12,32 +12,23 @@
         <div class="speaker-wrapper" id="speaker-wrapper">
             {% for speaker in speakers %} {% if speaker.speaker_category.speaker_category == page.speaker_category %}
             <div class="speaker-card">
-                <div class="speaker-image-name-container">
-                    <div class="speaker-image">
-                        <img src="{{speaker.photo.url}}" alt="">
-                    </div>
-                    <div class="speaker-name-title">
-                        <div class="author-name">
-                            <p class="person-name">{{speaker.first_name}} {{speaker.surname}}</p>
-                        </div>
-                        <div class="author-status">
-                            {% if speaker.position %}
-                            <p class="person-title">{{speaker.position}}</p>
-                            {% else %}
-                            <p></p>
-                            {% endif %}
-
-                            {% if speaker.company %}
-                            <p class="person-position">{{speaker.company}} </p>
-                            {% else %}
-                            <p></p>
-                            {% endif %}
-                            
-                        </div>
-                    </div>
+                <div class="speaker-photo">
+                    <img src="{{speaker.photo.url}}" alt="">
                 </div>
-                <div class="speaker-about">
-                    <p>{{speaker.short_introduction|richtext}}</p>
+                <div class="speaker-name">
+                    <h3>{{speaker.first_name}} {{speaker.surname}}</h3>
+                </div>
+                <div class="speaker-position-company">
+                    {% if speaker.position %}
+                    <p>{{speaker.position}}</p>
+                    {% else %}
+                    <p></p>
+                    {% endif %}
+                    {% if speaker.company %}
+                    <h4>{{speaker.company}}</h4>
+                    {% else %}
+                    <p></p>
+                    {% endif %}
                 </div>
             </div>
             {% endif %} {% endfor %}
