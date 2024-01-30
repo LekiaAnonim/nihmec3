@@ -104,10 +104,11 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
-    width: fit-content;
+    align-items: center;
+    width: 100%;
     height: fit-content;
     margin-left: 20px;
+    /* border: solid #fff; */
 }
 
 .conference-full-name-venue-date p {
@@ -134,6 +135,7 @@ footer li {
 .full-meaning-nihmec {
     font-size: 35px;
     font-weight: 700;
+    text-align: center;
 }
 
 .date-venue * {
@@ -142,6 +144,9 @@ footer li {
 
 .nav-menu {
     padding: 10px 10px 0 10px;
+    width: fit-content;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .navigation-menu {
