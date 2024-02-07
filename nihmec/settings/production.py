@@ -15,7 +15,7 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 
 DATABASES = {
-    "default": dj_database_url.config(default='postgresql://postgres:93WzL1fYDGrZRoVQwiTN@containers-us-west-118.railway.app:7259/railway', conn_max_age=1800),
+    "default": dj_database_url.config(default='postgresql://postgres:afAe6Ffdfb1bc3c3b233D6fGGabgefdC@roundhouse.proxy.rlwy.net:13514/railway', conn_max_age=1800),
 }
 
 PAYSTACK_SECRET_KEY = env('PAYSTACK_SECRET_KEY')
