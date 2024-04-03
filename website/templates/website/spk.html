@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .speaker-card {
+            width: 100%;
+            min-width: 300px;
+            max-width: 320px;
+            padding: 20px;
+            box-shadow: 4px 4px 20px 0 rgba(48, 69, 147, .2);
+            border-radius: 10px;
+        }
+        .speaker-card .speaker-photo{
+            width: 100%;
+            max-width: 157px;
+            max-height: 157px;
+            margin: 0 auto;
+            border-radius: 50%;
+            min-height: 157px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: solid;
+            margin-bottom: 20px;
+        }
+        .speaker-card .speaker-photo img{
+            /* width: 100%; */
+            width: 156px;
+            height: 156px;
+            border-radius: 50%;
+        }
+        .speaker-card .speaker-name h3{
+            /* width: 100%; */
+            color: #003D58!important;
+            font-size: 17px;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        .speaker-position-company p{
+            color: #000;
+            font-size: 12px;
+            font-weight: 300;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.5;
+            text-align: center;
+        }
+        .speaker-position-company h4{
+            color: #000;
+            font-size: 12px;
+            font-weight: 400;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+    </style>
+    <div class="speaker-card">
+        <div class="speaker-photo">
+            <img src="/nihmec/static/images/NiHMEC 2022-0890.jpg" alt="">
+        </div>
+        <div class="speaker-name">
+            <h3>Lekia Prosper Kiisi</h3>
+        </div>
+        <div class="speaker-position-company">
+            <p>Process and Business Support Engineer</p>
+            <h4>Fleissen & Company</h4>
+        </div>
+    </div>
+</body>
+</html>

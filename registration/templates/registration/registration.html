@@ -163,28 +163,20 @@
                                     
                                     if (par.id == 'id_workshop_0') {
                                         paymentCostContainer.innerHTML = `
-                                        <label for="id_conference_cost"></label>
-                                        {{form.conference_cost}}`;
-                                        let conference_cost_field = document.querySelector("input[name='conference_cost']");
-                                        conference_cost_field.setAttribute('class', 'id_workshop_0 payment-cost');
-                                        conference_cost_field.readonly = true;
-                                        conference_cost_field.type = "number";
-                                    }
-                                    else if (par.id == 'id_workshop_1') {
-                                        paymentCostContainer.innerHTML = `
                                         <label for="id_conference_and_workshop_cost"></label>
                                         {{form.conference_and_workshop_cost}}`;
                                         let conference_and_workshop_cost_field =document.querySelector("input[name='conference_and_workshop_cost']");
-                                        conference_and_workshop_cost_field.setAttribute('class', 'id_workshop_1 payment-cost');
+                                        conference_and_workshop_cost_field.setAttribute('class', 'id_workshop_0 payment-cost');
                                         conference_and_workshop_cost_field.readonly = true;
                                         conference_and_workshop_cost_field.type = "number";
                                     }
+                                    
                                     else {
                                         paymentCostContainer.innerHTML = `
                                         <label for="id_virtual_cost"></label>
                                         {{form.virtual_cost}}`;
                                         let virtual_cost_field =document.querySelector("input[name='virtual_cost']");
-                                        virtual_cost_field.setAttribute('class', 'id_workshop_2 payment-cost');
+                                        virtual_cost_field.setAttribute('class', 'id_workshop_1 payment-cost');
                                         virtual_cost_field.readonly = true;
                                         virtual_cost_field.type = "number";
                                     };

@@ -35,6 +35,9 @@ class SponsorshipPackage(ClusterableModel):
         FieldPanel('features'),
     ]
 
+    def __str__(self):
+        return self.sponsorship_type
+
 class SponsorshipPage(Page):
     template = 'sponsorship/sponsor.html'
     intro = RichTextField(blank=True)
@@ -57,6 +60,7 @@ class SponsorshipPage(Page):
         # home_page = HomePage.objects.live()
         context["home_page"] = self.home_page
         return context
+
 
 
 class FormField(AbstractFormField):

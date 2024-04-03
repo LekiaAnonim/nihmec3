@@ -82,47 +82,43 @@
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <img src="{% static 'images/NiHMEC 2022-0313.jpg' %}" alt="NiHMEC 2022-0859">
+                <img src="{% if self.slider1 %}{{self.slider1.url}}{% else %}{% static 'images/NiHMEC 2022-0313.jpg' %}{% endif %}" alt="NiHMEC 2022-0859">
                 <div class="swiper-content">
                     <div class="box-anchor1 box-anchor"></div>
                     <div class="box-anchor2 box-anchor"></div>
                     <div class="box-anchor3 box-anchor"></div>
                     <div class="box-anchor4 box-anchor"></div>
-                    Collaboration with stakeholders remains a priority for improving hydrocarbon measurement and accounting practices. The prioritization of collaboration with stakeholders plays a crucial role in advancing hydrocarbon measurement and accounting practices.
-                    Fostering open communication and partnerships, stakeholders can collectively address challenges, share best practices, and work towards common goals, ultimately enhancing the reliability and integrity of hydrocarbon measurement and
-                    accounting in the industry.
+                    {{self.slider1_text|richtext}}
                 </div>
             </div>
             <div class="swiper-slide">
-                <img src="{% static 'images/NiHMEC 2022-0087.jpg' %}" alt="" />
+                <img src="{% if self.slider2 %}{{self.slider2.url}}{% else %}{% static 'images/NiHMEC 2022-0087.jpg' %} {% endif %}" alt="" />
                 <div class="swiper-content">
                     <div class="box-anchor1 box-anchor"></div>
                     <div class="box-anchor2 box-anchor"></div>
                     <div class="box-anchor3 box-anchor"></div>
                     <div class="box-anchor4 box-anchor"></div>
-                    NiHMEC has gained the attention and interest of all the stakeholders in Nigeria’s petroleum industry and globally. At NiHMEC 2022, stakeholders in the oil and gas industry expressed their continuous support for NiHMEC and reiterated that the interest
-                    in the conference must be sustained. The discussions at NiHMEC 2022 largely emphasized the need to enshrine proper hydrocarbon measurement and accounting processes to minimize value erosion in the industry.
+                    {{self.slider2_text|richtext}}
                 </div>
             </div>
             <div class="swiper-slide">
-                <img src="{% static 'images/NiHMEC 2022-0119.jpg' %}" alt="" />
+                <img src="{% if self.slider3 %}{{self.slider3.url}}{% else %}{% static 'images/NiHMEC 2022-0119.jpg' %}{% endif %}" alt="" />
                 <div class="swiper-content">
                     <div class="box-anchor1 box-anchor"></div>
                     <div class="box-anchor2 box-anchor"></div>
                     <div class="box-anchor3 box-anchor"></div>
                     <div class="box-anchor4 box-anchor"></div>
-                    The NiHMEC 2022 event was deemed timely and commendable, as it addressed the challenges posed by crude oil theft losses and aimed to change Nigeria's negative revenue narrative. While there is the need to emphasize the importance of accurate measurements
-                    and fiscalization to avoid negative impacts on revenue, crude oil theft and pipeline vandalism have introduced complex complications to hydrocarbon accounting in Nigeria, prompting the need for change in this area.
+                    {{self.slider3_text|richtext}}
                 </div>
             </div>
             <div class="swiper-slide">
-                <img src="{% static 'images/NiHMEC 2022-0605.jpg' %}" alt="" />
+                <img src="{% if self.slider4 %}{{self.slider4.url}}{% else %}{% static 'images/NiHMEC 2022-0605.jpg' %}{% endif %}" alt="" />
                 <div class="swiper-content">
                     <div class="box-anchor1 box-anchor"></div>
                     <div class="box-anchor2 box-anchor"></div>
                     <div class="box-anchor3 box-anchor"></div>
                     <div class="box-anchor4 box-anchor"></div>
-                    Training and capacity development for metering professionals should be taken seriously because any investment in capacity development will immediately benefit the operator's bottom line.
+                    {{self.slider4_text|richtext}}
                 </div>
             </div>
 
@@ -278,6 +274,22 @@
 
             <div class="slider">
                 <div class="slide-track">
+                    {% if sponsors %}
+                    {% for sponsor in sponsors %}
+                    <div class="slide">
+                        <a href="{{sponsor.company_url}}">
+                            <img src="{{sponsor.company_logo.url}}" alt="">
+                        </a>
+                    </div>
+                    {% endfor %}
+                    {% for sponsor in sponsors %}
+                    <div class="slide">
+                        <a href="{{sponsor.company_url}}">
+                            <img src="{{sponsor.company_logo.url}}" alt="">
+                        </a>
+                    </div>
+                    {% endfor %}
+                    {% else %}
                     <div class="slide">
                         <img src="{% static 'images/seplat.png' %}" alt="" />
                     </div>
@@ -320,6 +332,8 @@
                     <div class="slide">
                         <img src="{% static 'images/trexm.png' %}" alt="" />
                     </div>
+                    {% endif %}
+                    
                 </div>
             </div>
         </div>

@@ -104,10 +104,11 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
-    width: fit-content;
+    align-items: center;
+    width: 100%;
     height: fit-content;
     margin-left: 20px;
+    /* border: solid #fff; */
 }
 
 .conference-full-name-venue-date p {
@@ -134,6 +135,7 @@ footer li {
 .full-meaning-nihmec {
     font-size: 35px;
     font-weight: 700;
+    text-align: center;
 }
 
 .date-venue * {
@@ -142,6 +144,9 @@ footer li {
 
 .nav-menu {
     padding: 10px 10px 0 10px;
+    width: fit-content;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .navigation-menu {
@@ -716,8 +721,9 @@ footer li {
     padding: 20px;
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: center;
     flex-wrap: wrap;
+    gap: 20px;
 }
 
 .meet-our-speakers .person-name {
@@ -739,42 +745,58 @@ footer li {
 
 /* STYLING SPEAKER CARD */
 
-.speaker-image-name-container {
+.speaker-card {
+    width: 100%;
+    min-width: 300px;
+    max-width: 320px;
+    padding: 20px;
+    box-shadow: 4px 4px 20px 0 rgba(48, 69, 147, .2);
+    border-radius: 10px;
+}
+.speaker-card .speaker-photo{
+    width: 100%;
+    max-width: 157px;
+    max-height: 157px;
+    margin: 0 auto;
+    border-radius: 50%;
+    min-height: 157px;
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: center;
+    border: solid #003D58;
+    margin-bottom: 20px;
 }
-
-.speaker-image {
-    position: relative;
-    width: 30%;
-    max-width: 140px;
-    /* float: left; */
-    aspect-ratio: 1/1;
-    overflow: hidden;
-    border-radius: 1.3rem 0rem 1.3rem 0rem;
-    z-index: 1;
-    margin-right: 10px;
+.speaker-card .speaker-photo img{
+    /* width: 100%; */
+    width: 156px;
+    height: 156px;
+    border-radius: 50%;
 }
-
-.speaker-image img {
-    width: 100%;
-    height: 100%;
+.speaker-card .speaker-name h3{
+    /* width: 100%; */
+    color: #003D58!important;
+    font-size: 17px;
+    margin-bottom: 18px;
+    text-align: center;
 }
-
-.speaker-card {
-    /* bottom: unset!important; */
-    background: rgba(255, 255, 255, 0.375);
-    box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
-    border-radius: 1.3rem;
-    border: 1px solid rgba(255, 255, 255, 0.37);
-    width: 33.33% !important;
-    min-width: 280px;
-    max-width: 420px;
-    margin: 10px;
-    transition: all 0.3s;
-    transform: scale(1);
-    z-index: 1;
+.speaker-position-company p{
+    color: #000;
+    font-size: 12px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    text-align: center;
+}
+.speaker-position-company h4{
+    color: #000;
+    font-size: 12px;
+    font-weight: 400;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
 .speaker-card:hover {
@@ -782,14 +804,14 @@ footer li {
     z-index: 3;
 }
 
-.speaker-about {
+/* .speaker-about {
     padding: 8px;
 }
 
 .speaker-about p {
     text-align: center;
     font-size: 13px;
-}
+} */
 
 
 /* STYLING ABOUT */
@@ -1384,4 +1406,11 @@ textarea {
     color: #fff;
     font-weight: 700;
     border-radius: 10px;
+}
+
+/* #lightgallery {} */
+
+#lightgallery img{
+    width: 300px;
+    height: auto;
 }

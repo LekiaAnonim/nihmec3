@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from django.core.management.utils import get_random_secret_key
-import environ
+# import environ
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import dj_database_url
@@ -19,18 +19,19 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 # import boto3
-env = environ.Env(
-    DEBUB=(bool, False)
-)
+# env = environ.Env(
+#     DEBUB=(bool, False)
+# )
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 # Set the project base directory
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+# environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-DEBUG = False
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
+# DEBUG = False
 # DEBUG = env('DEBUG')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -137,24 +138,20 @@ cloudinary.config(
   api_secret = "Wc1J6Rc2eOENtSEXJLWl_BrSwMw"
 )
 
-EMAIL_HOST_USER = env('DEFAULT_FROM_EMAIL')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
+# EMAIL_HOST_USER = env('DEFAULT_FROM_EMAIL')
+# EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+# DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 
 DATABASES = {
-    "default": dj_database_url.config(default='postgresql://postgres:93WzL1fYDGrZRoVQwiTN@containers-us-west-118.railway.app:7259/railway', conn_max_age=1800),
+    "default": dj_database_url.config(default='postgresql://postgres:afAe6Ffdfb1bc3c3b233D6fGGabgefdC@roundhouse.proxy.rlwy.net:13514/railway', conn_max_age=1800),
 }
 
-PAYSTACK_SECRET_KEY = env('PAYSTACK_SECRET_KEY')
+
 PAYSTACK_PUBLIC_KEY = ""
 
 # import cloudinary
           
-cloudinary.config( 
-  cloud_name = env("cloud_name"), 
-  api_key = env("cloudinary_api_key"), 
-  api_secret = env("cloudinary_api_secret") 
-)
+
 
 
 
@@ -164,7 +161,7 @@ MEDIA_URL = "/media/"
 # DEFAULT_FILE_STORAGE = 'nihmec.storage_backends.MediaStorage'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://nihmec-production.up.railway.app', 'https://nihmec.com', 'https://paystack.co', 'https://checkout.paystack.com', 'https://paystack.com']
+    'https://nihmec3-production.up.railway.app', 'https://nihmec.com', 'https://paystack.co', 'https://checkout.paystack.com', 'https://paystack.com']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'http')
 CSRF_USE_SESSIONS = False
 CSRF_COOKIE_SECURE = True
