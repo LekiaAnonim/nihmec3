@@ -19,9 +19,9 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 # import boto3
-env = environ.Env(
-    DEBUB=(bool, False)
-)
+# env = environ.Env(
+#     DEBUB=(bool, False)
+# )
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # BASE_DIR = os.path.dirname(PROJECT_DIR)
 
