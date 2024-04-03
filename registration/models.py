@@ -73,7 +73,6 @@ class RegistrationPage(Page):
 class FormField(AbstractFormField):
     page = ParentalKey('RegistrationFormPage', on_delete=models.CASCADE, related_name='form_fields')
 
-
 class RegistrationFormPage(AbstractEmailForm):
     template = 'registration/registration.html'
     intro = RichTextField(blank=True)

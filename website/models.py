@@ -27,8 +27,6 @@ class AboutPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('body'),
     ]
-
-
     @cached_property
     def home_page(self):
         return self.get_parent().specific
