@@ -161,7 +161,7 @@ MEDIA_URL = "/media/"
 # DEFAULT_FILE_STORAGE = 'nihmec.storage_backends.MediaStorage'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://nihmec3-production.up.railway.app', 'https://nihmec.com', 'https://paystack.co', 'https://checkout.paystack.com', 'https://paystack.com']
+    'https://nihmec3-production-4951.up.railway.app', 'https://nihmec.com', 'https://paystack.co', 'https://checkout.paystack.com', 'https://paystack.com']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'http')
 CSRF_USE_SESSIONS = False
 CSRF_COOKIE_SECURE = True

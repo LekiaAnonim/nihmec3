@@ -7,7 +7,7 @@ env = environ.Env(
     DEBUB=(bool, False)
 )
 
-ALLOWED_HOSTS = ["nihmec3-production.up.railway.app", "nihmec.com"]
+ALLOWED_HOSTS = ["nihmec3-production-4951.up.railway.app", "nihmec.com"]
 DEBUG = env('DEBUG')
 
 EMAIL_HOST_USER = env('DEFAULT_FROM_EMAIL')
