@@ -4,7 +4,7 @@ from django.core.management.utils import get_random_secret_key
 import dj_database_url
 
 env = environ.Env(
-    DEBUB=(bool, False)
+    DEBUG=(bool, False)
 )
 
 ALLOWED_HOSTS = ["nihmec3-production-4951.up.railway.app", "nihmec.com"]

@@ -11,28 +11,21 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from django.core.management.utils import get_random_secret_key
-# import environ
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import dj_database_url
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-# import boto3
-# env = environ.Env(
-#     DEBUB=(bool, False)
-# )
+
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 # Set the project base directory
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
-# DEBUG = False
-# DEBUG = env('DEBUG')
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 ALLOWED_HOSTS = ["*"]
@@ -121,15 +114,6 @@ WSGI_APPLICATION = "nihmec.wsgi.application"
 #     }
 # }
 
-EMAIL_HOST = 'smtp.elasticemail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 2525
-# EMAIL_HOST_USER = os.getenv('DEFAULT_FROM_EMAIL')
-# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-# DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
-
-# PAYSTACK_SECRET_KEY = os.getenv('PAYSTACK_SECRET_KEY')
-
 import cloudinary
           
 cloudinary.config( 
@@ -137,10 +121,6 @@ cloudinary.config(
   api_key = "733973411382121", 
   api_secret = "Wc1J6Rc2eOENtSEXJLWl_BrSwMw"
 )
-
-# EMAIL_HOST_USER = env('DEFAULT_FROM_EMAIL')
-# EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-# DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 
 DATABASES = {
     "default": dj_database_url.config(default='postgresql://postgres:afAe6Ffdfb1bc3c3b233D6fGGabgefdC@roundhouse.proxy.rlwy.net:13514/railway', conn_max_age=1800),
@@ -234,13 +214,13 @@ STATICFILES_FINDERS = [
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-# MEDIA_URL = "/media/"
+MEDIA_URL = "/media/"
 
 
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "nihmec"
-WAGTAILIMAGES_MAX_UPLOAD_SIZE = 25 * 1024 * 1024  # i.e. 25MB
+WAGTAILIMAGES_MAX_UPLOAD_SIZE = 25*1024*1024  # i.e. 25MB
 
 # Search
 # https://docs.wagtail.org/en/stable/topics/search/backends.html
