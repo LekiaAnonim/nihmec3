@@ -96,7 +96,6 @@ class RegistrationFormPage(AbstractEmailForm):
             form = self.get_form(request.POST, page=self)
 
             if form.is_valid():
-                self.process_form_submission(form)
                 addresses = [x.strip() for x in self.to_address.split(',')]
 
                 # Subject can be adjusted (adding submitted date), be sure to include the form's defined subject field

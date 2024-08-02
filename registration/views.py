@@ -56,7 +56,7 @@ class AttendantCreateView(CreateView):
         text_content  = '\n' + '\n' + 'Hi,' + '\t' + str(form.cleaned_data['first_name']) + '\n' + '\n' +'\n'
         html_content = render_to_string('registration/email_header.html', context, request=self.request) + text_content + render_to_string('registration/visitor_email_template.html', context, request=self.request)
 
-        msg = EmailMultiAlternatives(subject, text_content, ['v.eroli@fleissen.com',]+[form.cleaned_data['email']])
+        msg = EmailMultiAlternatives(subject, text_content, ['v.eroli@fleissen.com', 'lekiaprosper@gmail.com',]+[form.cleaned_data['email']])
         # msg.content_subtype = "html"  # Main content is now text/html
         msg.attach_alternative(html_content, "text/html")
         msg.send()
