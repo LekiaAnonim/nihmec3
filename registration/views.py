@@ -36,7 +36,7 @@ class AttendantCreateView(CreateView):
         subject = f"Your registration has been received - {submitted_date_str}"
         
         # Update the original landing page context with other data
-        context = self.get_context(self.request)
+        context = super().get_context_data(**kwargs)
 
         contact = {
             'First name': form.cleaned_data['first_name'],
