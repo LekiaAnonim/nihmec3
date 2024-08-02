@@ -31,8 +31,6 @@ class AttendantCreateView(CreateView):
     
     def form_valid(self, form, *args, **kwargs):
 
-        self.process_form_submission(form)
-
         # Subject can be adjusted (adding submitted date), be sure to include the form's defined subject field
         submitted_date_str = date.today().strftime('%x')
         subject = f"Your registration has been received - {submitted_date_str}"
