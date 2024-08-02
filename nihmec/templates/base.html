@@ -58,6 +58,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lg-fullscreen.min.css" integrity="sha512-JlgW3xkdBcsdFiSfFk5Cfj3sTgo3hA63/lPmZ4SXJegICSLcH43BuwDNlC9fqoUy2h3Tma8Eo48xlZ5XMjM+aQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lg-zoom.min.css" integrity="sha512-vIrTyLijDDcUJrQGs1jduUCSVa3+A2DaWpVfNyj4lmXkqURVQJ8LL62nebC388QV3P4yFBSt/ViDX8LRW0U6uw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lightgallery.min.css" integrity="sha512-F2E+YYE1gkt0T5TVajAslgDfTEUQKtlu4ralVq78ViNxhKXQLrgQLLie8u1tVdG2vWnB3ute4hcdbiBtvJQh0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
     {% comment %} <script src="https://cdn.skypack.dev/lightgallery@2.3.0-beta.4" crossorigin="anonymous" referrerpolicy="no-referrer"></script> {% endcomment %}
     {% endblock %}
     
@@ -182,6 +183,7 @@
 
                             </li>
                             <div class="drop-down-menu">
+                                <li><a href="{% url 'registration:register' %}" title="Visitor Registration" class="menu normal-menu"><p>Visitor Registration</p></a></li>
                                 {% for item in registration.menu_items.all %}
                                 <li><a href="{{item.link}}" title="{{item.title}}" {% if item.open_in_new_tab %} target="_blank" {% endif %} class="menu normal-menu"><p>{{item.title}}</p></a></li>
                                 {% endfor %}
@@ -1397,9 +1399,26 @@
                 ]
             });
         });
+    </script>
 
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function() {
         
-    
+        window.onload = function(){
+            $('.ui.accordion').accordion();
+            $('.ui.dropdown').dropdown();
+            
+        };
+        
+        });
+        $('.ui.dropdown').dropdown();
+        // $('.ui.radio.checkbox').checkbox();
+        $('select').dropdown();
+        $('.search').dropdown();
+        $('.selection').dropdown();
     </script>
     {% endblock %}
 

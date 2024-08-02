@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% load wagtailcore_tags %}
+{% load static %}
+{% load qr_code %}
+{% block content %}
+<body>
+    <main class="about">
+        <div class="thank-you-card" style="border-radius: 5px;
+            width: fit-content;
+            min-width: 300px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;">
+            <div class="card-head-container" style="display: flex;
+                gap: 20px;
+                margin-bottom: 30px;
+                background-color: #10492e;
+                padding: 20px;
+                color: white;
+                width: 100%;">
+                <div class="logo-image">
+                    <a href="/">
+                        <img src="/static/images/NiHMEC.png" alt="NiHMEC" style="width: 100px;
+                        height: 100px;">
+                    </a>
+                </div>
+                <div class="second-header" style="">
+                    <h1 style="margin: 0;
+                    padding: 0;
+                    font-size: 40px;
+                    text-transform: uppercase;">NIHMEC</h1>
+                    <p style="margin: 0;
+                    padding: 0;
+                    font-size: 18px;
+                    color: white;text-transform: uppercase;">{{home.start_date|date:"j M"}} - {{home.end_date|date:"j M"}} {{home.year}}</p>
+                    <p style="margin: 0;
+                    padding: 0;
+                    font-size: 18px;
+                    color: white;text-transform: uppercase;">{{home.venue}}</p>
+                </div>
+            </div>
+            <div class="thank-you-card-body" style="display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;">
+                <h2 class="name" style="font-size: 26px;
+                text-align: center;text-transform: uppercase;">{{attendant.first_name}} {{attendant.last_name}}</h2>
+                <h2 class="position" style="font-size: 26px;
+                font-weight: 500;
+                text-align: center;text-transform: uppercase;">{{attendant.position}}</h2>
+                <h2 class="name" style="text-transform: uppercase;font-size: 26px;
+                text-align: center;">{{attendant.company}}</h2>
+                <br><br>
+                {% qr_from_text attendant.user_unique_id "T" %}
+                <br>
+                <h2 class="type" style="font-size: 50px;
+                font-weight: 900;
+                text-align: center;text-transform: uppercase;">Visitor</h2>
+            </div>
+            <div class="thank-you-card-bottom" style="width: 100%; 
+            height: 80px; 
+            background-color: #10492e;
+            margin-top: 30px;"></div>
+        </div> <br>
+        <p><a href="{{ page.get_parent.url }}"><i class='bx bx-arrow-back'></i> Return Home</a></p>
+    </main>
+</body>
+{% endblock %}

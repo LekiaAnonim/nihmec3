@@ -12,6 +12,7 @@ urlpatterns = [
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
+    path("register/", include('registration.urls', namespace = 'registration')),
 ]
 
 

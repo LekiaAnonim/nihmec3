@@ -1,0 +1,65 @@
+{% extends 'base.html' %} {% load wagtailcore_tags %} {% load static %} {% load wagtailimages_tags %}
+<html lang="en">
+
+<body>
+    <div class="body-container">
+        {% block content %}
+        <div class="main" style="margin-left: auto; margin-right: auto; margin-top: 20px; padding: 20px; margin-bottom: 20px;">
+            <div class="title">
+                <h3 style="margin-bottom: 15px;">List of Visitors</h3>
+                <!-- <p>See All</p> -->
+            </div>
+            <div class="book list">
+                <div class="ui search">
+                    <div class="ui icon input">
+                      <input id="visitor-search" class="prompt container-fluid" type="text" placeholder="User ID from QR Code, Name, Company, Role, Email">
+                      <i class="search icon"></i>
+                    </div>
+                    <div class="results"></div>
+                  </div>
+                <table class="ui selectable celled table">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Company</th>
+                        </tr>
+                    </thead>
+                    <tbody id="visitor-body">
+                        {% for visitor in attendants %}
+                        <tr>
+                            <td><a href="{% url 'registration:visitor-card' visitor.id %}">{{visitor.user_unique_id}}</a></td>
+                            <td>{{visitor.first_name}} {{visitor.last_name}}</td>
+                            <td>{{visitor.email}}</td>
+                            <td >{{visitor.position}}</td>
+                            <td>{{visitor.company}}</td>
+                        </tr>
+                        
+                        {% empty %}
+                        <li>No visitor has registered.</li>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                   
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $("#visitor-search").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#visitor-body tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+        {% endblock %}
+
+    </div>
+    
+</body>
+</html>

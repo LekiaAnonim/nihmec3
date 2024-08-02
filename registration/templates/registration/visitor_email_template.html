@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% load wagtailcore_tags %}
+{% load static %}
+{% block nav_header %}
+{% endblock %}
+{% block content %}
+<body>
+    <main class="about">
+        <div class="thank-you-card">
+            <div class="card-head-container">
+                <div class="logo-image">
+                    <a href="/">
+                        <img src="/static/images/NiHMEC.png" alt="NiHMEC">
+                    </a>
+                </div>
+                <div class="second-header">
+                    <h1>NIHMEC</h1>
+                    <p>{{home.start_date|date:"j M"}} - {{home.end_date|date:"j M"}} {{home.year}}</p>
+                    <p>{{home.venue}}</p>
+                </div>
+            </div>
+            <div class="thank-you-card-body">
+                <h2 class="name">{{attendant.first_name}} {{attendant.last_name}}</h2>
+                <h2 class="position">{{attendant.position}}</h2>
+                <h2 class="name">{{attendant.company}}</h2>
+                <br><br>
+                {% qr_from_text attendant.user_unique_id "T" %}
+                <br>
+                <h2 class="type" style="">Visitor</h2>
+            </div>
+            <div class="thank-you-card-bottom">
+
+            </div>
+        </div>
+        <br>
+    </main>
+</body>
+{% endblock %}
+
+{% block banner %}
+{% endblock %}
+{% block footer %}
+{% endblock %}
+{% block importantpages %}
+{% endblock %}

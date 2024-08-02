@@ -1,0 +1,8 @@
+{% extends "wagtailusers/users/create.html" %}
+
+{% block extra_fields %}
+    <li>{% include "wagtailadmin/shared/field.html" with field=form.country %}</li>
+    <li>{% include "wagtailadmin/shared/field.html" with field=form.position %}</li>
+    <li>{% include "wagtailadmin/shared/field.html" with field=form.phone %}</li>
+    <li>{% include "wagtailadmin/shared/field.html" with field=form.company %}</li>
+{% endblock extra_fields %}

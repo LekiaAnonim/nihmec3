@@ -60,13 +60,23 @@ INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
+    'wagtail.contrib.search_promotions',
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'django.contrib.sites',
     "storages",
     'django_extensions',
     'wagtailcloudinary',
+    'qr_code',
 ]
+
+SITE_ID = 1
+
+AUTH_USER_MODEL = 'registration.User'
+WAGTAIL_USER_EDIT_FORM = 'registration.forms.CustomUserEditForm'
+WAGTAIL_USER_CREATION_FORM = 'registration.forms.CustomUserCreationForm'
+WAGTAIL_USER_CUSTOM_FIELDS = ['country', 'company', 'phone', 'position']
 
 MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -96,6 +106,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 'wagtail.contrib.settings.context_processors.settings',
+                'home.context_processors.base_data',
             ],
         },
     },
