@@ -48,13 +48,14 @@ INSTALLED_APPS = [
     "wagtail.contrib.redirects",
     "wagtail.embeds",
     "wagtail.sites",
-    "wagtail.users",
+    "registration.apps.CustomUsersAppConfig",
     "wagtail.snippets",
     "wagtail.documents",
     "wagtail.images",
     "wagtail.search",
     "wagtail.admin",
     "wagtail",
+    
     "modelcluster",
     "taggit",
     "django.contrib.admin",
@@ -74,9 +75,9 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 AUTH_USER_MODEL = 'registration.User'
-WAGTAIL_USER_EDIT_FORM = 'registration.forms.CustomUserEditForm'
-WAGTAIL_USER_CREATION_FORM = 'registration.forms.CustomUserCreationForm'
-WAGTAIL_USER_CUSTOM_FIELDS = ['country', 'company', 'phone', 'position']
+# WAGTAIL_USER_EDIT_FORM = 'registration.forms.CustomUserEditForm'
+# WAGTAIL_USER_CREATION_FORM = 'registration.forms.CustomUserCreationForm'
+# WAGTAIL_USER_CUSTOM_FIELDS = ['country', 'company', 'phone', 'position']
 
 MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -244,3 +245,4 @@ WAGTAILSEARCH_BACKENDS = {
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 WAGTAILADMIN_BASE_URL = "https://nihmec.com"
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

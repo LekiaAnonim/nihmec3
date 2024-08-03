@@ -34,27 +34,29 @@ class AttendantCreateView(CreateView):
         instance = form.save(commit=False)
         # Customize any additional processing if needed
         instance.save()
-        self.send_email(form.cleaned_data)
+        # Save the form instance first
+        self.object = form.save()
+        self.send_email(self.object)
         # Redirect to the landing page with the submitted form data
         return HttpResponseRedirect(reverse_lazy('registration:visitor-card', kwargs={'pk': instance.pk}))
     
-    def send_email(self, cleaned_data):
+    def send_email(self, instance):
          # Subject can be adjusted (adding submitted date), be sure to include the form's defined subject field
         submitted_date_str = date.today().strftime('%x')
         subject = f"Your registration has been received - {submitted_date_str}"
         context = {
-            'first_name': cleaned_data['first_name'],
-            'last_name': cleaned_data['last_name'],
-            'email': cleaned_data['email'],
-            'company': cleaned_data['company'],
-            'position': cleaned_data['position'],
-            'user_unique_id': cleaned_data['user_unique_id'],
+            'first_name': instance.first_name,
+            'last_name': instance.last_name,
+            'email': instance.email,
+            'company': instance.company,
+            'position': instance.position,
+            'user_unique_id': instance.user_unique_id
         }
 
-        text_content  = '\n' + '\n' + 'Hi,' + '\t' + str(cleaned_data['first_name']) + '\n' + '\n' +'\n'
+        text_content  = '\n' + '\n' + 'Hi,' + '\t' + str(instance.first_name) + '\n' + '\n' +'\n'
         html_content = render_to_string('registration/email_header.html', context, request=self.request) + text_content + render_to_string('registration/visitor_email_template.html', context, request=self.request)
 
-        msg = EmailMultiAlternatives(subject, text_content, ['v.eroli@fleissen.com', 'lekiaprosper@gmail.com',]+[cleaned_data['email']])
+        msg = EmailMultiAlternatives(subject, text_content, ['v.eroli@fleissen.com', 'lekiaprosper@gmail.com',]+[instance.email])
         # msg.content_subtype = "html"  # Main content is now text/html
         msg.attach_alternative(html_content, "text/html")
         msg.send()
