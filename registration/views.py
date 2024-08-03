@@ -56,7 +56,7 @@ class AttendantCreateView(CreateView):
         text_content  = '\n' + '\n' + 'Hi,' + '\t' + str(instance.first_name) + '\n' + '\n' +'\n'
         html_content = render_to_string('registration/email_header.html', context, request=self.request) + text_content + render_to_string('registration/visitor_email_template.html', context, request=self.request)
 
-        msg = EmailMultiAlternatives(subject, text_content, ['v.eroli@fleissen.com', 'lekiaprosper@gmail.com',]+[instance.email])
+        msg = EmailMultiAlternatives(subject, text_content, 'v.eroli@fleissen.com', [instance.email,'v.eroli@fleissen.com', 's.kanshio@fleissen.com'])
         # msg.content_subtype = "html"  # Main content is now text/html
         msg.attach_alternative(html_content, "text/html")
         msg.send()
@@ -65,4 +65,3 @@ class AttendantListView(ListView):
     model = Attendant
     template_name = 'registration/attendant_list.html'
     context_object_name = 'attendants'
-    paginate_by = 50
