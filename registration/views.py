@@ -11,10 +11,20 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.conf import settings
 from home.models import HomePage
+import base64
+import qrcode
+import io
 # Create your views here.
 class AttendantDetail(DetailView):
     model = Attendant
     template_name = 'registration/attendant_detail.html'
+
+def generate_qr_code(data, size=10, border=0):
+    qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L,
+                       box_size=size, border=border)
+    qr.add_data(data)
+    qr.make(fit=True)
+    return qr.make_image()
 class AttendantCreateView(CreateView):
     model = Attendant
     template_name = 'registration/visitor_registration.html'
@@ -41,6 +51,11 @@ class AttendantCreateView(CreateView):
          # Subject can be adjusted (adding submitted date), be sure to include the form's defined subject field
         submitted_date_str = date.today().strftime('%x')
         subject = f"Your registration has been received - {submitted_date_str}"
+        qr_img = generate_qr_code(instance.user_unique_id)
+        
+        buffered = io.BytesIO()
+        qr_img.save(buffered, format="PNG")
+        qr_img_base64 = base64.b64encode(buffered.getvalue()).decode("utf-8")
         home = HomePage.objects.get()
         context = {
             'first_name': instance.first_name,
@@ -49,7 +64,8 @@ class AttendantCreateView(CreateView):
             'company': instance.company,
             'position': instance.position,
             'user_unique_id': instance.user_unique_id,
-            'home': home
+            'home': home,
+            "qr_image": qr_img_base64,
         }
 
         text_content  = '\n' + '\n' + 'Hi,' + '\t' + str(instance.first_name) + '\n' + '\n' +'\n'

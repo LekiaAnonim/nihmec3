@@ -30,7 +30,8 @@
                 background-color: #10492e;
                 padding: 20px;
                 color: white;
-                width: 100%;">
+                width: 100%;
+                max-width: 100%;">
                 <div class="second-header">
                     <h1 style="margin: 0;
                     padding: 0;
@@ -42,7 +43,7 @@
                     <p style="margin: 0;
                     padding: 0;
                     font-size: 11px;
-                    color: white; text-transform: uppercase;">{{home.venue}}</p>
+                    color: white; text-transform: uppercase; text-wrap: wrap;">{{home.venue}}</p>
                 </div>
             </div>
             <div class="thank-you-card-body">
@@ -54,7 +55,9 @@
                 <h2 class="name" style="font-size: 16px;
                 text-align: center; text-transform: uppercase;">{{company}}</h2>
                 <br>
-                {% qr_from_text user_unique_id "T" %}
+                <div style="text-align: center;">
+                    <img src="data:image/png;base64,{{ qr_image }}" alt="QR Code">
+                </div>
                 <br>
                 <h2 class="type" style="font-size: 20px;
                 font-weight: 900;
