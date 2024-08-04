@@ -2,6 +2,7 @@
 <html lang="en">
 {% extends 'base.html' %}
 {% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
 {% load qr_code %}
 {% load static %}
 {% block nav_header %}
@@ -13,6 +14,7 @@
             <p>
                 Congratulations! Your Visitor's Pass for NiHMEC {{home.year}} has been successfully secured. We are delighted to welcome you to an event full of innovation, and opportunities.
             </p>
+            <p>Please show your individual QR Code below to print your badge. Please <b>do not</b> share this with anyone as it is a one-use code to print your badge only.</p>
             <p>
                 Should you need any assistance or have questions, don’t hesitate to reach out. We hope you have a fantastic time and make the most of your visit!
             </p>
@@ -20,7 +22,7 @@
             <p>The NiHMEC {{home.year}} Team</p>
         </div>
         <div class="thank-you-card" style="border-radius: 5px;
-                width: fit-content;
+                width: 100%;
                 box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
                 ">
             <div class="card-head-container" style="
@@ -32,34 +34,34 @@
                 <div class="second-header">
                     <h1 style="margin: 0;
                     padding: 0;
-                    font-size: 40px;">NIHMEC</h1>
+                    font-size: 20px;">NIHMEC</h1>
                     <p style="margin: 0;
                     padding: 0;
-                    font-size: 18px;
-                    color: white;">{{home.start_date|date:"j M"}} - {{home.end_date|date:"j M"}} {{home.year}}</p>
+                    font-size: 11px;
+                    color: white; text-transform: uppercase;">{{home.start_date|date:"j M"}} - {{home.end_date|date:"j M"}} {{home.year}}</p>
                     <p style="margin: 0;
                     padding: 0;
-                    font-size: 18px;
-                    color: white;">{{home.venue}}</p>
+                    font-size: 11px;
+                    color: white; text-transform: uppercase;">{{home.venue}}</p>
                 </div>
             </div>
             <div class="thank-you-card-body">
-                <h2 class="name" style="font-size: 26px;
-                text-align: center;">{{first_name}} {{last_name}}</h2>
-                <h2 class="position" style="font-size: 26px;
+                <h2 class="name" style="font-size: 16px;
+                text-align: center; text-transform: uppercase;">{{first_name}} {{last_name}}</h2>
+                <h2 class="position" style="font-size: 16px;
                 font-weight: 500;
-                text-align: center;">{{position}}</h2>
-                <h2 class="name" style="font-size: 26px;
-                text-align: center;">{{company}}</h2>
-                <br><br>
+                text-align: center; text-transform: uppercase;">{{position}}</h2>
+                <h2 class="name" style="font-size: 16px;
+                text-align: center; text-transform: uppercase;">{{company}}</h2>
+                <br>
                 {% qr_from_text user_unique_id "T" %}
                 <br>
-                <h2 class="type" style="font-size: 50px;
+                <h2 class="type" style="font-size: 20px;
                 font-weight: 900;
-                text-align: center;">Visitor</h2>
+                text-align: center; text-transform: uppercase;">Visitor</h2>
             </div>
             <div class="thank-you-card-bottom" style=" width: 100%; 
-                height: 80px; 
+                height: 40px; 
                 background-color: #10492e;
                 margin-top: 30px;">
             </div>

@@ -10,7 +10,7 @@ from datetime import date
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.conf import settings
-
+from home.models import HomePage
 # Create your views here.
 class AttendantDetail(DetailView):
     model = Attendant
@@ -41,13 +41,15 @@ class AttendantCreateView(CreateView):
          # Subject can be adjusted (adding submitted date), be sure to include the form's defined subject field
         submitted_date_str = date.today().strftime('%x')
         subject = f"Your registration has been received - {submitted_date_str}"
+        home = HomePage.objects.get()
         context = {
             'first_name': instance.first_name,
             'last_name': instance.last_name,
             'email': instance.email,
             'company': instance.company,
             'position': instance.position,
-            'user_unique_id': instance.user_unique_id
+            'user_unique_id': instance.user_unique_id,
+            'home': home
         }
 
         text_content  = '\n' + '\n' + 'Hi,' + '\t' + str(instance.first_name) + '\n' + '\n' +'\n'
