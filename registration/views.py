@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from registration.models import Attendant, RegistrationType
+from registration.models import Attendant
 from registration.forms import AttendantForm
 from django.views.generic.edit import CreateView
 from django.http import HttpResponseRedirect
@@ -24,9 +24,6 @@ class AttendantCreateView(CreateView):
     def get_context_data(self, *args, **kwargs):
         context = super(AttendantCreateView,
                         self).get_context_data(**kwargs)
-        registration_type = RegistrationType.objects.all()
-
-        context['registration_type'] = registration_type
         return context
     
     def form_valid(self, form, *args, **kwargs):
