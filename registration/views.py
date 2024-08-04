@@ -14,6 +14,7 @@ from home.models import HomePage
 import base64
 import qrcode
 import io
+from email.mime.image import MIMEImage
 # Create your views here.
 class AttendantDetail(DetailView):
     model = Attendant
@@ -73,6 +74,7 @@ class AttendantCreateView(CreateView):
 
         msg = EmailMultiAlternatives(subject, text_content, 'v.eroli@fleissen.com', [instance.email,'v.eroli@fleissen.com', 's.kanshio@fleissen.com'])
         # msg.content_subtype = "html"  # Main content is now text/html
+        msg.mixed_subtype = 'related'
         msg.attach_alternative(html_content, "text/html")
         msg.send()
     
