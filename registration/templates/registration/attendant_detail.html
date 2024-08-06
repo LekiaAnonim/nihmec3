@@ -7,6 +7,7 @@
 {% block content %}
 <body>
     <main class="about">
+        <p>This pass grants access to the exhibition area only. <br> To attend conference sessions, you'll need a Delegate Pass.</p>
         <div class="thank-you-card" style="border-radius: 5px;
             width: fit-content;
             min-width: 300px;
@@ -66,8 +67,14 @@
             height: 80px; 
             background-color: #10492e;
             margin-top: 30px;"></div>
-        </div> <br>
-        <p><a href="{{ page.get_parent.url }}"><i class='bx bx-arrow-back'></i> Return Home</a></p>
+        </div> 
+        <br>
+        <p>
+            <a href="{{ page.get_parent.url }}">
+                <i class='bx bx-arrow-back primary-btn'></i>
+                Return Home
+            </a>
+        </p>
     </main>
 </body>
 {% endblock %}
