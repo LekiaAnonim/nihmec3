@@ -82,3 +82,11 @@ class AttendantListView(ListView):
     model = Attendant
     template_name = 'registration/attendant_list.html'
     context_object_name = 'attendants'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(AttendantListView,
+                        self).get_context_data(**kwargs)
+        visitors_count = Attendant.objects.all().count()
+
+        context['visitors_count'] = visitors_count
+        return context
