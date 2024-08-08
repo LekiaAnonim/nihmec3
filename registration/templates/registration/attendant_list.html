@@ -23,6 +23,7 @@
                             <th>User ID</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Phone</th>
                             <th>Role</th>
                             <th>Company</th>
                         </tr>
@@ -33,6 +34,7 @@
                             <td><a href="{% url 'registration:visitor-card' visitor.id %}">{{visitor.user_unique_id}}</a></td>
                             <td>{{visitor.first_name}} {{visitor.last_name}}</td>
                             <td>{{visitor.email}}</td>
+                            <td>{{visitor.phone}}</td>
                             <td >{{visitor.position}}</td>
                             <td>{{visitor.company}}</td>
                         </tr>
