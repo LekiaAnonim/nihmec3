@@ -6,8 +6,8 @@ from wagtail.snippets.views.snippets import SnippetViewSet
 class AttendantViewSet(SnippetViewSet):
     model = Attendant
     icon = "user"
-    list_display = ["user_unique_id", "first_name", "last_name", "email", "company", "position","country", "phone", UpdatedAtColumn()]
-    list_export = ["user_unique_id", "first_name", "last_name", "email", "company", "position","country", "phone"]
+    list_display = ["user_unique_id", "first_name", "last_name", "email", "company", "position","country", "phone", 'created_at', UpdatedAtColumn()]
+    list_export = ["user_unique_id", "first_name", "last_name", "email", "company", "position","country", "phone", 'created_at']
     list_per_page = 50
     inspect_view_enabled = True
     admin_url_namespace = "attendant_views"

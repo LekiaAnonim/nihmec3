@@ -87,6 +87,7 @@ class AttendantListView(ListView):
         context = super(AttendantListView,
                         self).get_context_data(**kwargs)
         visitors_count = Attendant.objects.all().count()
-
+        # attendants = Attendant.objects.all().latest()
         context['visitors_count'] = visitors_count
+        # context['attendants'] = attendants
         return context

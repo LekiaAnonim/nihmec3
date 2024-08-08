@@ -1,21 +1,14 @@
 from django.db import models
-from wagtail.models import Page, Orderable
 from wagtail.fields import RichTextField
 from wagtail.admin.panels import FieldPanel, InlinePanel, FieldRowPanel, MultiFieldPanel
-from wagtail.snippets.models import register_snippet
-from modelcluster.fields import ParentalKey, ParentalManyToManyField
-from modelcluster.models import ClusterableModel
+from modelcluster.fields import ParentalKey
 from django.utils.functional import cached_property
 from wagtail.contrib.forms.panels import FormSubmissionsPanel
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render
-from wagtail.contrib.routable_page.models import RoutablePageMixin, path
-# from paystack.resource import TransactionResource
-from django.conf import settings
 import random
 import string
-import os
+from django.utils import timezone
 
 from datetime import date
 from django.core.mail import send_mail
@@ -179,6 +172,7 @@ class Attendant(models.Model):
     position = models.CharField(verbose_name='position', max_length=255, null=True, blank=True)
     country = models.CharField(verbose_name='country', max_length=255, null=True, blank=True)
     phone = models.CharField(verbose_name='phone', max_length=255, null=True, blank=True)
+    created_at = models.DateField(default=timezone.now)
 
     panels = [
         FieldPanel('user_unique_id'),
@@ -189,6 +183,7 @@ class Attendant(models.Model):
         FieldPanel('position'),
         FieldPanel('country'),
         FieldPanel('phone'),
+        FieldPanel('created_at'),
     ]
 
     def __str__(self):
@@ -198,3 +193,6 @@ class Attendant(models.Model):
     def save(self, *args, **kwargs):
         self.user_unique_id = random_alphanumeric_string() + 'NIHMEC' + self.first_name
         super(Attendant, self).save(*args, **kwargs)
+
+    class Meta:
+        ordering = ['-created_at']
