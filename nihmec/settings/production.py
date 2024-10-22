@@ -10,13 +10,13 @@ env = environ.Env(
 ALLOWED_HOSTS = ["nihmec3-production-4951.up.railway.app", "nihmec.com"]
 DEBUG = env('DEBUG')
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-# EMAIL_HOST = 'smtp-relay.brevo.com'
-# EMAIL_USE_TLS = True
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = env('DEFAULT_FROM_EMAIL')
-# EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-# DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST = 'smtp-relay.brevo.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = env('DEFAULT_FROM_EMAIL')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 
 DATABASES = {
     "default": dj_database_url.config(default='postgresql://postgres:afAe6Ffdfb1bc3c3b233D6fGGabgefdC@roundhouse.proxy.rlwy.net:13514/railway', conn_max_age=1800),
