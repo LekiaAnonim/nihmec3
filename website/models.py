@@ -256,6 +256,24 @@ class Attendees(models.Model):
         verbose_name = 'Attendees'
         verbose_name_plural = 'Attendees'
 
+@register_snippet
+class Highlight(models.Model):
+    short_text = models.CharField(max_length = 500, null=True, blank=True)
+    image = CloudinaryField('image', null=True)
+    full_text = RichTextField(null=True, blank=True)
+
+    panels = [
+        FieldPanel('short_text'),
+        FieldPanel('full_text'),
+        FieldPanel('image'),
+    ]
+
+    def __str__(self):
+        return self.short_text
+    class Meta:
+        verbose_name = 'Highlight'
+        verbose_name_plural = 'Highlights'
+
 
 @register_snippet
 class Sponsors(models.Model):

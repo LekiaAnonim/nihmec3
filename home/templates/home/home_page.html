@@ -338,46 +338,20 @@
             </div>
         </div>
         <div class="conference-highlight main-container">
+            {% if highlights %}
+            {% for highlight in highlights %}
             <div class="highlight">
-                <img src="{% static 'images/NiHMEC 2022-0515.jpg' %}" alt="">
+                <img src="{{highlight.image.url}}" alt="">
                 <div class="highlight-cta">
-                    <p>Network with 488 participants from 31 countries.</p>
+                    <p>{{highlight.short_text}}</p>
                 </div>
                 <div class="hightlight-full-text">
-                    <p>NiHMEC 2021 was well attended by 488 participants from 31 countries and Nigeria. The participants' feedback indicated a unanimous clamour for NiHMEC to be an annual event where stakeholders in Nigeria and from around the world would
-                        discuss developments in oil and gas measurement and production accounting.</p>
+                    {{highlight.full_text|richtext}}
                 </div>
             </div>
-            <div class="highlight">
-                <img src="/static/images/NiHMEC 2022-0579.jpg" alt="">
-                <div class="highlight-cta">
-                    <p>Join shape the future of oil and gas measurement practices in Nigeria.</p>
-                </div>
-                <div class="hightlight-full-text">
-                    <p>The discussion at NiHMEC 2022 would shape the future of oil and gas measurement practices in Nigeria regarding petroleum resource management and net-zero carbon emission. With the global drive towards attaining net-zero carbon emissions
-                        by 2050, sharing experiences would be critical to navigating the flow measurement challenge in oil and gas field operations.</p>
-                </div>
-            </div>
-            <div class="highlight">
-                <img src="/static/images/NIHMEC567.jpeg" alt="">
-                <div class="highlight-cta">
-                    <p>Take a bird-eye view of emmission mitigation.</p>
-                </div>
-                <div class="hightlight-full-text">
-                    <p>The petroleum industry is critical to Nigeria's economic development; the continuous production of the resources is inevitable. However, the production must be done sustainably, as emissions must be mitigated. Effective emission mitigation
-                        can only be achieved by ensuring accurate flow measurement along the value chain.</p>
-                </div>
-            </div>
-            <div class="highlight">
-                <img src="/static/images/NiHMEC 2022-0838.jpg" alt="">
-                <div class="highlight-cta">
-                    <p>Listen to Stakeholders discuss measurement challenges.</p>
-                </div>
-                <div class="hightlight-full-text">
-                    <p>At NiHMEC 2022, stakeholders shall gather to discuss the measurement challenges ahead and what must be done to meet the requirement for accurate hydrocarbon measurement and production accounting. The conference would welcome flow measurement
-                        discussions covering the upstream, midstream, and downstream sectors of the petroleum industry.</p>
-                </div>
-            </div>
+            {% endfor %}
+            {% endif %}
+            
         </div>
         <div class="technical-advisory-commitee main-container">
             <div class="meet-sponsors-header">

@@ -8,7 +8,7 @@ from wagtail.admin.panels import FieldPanel, InlinePanel, PageChooserPanel
 from wagtail.snippets.models import register_snippet
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from django.utils.functional import cached_property
-from website.models import Speakers, TechnicalAdvisoryCommittee, Attendees, Sponsors
+from website.models import Speakers, TechnicalAdvisoryCommittee, Attendees, Sponsors, Highlight
 from cloudinary.models import CloudinaryField
 
 
@@ -85,6 +85,7 @@ class HomePage(Page):
         committees = TechnicalAdvisoryCommittee.objects.all()
         attendees = Attendees.objects.all()
         sponsors = Sponsors.objects.all()
+        highlights = Highlight.objects.all()
 
 
         context["home_page"] = self.home_page
@@ -92,6 +93,7 @@ class HomePage(Page):
         context["committees"] = committees
         context["attendees"] = attendees
         context["sponsors"] = sponsors
+        context["highlights"] = highlights
         return context
 
 
